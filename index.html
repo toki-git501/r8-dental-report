@@ -62,7 +62,7 @@ body.modal-open {
 .nav.scrolled { box-shadow: var(--shadow-md); }
 .nav-inner {
   max-width: 1200px; margin:0 auto;
-  display:flex; align-items:center; justify-content:space-between;
+  display:flex; align-items:center; justify-content:flex-start;
   padding: 0 24px; height:56px;
   position: relative;
 }
@@ -78,6 +78,7 @@ body.modal-open {
 }
 .nav-links {
   display:flex; gap:4px; list-style:none;
+  margin-left:auto;
   overflow-x:auto; -webkit-overflow-scrolling:touch;
   scrollbar-width:none;
 }
@@ -787,11 +788,9 @@ body.modal-open {
 /* === MOBILE SIDE MENU === */
 .hamburger-fab {
   display:flex;
-  position:absolute;
-  right:12px;
-  left:auto;
-  top:8px;
-  z-index:2200;
+  position:relative;
+  margin-left:12px;
+  z-index:1;
   width:40px;
   height:40px;
   border:none;
@@ -1016,7 +1015,6 @@ body.side-menu-open { overflow:hidden; }
 @media (max-width:768px) {
   .nav-links { display:none; }
   .toc-section { display:none; }
-  .nav-inner { padding-right:72px; }
   .hero { padding:100px 20px 60px; }
   .hero-stats { grid-template-columns:1fr 1fr; }
   .section { padding:48px 16px; }
@@ -1029,7 +1027,7 @@ body.side-menu-open { overflow:hidden; }
   .kpi-grid { grid-template-columns:1fr; }
 }
 @media (max-width:1024px) {
-  .nav-inner { padding-right:72px; }
+  .nav-links { display:none; }
 }
 
 /* === ANIMATIONS === */
