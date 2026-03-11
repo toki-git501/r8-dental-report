@@ -800,7 +800,7 @@ body.modal-open {
   justify-content:center;
   cursor:pointer;
 }
-.hamburger-fab.enabled { display:flex; }
+.mobile-rich-toc, .mobile-toc-rail, .mobile-toc-item { display:none !important; }
 .hamburger-fab .bars {
   display:flex;
   flex-direction:column;
@@ -989,6 +989,9 @@ body.modal-open {
   .premise-row { grid-template-columns:1fr; }
   .forecast-grid { grid-template-columns:1fr; }
   .kpi-grid { grid-template-columns:1fr; }
+}
+@media (max-width:1024px) {
+  .hamburger-fab { display:flex; }
 }
 
 /* === ANIMATIONS === */
@@ -3972,15 +3975,6 @@ const sideMenuOverlay = document.getElementById('sideMenuOverlay');
 const sideMenuCloseBtn = document.getElementById('sideMenuClose');
 const tocSection = document.getElementById('toc');
 
-function syncMobileMenuVisibility() {
-  if (!hamburgerFab || !sideMenuPanel) return;
-  const isMobileLayout =
-    window.matchMedia('(max-width: 1024px)').matches ||
-    window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-  hamburgerFab.classList.toggle('enabled', isMobileLayout);
-  if (!isMobileLayout) closeSideMenu();
-}
-
 function openSideMenu() {
   if (!sideMenuPanel || !sideMenuOverlay) return;
   sideMenuPanel.classList.add('enabled');
@@ -3997,9 +3991,6 @@ if (hamburgerFab) hamburgerFab.addEventListener('click', openSideMenu);
 if (sideMenuCloseBtn) sideMenuCloseBtn.addEventListener('click', closeSideMenu);
 if (sideMenuOverlay) sideMenuOverlay.addEventListener('click', closeSideMenu);
 sideMenuLinks.forEach(link => link.addEventListener('click', closeSideMenu));
-
-syncMobileMenuVisibility();
-window.addEventListener('resize', syncMobileMenuVisibility);
 
 window.addEventListener('scroll', () => {
   let current = '';
