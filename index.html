@@ -786,6 +786,7 @@ body.modal-open {
 .mobile-rich-toc {
   display: none;
 }
+.mobile-rich-toc.enabled { display: block; }
 .mobile-toc-rail {
   display: flex;
   gap: 8px;
@@ -945,6 +946,8 @@ body.modal-open {
     box-shadow: 0 -4px 18px rgba(26,39,68,0.12);
   }
 }
+body.has-mobile-rich-toc { padding-bottom: 106px; }
+body.has-mobile-rich-toc .toc-section { display:none; }
 
 /* === ANIMATIONS === */
 @keyframes fadeUp {
@@ -3910,7 +3913,21 @@ const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 const tocLinks = document.querySelectorAll('.toc-item');
 const mobileTocLinks = document.querySelectorAll('.mobile-toc-item');
+const mobileRichToc = document.getElementById('mobileRichToc');
 const tocSection = document.getElementById('toc');
+
+function syncMobileRichTocVisibility() {
+  if (!mobileRichToc) return;
+  const isMobileLayout =
+    window.matchMedia('(max-width: 1024px)').matches ||
+    window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  mobileRichToc.classList.toggle('enabled', isMobileLayout);
+  document.body.classList.toggle('has-mobile-rich-toc', isMobileLayout);
+}
+
+syncMobileRichTocVisibility();
+window.addEventListener('resize', syncMobileRichTocVisibility);
+
 window.addEventListener('scroll', () => {
   let current = '';
   sections.forEach(section => {
