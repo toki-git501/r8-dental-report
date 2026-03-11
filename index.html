@@ -33,7 +33,7 @@
 
 * { margin:0; padding:0; box-sizing:border-box; }
 
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; overflow-x: clip; }
 
 body {
   font-family: 'Noto Sans JP', sans-serif;
@@ -42,6 +42,7 @@ body {
   line-height: 1.85;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 body.modal-open {
   position: fixed;
@@ -63,6 +64,7 @@ body.modal-open {
   max-width: 1200px; margin:0 auto;
   display:flex; align-items:center; justify-content:space-between;
   padding: 0 24px; height:56px;
+  position: relative;
 }
 .nav-logo {
   font-family:'Noto Serif JP',serif; font-weight:700; font-size:15px;
@@ -785,7 +787,7 @@ body.modal-open {
 /* === MOBILE SIDE MENU === */
 .hamburger-fab {
   display:none;
-  position:fixed;
+  position:absolute;
   right:12px;
   left:auto;
   top:8px;
@@ -1014,6 +1016,7 @@ body.side-menu-open { overflow:hidden; }
 @media (max-width:768px) {
   .nav-links { display:none; }
   .toc-section { display:none; }
+  .nav-inner { padding-right:72px; }
   .hero { padding:100px 20px 60px; }
   .hero-stats { grid-template-columns:1fr 1fr; }
   .section { padding:48px 16px; }
@@ -1030,6 +1033,7 @@ body.side-menu-open { overflow:hidden; }
 }
 @media (hover:none) and (pointer:coarse) {
   .nav-links { display:none; }
+  .nav-inner { padding-right:72px; }
   .hamburger-fab { display:flex; }
 }
 
@@ -1087,6 +1091,9 @@ body.side-menu-open { overflow:hidden; }
       <li><a href="#forecast">業界予測</a></li>
       <li><a href="#checklist">チェックリスト</a></li>
     </ul>
+    <button class="hamburger-fab" id="hamburgerFab" type="button" aria-label="セクションメニュー" onclick="toggleSideMenu(true)">
+      <span class="bars"><span></span><span></span><span></span></span>
+    </button>
   </div>
 </nav>
 
@@ -1141,9 +1148,6 @@ body.side-menu-open { overflow:hidden; }
   </div>
 </nav>
 
-<button class="hamburger-fab" id="hamburgerFab" type="button" aria-label="セクションメニュー" onclick="toggleSideMenu(true)">
-  <span class="bars"><span></span><span></span><span></span></span>
-</button>
 <div class="side-menu-overlay" id="sideMenuOverlay" onclick="toggleSideMenu(false)"></div>
 <aside class="side-menu-panel" id="sideMenuPanel" aria-label="セクションメニュー">
   <div class="side-menu-head">
