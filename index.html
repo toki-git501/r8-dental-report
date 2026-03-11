@@ -43,6 +43,12 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
 }
+body.modal-open {
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  top: var(--scroll-lock-top, 0px);
+}
 
 /* === NAV === */
 .nav {
@@ -275,6 +281,8 @@ body {
   background:rgba(26,39,68,0.55); z-index:2000;
   justify-content:center; align-items:flex-start;
   padding:40px 20px; overflow-y:auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px);
   animation:fadeIn 0.25s ease;
 }
@@ -420,12 +428,23 @@ body {
 }
 
 @media(max-width:640px){
-  .modal-overlay { padding:20px 10px; }
-  .modal-header { padding:24px 20px 16px; }
-  .modal-body { padding:20px; }
+  .modal-overlay { padding:12px 8px; }
+  .modal-content { border-radius:14px; }
+  .modal-header { padding:18px 16px 12px; }
+  .modal-body { padding:16px; }
   .modal-comparison { grid-template-columns:1fr; }
   .modal-comp-col.arrow { padding:6px; font-size:16px; }
-  .modal-header h3 { font-size:17px; }
+  .modal-header h3 { font-size:19px; line-height:1.55; padding-right:36px; }
+  .modal-header .modal-subtitle { font-size:14px; line-height:1.7; }
+  .modal-close { top:10px; right:10px; width:34px; height:34px; font-size:18px; }
+  .modal-section-title { font-size:12px; letter-spacing:0.06em; }
+  .modal-prose { font-size:15px; line-height:1.9; }
+  .modal-checklist li { font-size:15px; line-height:1.85; padding-left:26px; }
+  .modal-impact-text { font-size:14px; line-height:1.75; }
+  .modal-comp-value { font-size:20px; }
+  .modal-kpi-value { font-size:20px; }
+  .modal-kpi-label { font-size:12px; }
+  .modal-table, .comp-table { font-size:13px !important; }
 }
 
 /* === COMPARISON TABLE === */
@@ -3759,11 +3778,25 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // Detail modal (Top 10)
+let lockedScrollY = 0;
+
+function lockBodyScroll() {
+  lockedScrollY = window.scrollY || window.pageYOffset || 0;
+  document.body.style.setProperty('--scroll-lock-top', `-${lockedScrollY}px`);
+  document.body.classList.add('modal-open');
+}
+
+function unlockBodyScroll() {
+  document.body.classList.remove('modal-open');
+  document.body.style.removeProperty('--scroll-lock-top');
+  window.scrollTo(0, lockedScrollY);
+}
+
 function openDetail(n) {
   const modal = document.getElementById('modal-' + n);
   if (modal) {
     modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    lockBodyScroll();
   }
 }
 // Detail modal (Section 03)
@@ -3771,12 +3804,12 @@ function openS3Detail(n) {
   const modal = document.getElementById('s3-modal-' + n);
   if (modal) {
     modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    lockBodyScroll();
   }
 }
 function closeDetail() {
   document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
-  document.body.style.overflow = '';
+  unlockBodyScroll();
 }
 // Close on overlay click
 document.querySelectorAll('.modal-overlay').forEach(overlay => {
