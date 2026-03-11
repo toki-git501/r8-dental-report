@@ -753,6 +753,10 @@ body.modal-open {
   font-size:12px;
   color:var(--text-sub);
 }
+.facility-status-callout .facility-source {
+  font-size:13px;
+  color:var(--text-sub);
+}
 
 /* === DIVIDER === */
 .divider {
@@ -1056,6 +1060,21 @@ body.side-menu-open { overflow:hidden; }
   .gap-callout .comp-table { min-width:0; width:100%; font-size:12px !important; }
   .gap-callout .comp-table th,
   .gap-callout .comp-table td { padding:8px 8px; }
+  .facility-status-callout { padding:14px 12px; }
+  .facility-status-callout strong { font-size:15px; line-height:1.5; }
+  .facility-status-callout .facility-source { font-size:12px; line-height:1.7; }
+  .facility-status-callout .table-wrap { margin-top:6px !important; }
+  .facility-status-callout .comp-table {
+    min-width:0;
+    width:100%;
+    font-size:12px !important;
+  }
+  .facility-status-callout .comp-table th,
+  .facility-status-callout .comp-table td {
+    white-space:normal;
+    word-break:break-word;
+    padding:8px 8px;
+  }
 }
 @media (max-width:1024px) {
   .nav-links { display:none; }
@@ -2010,11 +2029,11 @@ body.side-menu-open { overflow:hidden; }
     </div>
   </div>
 
-  <div class="callout callout-info reveal" style="margin-top:16px;">
+  <div class="callout callout-info reveal facility-status-callout" style="margin-top:16px;">
     <div class="callout-icon">📊</div>
     <div>
       <strong>主要施設基準の全国届出状況（令和8年2月時点）</strong><br>
-      <span style="font-size:13px; color:var(--text-sub);">出典: 日本歯科総合研究機構「主な施設基準の届出状況」</span>
+      <span class="facility-source">出典: 日本歯科総合研究機構「主な施設基準の届出状況」</span>
       <div class="table-wrap" style="margin-top:8px;">
         <table class="comp-table" style="font-size:13px;">
           <thead>
