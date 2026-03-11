@@ -742,6 +742,17 @@ body.modal-open {
 .callout-warn { background:var(--coral-light); border-left:3px solid var(--coral); }
 .callout-tip { background:var(--teal-light); border-left:3px solid var(--teal); }
 .callout-note { background:var(--gold-light); border-left:3px solid var(--gold); }
+.gap-callout {
+  font-size:14px;
+}
+.gap-callout .gap-source {
+  font-size:13px;
+  color:var(--text-sub);
+}
+.gap-callout .gap-summary {
+  font-size:12px;
+  color:var(--text-sub);
+}
 
 /* === DIVIDER === */
 .divider {
@@ -1037,6 +1048,14 @@ body.side-menu-open { overflow:hidden; }
   .premise-row { grid-template-columns:1fr; }
   .forecast-grid { grid-template-columns:1fr; }
   .kpi-grid { grid-template-columns:1fr; }
+  .gap-callout { padding:14px 12px; }
+  .gap-callout strong { font-size:15px; line-height:1.5; }
+  .gap-callout .gap-source,
+  .gap-callout .gap-summary { font-size:12px; line-height:1.7; }
+  .gap-callout .table-wrap { margin-top:6px !important; }
+  .gap-callout .comp-table { min-width:0; width:100%; font-size:12px !important; }
+  .gap-callout .comp-table th,
+  .gap-callout .comp-table td { padding:8px 8px; }
 }
 @media (max-width:1024px) {
   .nav-links { display:none; }
@@ -1464,11 +1483,11 @@ body.side-menu-open { overflow:hidden; }
     </table>
   </div>
 
-  <div class="callout callout-note reveal" style="margin-top:24px;">
+  <div class="callout callout-note reveal gap-callout" style="margin-top:24px;">
     <div class="callout-icon">📊</div>
     <div>
       <strong>基本診療料の医科歯科格差（日本歯科医師会分析）</strong><br>
-      <span style="font-size:13px; color:var(--text-sub);">出典: 令和8年度診療報酬改定の概要（日本歯科医師会 R8.3.7）</span>
+      <span class="gap-source">出典: 令和8年度診療報酬改定の概要（日本歯科医師会 R8.3.7）</span>
       <div class="table-wrap" style="margin-top:8px;">
         <table class="comp-table" style="font-size:13px;">
           <thead>
@@ -1513,7 +1532,7 @@ body.side-menu-open { overflow:hidden; }
           </tbody>
         </table>
       </div>
-      <span style="font-size:12px; color:var(--text-sub);">改定率+3.09%は30年ぶりの高水準だが、物価・賃金への紐づけが多く、歯科本体への実質配分は+0.31%（各科改定率）。医科+0.28%と比較して若干高いものの、基本診療料の絶対額では初診・再診ともに医科との格差が継続。届出加算の取得で格差を圧縮できるため、積極的な対応が収益を守る鍵。</span>
+      <span class="gap-summary">改定率+3.09%は30年ぶりの高水準だが、物価・賃金への紐づけが多く、歯科本体への実質配分は+0.31%（各科改定率）。医科+0.28%と比較して若干高いものの、基本診療料の絶対額では初診・再診ともに医科との格差が継続。届出加算の取得で格差を圧縮できるため、積極的な対応が収益を守る鍵。</span>
     </div>
   </div>
 </section>
