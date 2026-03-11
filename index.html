@@ -787,7 +787,7 @@ body.modal-open {
 
 /* === MOBILE SIDE MENU === */
 .hamburger-fab {
-  display:flex;
+  display:none;
   position:relative;
   margin-left:12px;
   z-index:1;
@@ -1015,6 +1015,18 @@ body.side-menu-open { overflow:hidden; }
 @media (max-width:768px) {
   .nav-links { display:none; }
   .toc-section { display:none; }
+  .nav-inner {
+    justify-content:center;
+    padding:0 12px;
+  }
+  .nav-logo { margin:0; }
+  .hamburger-fab {
+    display:flex;
+    margin-left:16px;
+    width:36px;
+    height:36px;
+    border-radius:8px;
+  }
   .hero { padding:100px 20px 60px; }
   .hero-stats { grid-template-columns:1fr 1fr; }
   .section { padding:48px 16px; }
@@ -1028,6 +1040,8 @@ body.side-menu-open { overflow:hidden; }
 }
 @media (max-width:1024px) {
   .nav-links { display:none; }
+  .nav-inner { justify-content:center; }
+  .hamburger-fab { display:flex; margin-left:16px; }
 }
 
 /* === ANIMATIONS === */
