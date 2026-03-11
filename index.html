@@ -782,6 +782,62 @@ body.modal-open {
 }
 .toc-text { font-weight:500; }
 
+/* === MOBILE RICH TOC === */
+.mobile-rich-toc {
+  display: none;
+}
+.mobile-toc-rail {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.mobile-toc-rail::-webkit-scrollbar { display: none; }
+.mobile-toc-item {
+  flex: 0 0 auto;
+  min-width: 92px;
+  text-decoration: none;
+  color: var(--text-sub);
+  background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+  border: 1px solid #dbe6f7;
+  border-radius: 14px;
+  padding: 7px 10px 8px;
+  box-shadow: 0 2px 8px rgba(26,39,68,0.08);
+  transition: all 0.18s ease;
+}
+.mobile-toc-item:active {
+  transform: translateY(1px);
+}
+.mobile-toc-item.active {
+  border-color: var(--blue);
+  background: linear-gradient(180deg, #eef5ff 0%, #e7f2ff 100%);
+  color: var(--navy);
+  box-shadow: 0 4px 12px rgba(59,125,216,0.24);
+}
+.mobile-toc-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--blue-light);
+  color: var(--blue);
+  font-family: 'Source Code Pro', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.mobile-toc-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: inherit;
+  line-height: 1.25;
+}
+
 /* === DETAIL BANNER === */
 .detail-banner {
   display:flex; align-items:center; gap:12px;
@@ -863,6 +919,7 @@ body.modal-open {
 /* === RESPONSIVE === */
 @media (max-width:768px) {
   .nav-links { display:none; }
+  .toc-section { display:none; }
   .hero { padding:100px 20px 60px; }
   .hero-stats { grid-template-columns:1fr 1fr; }
   .section { padding:48px 16px; }
@@ -873,6 +930,20 @@ body.modal-open {
   .premise-row { grid-template-columns:1fr; }
   .forecast-grid { grid-template-columns:1fr; }
   .kpi-grid { grid-template-columns:1fr; }
+  body { padding-bottom: 106px; }
+  .mobile-rich-toc {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1800;
+    padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+    background: linear-gradient(180deg, rgba(248,250,255,0.95) 0%, rgba(238,245,255,0.97) 100%);
+    border-top: 1px solid #d6e3f5;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 -4px 18px rgba(26,39,68,0.12);
+  }
 }
 
 /* === ANIMATIONS === */
@@ -980,6 +1051,18 @@ body.modal-open {
       <a href="#checklist" class="toc-item"><span class="toc-num">06</span><span class="toc-text">実施チェックリスト</span></a>
       <a href="#references" class="toc-item"><span class="toc-num">07</span><span class="toc-text">参照ソース一覧</span></a>
     </div>
+  </div>
+</nav>
+
+<nav class="mobile-rich-toc" id="mobileRichToc" aria-label="モバイル目次">
+  <div class="mobile-toc-rail">
+    <a href="#summary" class="mobile-toc-item"><span class="mobile-toc-num">01</span><span class="mobile-toc-label">改定ポイント</span></a>
+    <a href="#premise" class="mobile-toc-item"><span class="mobile-toc-num">02</span><span class="mobile-toc-label">前提比較</span></a>
+    <a href="#compare" class="mobile-toc-item"><span class="mobile-toc-num">03</span><span class="mobile-toc-label">制度比較</span></a>
+    <a href="#points" class="mobile-toc-item"><span class="mobile-toc-num">04</span><span class="mobile-toc-label">点数比較</span></a>
+    <a href="#forecast" class="mobile-toc-item"><span class="mobile-toc-num">05</span><span class="mobile-toc-label">未来予測</span></a>
+    <a href="#checklist" class="mobile-toc-item"><span class="mobile-toc-num">06</span><span class="mobile-toc-label">チェック</span></a>
+    <a href="#references" class="mobile-toc-item"><span class="mobile-toc-num">07</span><span class="mobile-toc-label">参照資料</span></a>
   </div>
 </nav>
 
@@ -3826,6 +3909,7 @@ document.addEventListener('keydown', (e) => {
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 const tocLinks = document.querySelectorAll('.toc-item');
+const mobileTocLinks = document.querySelectorAll('.mobile-toc-item');
 const tocSection = document.getElementById('toc');
 window.addEventListener('scroll', () => {
   let current = '';
@@ -3847,8 +3931,15 @@ window.addEventListener('scroll', () => {
       link.classList.add('active');
     }
   });
+  mobileTocLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) {
+      link.classList.add('active');
+    }
+  });
   tocSection.classList.toggle('toc-scrolled', window.scrollY > 300);
 });
+window.dispatchEvent(new Event('scroll'));
 </script>
 
 </body>
