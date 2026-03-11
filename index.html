@@ -787,10 +787,10 @@ body.modal-open {
   display:none;
   position:fixed;
   right:12px;
-  bottom:20px;
+  top:72px;
   z-index:1810;
-  width:52px;
-  height:52px;
+  width:50px;
+  height:50px;
   border:none;
   border-radius:50%;
   background:linear-gradient(160deg,var(--navy) 0%, var(--navy-light) 100%);
@@ -814,30 +814,46 @@ body.modal-open {
   border-radius:2px;
 }
 .side-menu-overlay {
-  display:none;
+  display:block;
   position:fixed;
   inset:0;
   background:rgba(26,39,68,0.35);
   backdrop-filter: blur(2px);
   z-index:1805;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity 0.2s ease, visibility 0.2s ease;
 }
-.side-menu-overlay.enabled { display:block; }
+.side-menu-overlay.enabled {
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
 .side-menu-panel {
   position:fixed;
   top:0;
   right:0;
   bottom:0;
-  width:min(80vw, 320px);
+  width:78vw;
+  max-width:320px;
+  min-width:240px;
   background:#fff;
   border-left:1px solid var(--border);
   box-shadow:-8px 0 24px rgba(26,39,68,0.16);
-  transform:translateX(100%);
-  transition:transform 0.24s ease;
+  transform:translateX(105%);
+  visibility:hidden;
+  pointer-events:none;
+  transition:transform 0.24s ease, visibility 0.24s ease;
   z-index:1806;
   display:flex;
   flex-direction:column;
 }
-.side-menu-panel.enabled { transform:translateX(0); }
+.side-menu-panel.enabled {
+  transform:translateX(0);
+  visibility:visible;
+  pointer-events:auto;
+}
 .side-menu-head {
   padding:18px 14px 14px;
   border-bottom:1px solid var(--border);
@@ -896,6 +912,7 @@ body.modal-open {
   border-color:var(--blue);
   background:linear-gradient(180deg,#eff5ff 0%,#e7f1ff 100%);
 }
+body.side-menu-open { overflow:hidden; }
 
 /* === DETAIL BANNER === */
 .detail-banner {
@@ -1102,14 +1119,14 @@ body.modal-open {
   </div>
 </nav>
 
-<button class="hamburger-fab" id="hamburgerFab" type="button" aria-label="セクションメニュー">
+<button class="hamburger-fab" id="hamburgerFab" type="button" aria-label="セクションメニュー" onclick="toggleSideMenu(true)">
   <span class="bars"><span></span><span></span><span></span></span>
 </button>
-<div class="side-menu-overlay" id="sideMenuOverlay"></div>
+<div class="side-menu-overlay" id="sideMenuOverlay" onclick="toggleSideMenu(false)"></div>
 <aside class="side-menu-panel" id="sideMenuPanel" aria-label="セクションメニュー">
   <div class="side-menu-head">
     <div class="side-menu-title">セクション移動</div>
-    <button class="side-menu-close" id="sideMenuClose" type="button" aria-label="閉じる">✕</button>
+    <button class="side-menu-close" id="sideMenuClose" type="button" aria-label="閉じる" onclick="toggleSideMenu(false)">✕</button>
   </div>
   <ul class="side-menu-list">
     <li><a href="#summary" class="side-menu-link"><span class="num">01</span><span>改定ポイント9</span></a></li>
@@ -3947,8 +3964,9 @@ function openS3Detail(n) {
   }
 }
 function closeDetail() {
+  const hasActiveModal = document.querySelector('.modal-overlay.active');
   document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
-  unlockBodyScroll();
+  if (hasActiveModal) unlockBodyScroll();
 }
 // Close on overlay click
 document.querySelectorAll('.modal-overlay').forEach(overlay => {
@@ -3979,15 +3997,34 @@ function openSideMenu() {
   if (!sideMenuPanel || !sideMenuOverlay) return;
   sideMenuPanel.classList.add('enabled');
   sideMenuOverlay.classList.add('enabled');
+  document.body.classList.add('side-menu-open');
 }
 
 function closeSideMenu() {
   if (!sideMenuPanel || !sideMenuOverlay) return;
   sideMenuPanel.classList.remove('enabled');
   sideMenuOverlay.classList.remove('enabled');
+  document.body.classList.remove('side-menu-open');
 }
 
-if (hamburgerFab) hamburgerFab.addEventListener('click', openSideMenu);
+function toggleSideMenu(forceOpen) {
+  const shouldOpen = typeof forceOpen === 'boolean'
+    ? forceOpen
+    : !(sideMenuPanel && sideMenuPanel.classList.contains('enabled'));
+  if (shouldOpen) openSideMenu(); else closeSideMenu();
+}
+window.toggleSideMenu = toggleSideMenu;
+
+if (hamburgerFab) {
+  hamburgerFab.addEventListener('click', (e) => {
+    e.preventDefault();
+    toggleSideMenu(true);
+  });
+  hamburgerFab.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    toggleSideMenu(true);
+  }, { passive:false });
+}
 if (sideMenuCloseBtn) sideMenuCloseBtn.addEventListener('click', closeSideMenu);
 if (sideMenuOverlay) sideMenuOverlay.addEventListener('click', closeSideMenu);
 sideMenuLinks.forEach(link => link.addEventListener('click', closeSideMenu));
