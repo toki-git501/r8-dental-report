@@ -1499,6 +1499,14 @@ body.side-menu-open { overflow:hidden; }
           <td>告示（R8.3.5）で要件確定済。パラ使用時の記載要件は通知で最終確認</td>
           <td><span class="tag tag-answer">告示</span></td>
         </tr>
+        <tr class="clickable-row" onclick="openS3Detail(12)">
+          <td><span class="tag tag-mid">連携</span><button class="row-btn" type="button">詳細</button></td>
+          <td class="cell-label">医科歯科連携の評価</td>
+          <td>連携評価は限定的（糖尿病ハイリスク加算50点）</td>
+          <td class="cell-new">重症化予防連携強化加算（100点）を新設</td>
+          <td>骨太方針を背景に医科歯科連携の評価が拡充</td>
+          <td><span class="tag tag-answer">告示</span></td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -3268,14 +3276,6 @@ body.side-menu-open { overflow:hidden; }
     </div>
     <div class="modal-body">
       <div class="modal-section">
-        <div class="modal-section-title">R6→R8 改定経緯</div>
-        <div class="modal-prose">
-          <p><strong>令和6年度（2024年）：</strong>周術期等口腔機能管理は手術患者が対象。糖尿病と歯周病の関連は学術的に確立されていたが、診療報酬上の連携評価は限定的だった。歯科疾患管理料のハイリスク加算（糖尿病）50点のみ。</p>
-          <p><strong>骨太方針2025（R7年6月閣議決定）：</strong>「糖尿病と歯周病との関係など全身の健康と口腔の健康に関するエビデンスの活用」「医歯薬連携などの多職種連携」が明記。医科歯科連携が<strong>国の政策方針</strong>として明確に位置付けられた。</p>
-          <p><strong>令和8年度（2026年）：</strong>糖尿病患者等の紹介に基づく歯周治療と情報提供を評価する<strong>重症化予防連携強化加算（100点）</strong>が新設。周術期等・回復期等の口腔機能管理の新設（Top10の08）と合わせ、医科歯科連携の評価が大幅に拡充。</p>
-        </div>
-      </div>
-      <div class="modal-section">
         <div class="modal-section-title">骨太方針2025の歯科関連記載（抜粋）</div>
         <div class="modal-prose">
           <p>「糖尿病と歯周病との関係など全身の健康と口腔の健康に関するエビデンスの活用、生涯を通じた歯科健診（いわゆる国民皆歯科健診）に向けた具体的な取組、オーラルフレイル対策・疾病の重症化予防につながる歯科専門職による口腔健康管理の充実、歯科医療機関・<strong>医歯薬連携などの多職種連携</strong>」 ─ 閣議決定文より</p>
@@ -3969,6 +3969,27 @@ body.side-menu-open { overflow:hidden; }
           <p><strong>移行対応：</strong>R6で旧DX加算を算定していた医院は、新加算への切替要件を再点検し、届出区分を見直す必要がある。</p>
           <p><strong>実務対応：</strong>オンライン資格確認・マイナ保険証運用の院内フローを標準化し、受付〜会計までの運用手順を統一すると算定漏れと返戻を防ぎやすい。</p>
           <p><strong>優先順位：</strong>まずは現行要件で算定可能な区分を確実に取得し、電子処方箋等の追加要件は段階導入で対応するのが現実的。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="s3-modal-12">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-rank rank-mid">連携</span>
+      <button class="modal-close" onclick="closeDetail()">✕</button>
+      <h3>医科歯科連携の強化・新設評価</h3>
+      <div class="modal-subtitle">重症化予防連携強化加算（100点）を含む連携評価の新設・拡充</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">R6→R8 改定経緯</div>
+        <div class="modal-prose">
+          <p><strong>令和6年度（2024年）：</strong>周術期等口腔機能管理は手術患者が対象。糖尿病と歯周病の関連は学術的に確立されていたが、診療報酬上の連携評価は限定的だった。歯科疾患管理料のハイリスク加算（糖尿病）50点のみ。</p>
+          <p><strong>骨太方針2025（R7年6月閣議決定）：</strong>「糖尿病と歯周病との関係など全身の健康と口腔の健康に関するエビデンスの活用」「医歯薬連携などの多職種連携」が明記。医科歯科連携が<strong>国の政策方針</strong>として明確に位置付けられた。</p>
+          <p><strong>令和8年度（2026年）：</strong>糖尿病患者等の紹介に基づく歯周治療と情報提供を評価する<strong>重症化予防連携強化加算（100点）</strong>が新設。周術期等・回復期等の口腔機能管理の新設（Top10の08）と合わせ、医科歯科連携の評価が大幅に拡充。</p>
         </div>
       </div>
     </div>
