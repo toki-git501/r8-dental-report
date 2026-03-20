@@ -10,7 +10,7 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-P4X5R88EPJ', { debug_mode: true });
+  gtag('config', 'G-P4X5R88EPJ');
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Noto+Serif+JP:wght@400;600;700;900&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
@@ -4133,6 +4133,64 @@ window.addEventListener('scroll', () => {
   tocSection.classList.toggle('toc-scrolled', window.scrollY > 300);
 });
 window.dispatchEvent(new Event('scroll'));
+
+// ===== Analytics events =====
+function sendGaEvent(eventName, params = {}) {
+  if (typeof window.gtag !== 'function') return;
+  window.gtag('event', eventName, params);
+}
+
+// Scroll depth tracking (25/50/75/90%)
+const scrollDepthMilestones = [25, 50, 75, 90];
+const sentScrollDepth = new Set();
+window.addEventListener('scroll', () => {
+  const doc = document.documentElement;
+  const maxScrollable = doc.scrollHeight - window.innerHeight;
+  if (maxScrollable <= 0) return;
+  const depth = Math.round((window.scrollY / maxScrollable) * 100);
+  scrollDepthMilestones.forEach((milestone) => {
+    if (depth >= milestone && !sentScrollDepth.has(milestone)) {
+      sentScrollDepth.add(milestone);
+      sendGaEvent('scroll_depth', {
+        percent_scrolled: milestone,
+        page_location: window.location.href,
+        page_title: document.title
+      });
+    }
+  });
+}, { passive: true });
+
+// Outbound clicks + PDF download tracking
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a[href]');
+  if (!link) return;
+  const href = link.getAttribute('href') || '';
+  if (!href || href.startsWith('#') || href.startsWith('javascript:')) return;
+  let url;
+  try {
+    url = new URL(href, window.location.href);
+  } catch (_) {
+    return;
+  }
+  const isPdf = /\.pdf($|\?)/i.test(url.pathname + url.search);
+  const isOutbound = url.origin !== window.location.origin;
+  if (isPdf) {
+    const parts = url.pathname.split('/');
+    const fileName = parts[parts.length - 1] || 'unknown.pdf';
+    sendGaEvent('file_download', {
+      file_name: fileName,
+      file_extension: 'pdf',
+      link_url: url.href
+    });
+  }
+  if (isOutbound) {
+    sendGaEvent('outbound_click', {
+      link_url: url.href,
+      link_domain: url.hostname,
+      link_text: (link.textContent || '').trim().slice(0, 100)
+    });
+  }
+});
 </script>
 
 </body>
