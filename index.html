@@ -1231,6 +1231,158 @@ body.side-menu-open { overflow:hidden; }
   font-size:13px;
 }
 .pt-change .arrow { font-size:11px; }
+
+/* === BASEUP FLOWCHART === */
+.bu-flowchart {
+  overflow-x:auto; margin:12px 0;
+}
+.bu-flow-table {
+  width:100%; border-collapse:collapse; font-size:12px; line-height:1.5;
+  min-width:700px;
+}
+.bu-flow-table th {
+  background:var(--navy); color:#fff; padding:8px 10px;
+  font-weight:600; text-align:center; font-size:11px;
+  letter-spacing:0.04em; white-space:nowrap;
+}
+.bu-flow-table td {
+  padding:8px 10px; border:1px solid var(--border);
+  vertical-align:middle; text-align:center;
+}
+.bu-flow-cell {
+  border-radius:6px; padding:8px 10px; font-size:12px;
+  line-height:1.5; display:inline-block; text-align:center;
+}
+.bu-flow-cell.status { background:#e3f0ff; color:#1a5276; border:2px solid #85c1e9; font-weight:600; }
+.bu-flow-cell.status-new { background:#d5f5e3; color:#1e8449; border:2px solid #82e0aa; font-weight:600; }
+.bu-flow-cell.status-dashed { background:#faf3e0; border:2px dashed #d4a017; color:#7d6608; font-weight:600; }
+.bu-flow-cell.type1 { background:#d6eaf8; color:#1a5276; }
+.bu-flow-cell.type2 { background:#e8daef; color:#6c3483; font-size:11px; }
+.bu-flow-cell.result { background:#a9dfbf; color:#1e6b42; font-weight:600; }
+.bu-flow-cell.result-high { background:#7dcea0; color:#145a32; font-weight:700; }
+.bu-flow-cell.form { background:#f5f5f5; font-weight:700; color:var(--navy); font-size:13px; }
+.bu-flow-arrow {
+  color:var(--text-sub); font-size:16px; font-weight:700;
+}
+.bu-flow-note {
+  font-size:10px; color:var(--text-sub); display:block; margin-top:2px;
+}
+.bu-flow-badge {
+  display:inline-block; background:var(--coral); color:#fff; font-size:9px;
+  font-weight:700; padding:1px 5px; border-radius:3px; margin-left:3px;
+  vertical-align:middle;
+}
+.bu-flow-group-label {
+  writing-mode:vertical-rl; text-orientation:upright;
+  font-weight:700; color:var(--coral); font-size:13px;
+  letter-spacing:0.05em; padding:4px;
+}
+
+/* === BASEUP TIMELINE === */
+.bu-timeline {
+  overflow-x:auto; margin:12px 0;
+}
+.bu-tl-grid {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:12px;
+  min-width:640px;
+}
+.bu-tl-col {
+  text-align:center;
+}
+.bu-tl-header {
+  font-weight:700; font-size:15px; color:var(--navy);
+  padding:8px; margin-bottom:8px;
+}
+.bu-tl-header.urgent { color:var(--coral); }
+.bu-tl-card {
+  border-radius:var(--radius-sm); padding:12px; font-size:12px;
+  line-height:1.6; text-align:left; min-height:80px;
+  margin-bottom:8px;
+}
+.bu-tl-card.blue { background:#e3f0ff; border:1px solid #85c1e9; }
+.bu-tl-card.orange { background:#fef0ed; border:1px solid #f5b7a1; }
+.bu-tl-card.green { background:#e8f8f0; border:1px solid #82e0aa; }
+.bu-tl-card.yellow { background:#fdf6e3; border:1px solid #f0d87a; }
+.bu-tl-card strong { color:var(--navy); }
+.bu-tl-alert {
+  background:var(--coral-light); border:2px solid var(--coral);
+  border-radius:var(--radius-sm); padding:14px;
+  font-size:13px; font-weight:600; color:var(--coral);
+  text-align:center; margin-bottom:16px; line-height:1.6;
+}
+.bu-tl-alert strong { color:var(--coral); font-size:15px; }
+.bu-tl-bar-section {
+  margin-top:16px; min-width:640px;
+}
+.bu-tl-bar-row {
+  display:grid; grid-template-columns:120px 1fr; gap:8px;
+  align-items:center; margin-bottom:6px;
+}
+.bu-tl-bar-label {
+  font-size:11px; font-weight:600; color:var(--navy);
+  background:#e3f0ff; border-radius:4px; padding:4px 8px;
+  text-align:center;
+}
+.bu-tl-bar-track {
+  position:relative; height:28px; background:#f0f0f0;
+  border-radius:4px; overflow:visible;
+}
+.bu-tl-bar {
+  position:absolute; height:100%; border-radius:4px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:10px; font-weight:600; color:#fff;
+}
+.bu-tl-bar.period { background:linear-gradient(90deg,#b0b0b0,#9e9e9e); }
+.bu-tl-bar.submit { background:var(--blue); }
+.bu-tl-bar.report { background:var(--teal); }
+.bu-tl-bar.report-mid { background:var(--gold); }
+.bu-tl-marker {
+  position:absolute; top:-2px; width:2px; height:32px;
+  background:var(--coral); opacity:0.4;
+}
+
+/* ── ベースアップ届出メールアドレス一覧 ── */
+.bu-mail-section { margin-top:32px; }
+.bu-mail-title {
+  font-size:16px; font-weight:700; color:var(--navy);
+  margin-bottom:8px; display:flex; align-items:center; gap:8px;
+}
+.bu-mail-note {
+  font-size:13px; color:var(--text-sub); line-height:1.7;
+  margin-bottom:16px; padding:12px 16px;
+  background:rgba(52,73,94,.04); border-radius:8px;
+}
+.bu-mail-note li { margin-bottom:4px; }
+.bu-mail-region {
+  font-size:14px; font-weight:700; color:var(--teal);
+  padding:8px 0 4px; margin-top:12px;
+  border-bottom:2px solid var(--teal);
+}
+.bu-mail-table {
+  width:100%; border-collapse:collapse; font-size:13px; margin-bottom:4px;
+}
+.bu-mail-table th {
+  background:var(--navy); color:#fff; padding:6px 10px;
+  text-align:left; font-weight:600; font-size:12px;
+}
+.bu-mail-table td {
+  padding:6px 10px; border-bottom:1px solid #e0e0e0;
+}
+.bu-mail-table tr:hover td { background:rgba(52,152,219,.06); }
+.bu-mail-table .code { text-align:center; width:60px; color:var(--text-sub); }
+.bu-mail-addr { font-family:'Courier New',monospace; font-size:12px; color:var(--blue); word-break:break-all; }
+
+@media(max-width:640px){
+  .bu-flow-table { font-size:11px; }
+  .bu-flow-cell { font-size:11px; padding:6px 8px; }
+  .bu-tl-grid { grid-template-columns:1fr; min-width:0; }
+  .bu-tl-header { font-size:14px; }
+  .bu-tl-card { font-size:13px; min-height:auto; }
+  .bu-tl-bar-section { min-width:0; }
+  .bu-mail-table { font-size:12px; }
+  .bu-mail-table th, .bu-mail-table td { padding:5px 6px; }
+  .bu-mail-addr { font-size:11px; }
+}
 </style>
 </head>
 <body>
@@ -1302,7 +1454,7 @@ body.side-menu-open { overflow:hidden; }
       <a href="#premise" class="toc-item"><span class="toc-num">02</span><span class="toc-text">前提条件の比較</span></a>
       <a href="#compare" class="toc-item"><span class="toc-num">03</span><span class="toc-text">これまでの改定経緯</span></a>
       <a href="#points" class="toc-item"><span class="toc-num">04</span><span class="toc-text">主要点数の新旧比較</span></a>
-      <a href="#gigi" class="toc-item"><span class="toc-num">05</span><span class="toc-text">疑義解釈（その1）</span></a>
+      <a href="#gigi" class="toc-item"><span class="toc-num">05</span><span class="toc-text">疑義解釈（その1・2）</span></a>
       <a href="#forecast" class="toc-item"><span class="toc-num">06</span><span class="toc-text">歯科業界の未来予測</span></a>
       <a href="#checklist" class="toc-item"><span class="toc-num">07</span><span class="toc-text">実施チェックリスト</span></a>
       <a href="#references" class="toc-item"><span class="toc-num">08</span><span class="toc-text">参照ソース一覧</span></a>
@@ -1321,7 +1473,7 @@ body.side-menu-open { overflow:hidden; }
     <li><a href="#premise" class="side-menu-link"><span class="num">02</span><span>前提条件の比較</span></a></li>
     <li><a href="#compare" class="side-menu-link"><span class="num">03</span><span>これまでの改定経緯</span></a></li>
     <li><a href="#points" class="side-menu-link"><span class="num">04</span><span>主要点数の新旧比較</span></a></li>
-    <li><a href="#gigi" class="side-menu-link"><span class="num">05</span><span>疑義解釈（その1）</span></a></li>
+    <li><a href="#gigi" class="side-menu-link"><span class="num">05</span><span>疑義解釈（その1・2）</span></a></li>
     <li><a href="#forecast" class="side-menu-link"><span class="num">06</span><span>歯科業界の未来予測</span></a></li>
     <li><a href="#checklist" class="side-menu-link"><span class="num">07</span><span>実施チェックリスト</span></a></li>
     <li><a href="#references" class="side-menu-link"><span class="num">08</span><span>参照ソース一覧</span></a></li>
@@ -2213,9 +2365,9 @@ body.side-menu-open { overflow:hidden; }
 <section class="section" id="gigi">
   <div class="section-header reveal">
     <div class="section-num">SECTION 05</div>
-    <h2 class="section-title">疑義解釈（その1）── 歯科診療報酬点数表関係</h2>
+    <h2 class="section-title">疑義解釈（その1・その2）── 歯科診療報酬点数表関係</h2>
     <p class="section-desc">
-      令和8年3月23日付 厚生労働省保険局医療課 事務連絡「疑義解釈資料の送付について（その1）」の別添3（歯科診療報酬点数表関係）をQ&A形式で掲載しています。
+      厚生労働省保険局医療課 事務連絡「疑義解釈資料の送付について」の歯科関連Q&Aを掲載しています。
     </p>
   </div>
 
@@ -2425,6 +2577,268 @@ body.side-menu-open { overflow:hidden; }
   <div class="gigi-source reveal">
     出典：厚生労働省保険局医療課「疑義解釈資料の送付について（その1）」（令和8年3月23日事務連絡）別添3
   </div>
+
+  <!-- ===== 疑義解釈（その2）===== -->
+  <hr style="border:none;border-top:2px dashed var(--border);margin:40px 0;">
+
+  <div class="section-header reveal" style="padding-top:0;">
+    <h2 class="section-title" style="font-size:22px;">疑義解釈（その2）── 歯科診療報酬点数表関係</h2>
+    <p class="section-desc">
+      令和8年4月1日付 事務連絡「疑義解釈資料の送付について（その2）」別添4（歯科診療報酬点数表関係）全10問。<br>
+      <span style="font-size:12px;color:var(--text-sub);">※令和8年4月9日付 一部訂正は医科（問104）のみ。歯科部分の訂正はありません。</span>
+    </p>
+  </div>
+
+  <div class="gigi-intro reveal">
+    <strong>出典：</strong>令和8年4月1日 厚生労働省保険局医療課 事務連絡「疑義解釈資料の送付について（その2）」別添4<br>
+    令和8年6月1日施行の診療報酬改定に関する追加の公式回答（歯科関連 全10問）です。
+  </div>
+
+  <!-- 地域歯科医療加算 -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">地域歯科医療加算</div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問1</span>
+        <span class="gigi-q-text">「A000」初診料の「注9」及び「A002」再診料の「注7」に規定する地域歯科医療加算について、算定留意事項通知において「ハ その他イ又はロに準ずるものである。」とされているが、どのようなものか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          例えば、次に掲げるものをいう。<br>
+          ・<strong>都道府県等からの委託等により行う巡回診療</strong>であるもの。<br>
+          ・都道府県等が実施する歯科保健医療活動に<strong>歯科巡回診療車が活用されている</strong>もの。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 情報通信機器を用いた歯科診療 -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">情報通信機器を用いた歯科診療</div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問2</span>
+        <span class="gigi-q-text">「A000」初診料の「注16」における「特に情報通信機器を用いた歯科診療を行うことが必要と認められるもの」について、「災害が発生した地域であって、別に診療報酬上の措置が講じられている地域に該当する場合」が追加されたが、「災害発生時における保険診療関係等の取扱いについて」が適用された場合は該当するのか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          <strong>該当しない。</strong>「災害が発生した地域であって、別に診療報酬上の措置が講じられている地域に該当する場合」は、当該通知のなお書に記載する<strong>個別の通知が発出された場合</strong>に該当する。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 歯科疾患管理料 -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">歯科疾患管理料 <span style="display:inline-block;background:var(--coral);color:#fff;font-size:10px;font-weight:700;padding:1px 8px;border-radius:10px;margin-left:4px;">重要</span></div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問3</span>
+        <span class="gigi-q-text">「B000-4」歯科疾患管理料について、令和8年度診療報酬改定において、有床義歯に係る治療のみを行う患者に対しても算定可能とされたが、傷病名がMTや義歯不適合（義歯フテキ）等の有床義歯に係る病名のみの場合も算定可能か。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          <strong>算定可能。</strong><br><br>
+          なお、これに伴い「疑義解釈資料の送付について（その7）」（平成21年1月28日事務連絡）別添の問2は廃止する。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 歯周病患者画像活用指導料 -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">歯周病患者画像活用指導料</div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問4</span>
+        <span class="gigi-q-text">「B001-3」歯周病患者画像活用指導料について、「注1」及び「注2」に「区分番号D002に掲げる歯周病検査を実施する場合において」とあるが、歯周病検査の実施日以降に行う必要があるのか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          <strong>そのとおり。</strong><br><br>
+          なお、これに伴い、「疑義解釈資料の送付について（その5）」（平成30年7月10日事務連絡）別添2の問8は廃止する。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 口腔機能実地指導料（その2） -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">口腔機能実地指導料</div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問5</span>
+        <span class="gigi-q-text">「B001-2-2」口腔機能実地指導料の施設基準に規定する「口腔機能発達不全症及び口腔機能低下症の概要、検査法、訓練法及び実地指導方法等に係る研修」は、口腔機能発達不全症及び口腔機能低下症で異なる研修をそれぞれ受講した場合も該当するか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          <strong>該当する。</strong><br><br>
+          なお、届出に当たっては、「特掲診療料の施設基準等及びその届出に関する手続きの取扱いについて」（令和8年3月5日保医発 0305 第8号）別添2の<strong>様式17の4に受講したそれぞれの研修を記載</strong>すること。
+        </div>
+      </div>
+    </div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問6</span>
+        <span class="gigi-q-text">「C001」訪問歯科衛生指導料を算定した日に、「B001-2-2」口腔機能実地指導料を算定できるか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          口腔機能実地指導料に係る指導を実施した場合は、<strong>算定可能。</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 訪問歯科衛生指導料 -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">訪問歯科衛生指導料</div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問7</span>
+        <span class="gigi-q-text">算定留意事項通知の「B001-2」歯科衛生実地指導料の留意事項通知（3）、「B001-2-2」口腔機能実地指導料の留意事項通知（2）及び「C001」訪問歯科衛生指導料の留意事項通知（9）において、患者に提供する文書に当該指導を行った歯科衛生士の氏名を記載することとされているが、必ず姓名双方の記載が必要なのか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          <strong>カスタマーハラスメント防止等の観点から、名字のみの記載とすることは可能。</strong><br><br>
+          なお、これに伴い、「疑義解釈資料の送付について（その2）」（令和6年4月12日事務連絡）別添3の問12は廃止する。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 画像診断 -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">画像診断 <span style="display:inline-block;background:var(--coral);color:#fff;font-size:10px;font-weight:700;padding:1px 8px;border-radius:10px;margin-left:4px;">重要</span></div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問8</span>
+        <span class="gigi-q-text">画像診断の「通則2」及び「通則3」の規定により、所定点数の100分の50に相当する点数を算定する場合について、同日に撮影した2枚目の診断料と撮影料の取扱い如何（5パターン）。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          それぞれ以下のとおりである。<br><br>
+          <strong>① 根尖性歯周炎の診断→同日に偏心撮影</strong>：診断料及び撮影料は<strong>所定点数の100分の50</strong>により算定する。<br><br>
+          <strong>②〜⑤ 根尖性歯周炎→歯科用3次元エックス線断層撮影 ／ 根尖性歯周炎→根管充填後の確認撮影 ／ 歯周病→パノラマ後にう蝕確定診断のためデンタル ／ 両側大臼歯の抜歯→パノラマ後に抜歯窩確認のためパノラマ</strong>：いずれも<strong>所定点数</strong>により算定する。<br><br>
+          なお、③の場合において、同一歯に対して根管治療中に、歯科用根管リーマーによる試適のための歯科エックス線撮影を実施する場合や、根管充填材の試適のための歯科エックス線撮影を、根管充填と同日に行う場合も所定点数により算定する。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 歯科口腔リハビリテーション料1 -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">歯科口腔リハビリテーション料1</div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問9</span>
+        <span class="gigi-q-text">病名がMTのみの患者に対して、「B013」新製有床義歯管理料を算定した月と同月に、口腔機能の回復又は維持を目的とした新製有床義歯の調整又は機能的指導を行った場合は「H001-2」歯科口腔リハビリテーション料1の「1 有床義歯の場合」は算定可能か。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          <strong>算定可能。</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 病理診断 -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">病理診断</div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問10</span>
+        <span class="gigi-q-text">「別の原因で病変が独立して生じており、組織学的形態が異なる場合は、2回を限度として算定する。」としているが、上下若しくは左右の同一の組織に病変が生じている場合はそれぞれ算定可能か。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          それぞれ病理診断が必要な場合は、<strong>2回を限度として算定可能。</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 解説ポイント（その2） -->
+  <div class="gigi-category reveal" style="margin-top:40px;">
+    <div class="gigi-category-title" style="border-left-color:var(--teal);">解説ポイント ── その2で押さえるべき実務への影響</div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-top:12px;">
+
+      <div style="margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">重要</span>
+          <strong style="font-size:15px;color:var(--navy);">歯科疾患管理料がMT・義歯フテキのみでも算定可能に（問3）</strong>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
+          R8改定で有床義歯に係る治療のみの患者も歯管の算定対象に追加されたが、今回の疑義解釈で<strong>傷病名がMTや義歯不適合のみでも算定可能</strong>と明確化された。これまで義歯の管理のみで歯管を算定できなかったケースが解消される。<strong>義歯患者全体の算定漏れを見直す</strong>好機。一律90点のため、初診月は従来比+10点の増収にもなる。
+        </p>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">重要</span>
+          <strong style="font-size:15px;color:var(--navy);">画像診断の同日2枚目の算定ルールが5パターンで明確化（問8）</strong>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
+          同日に2枚以上撮影した場合の「100分の50」ルールの適用範囲が具体例で示された。<strong>同一疾患の同一種類の撮影のみが100分の50</strong>となり、異なる目的・異なる撮影法の場合は所定点数で算定可能。根管治療中のリーマー試適撮影なども所定点数で算定できることが明記された。<strong>レセプトの減点リスクが軽減</strong>される重要な明確化。
+        </p>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:var(--gold);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">注目</span>
+          <strong style="font-size:15px;color:var(--navy);">口腔機能実地指導料の研修は別々の受講でもOK（問5）</strong>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
+          口腔機能発達不全症と口腔機能低下症の研修を<strong>別々に受講した場合も施設基準を満たす</strong>ことが明確化。1回の研修で両方を網羅する必要はない。様式17の4にそれぞれの研修を記載して届出すればよい。研修スケジュールの選択肢が広がる。
+        </p>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:var(--gold);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">注目</span>
+          <strong style="font-size:15px;color:var(--navy);">訪問歯科衛生指導料の日に口腔機能実地指導料も算定可能（問6）</strong>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
+          訪問歯科衛生指導料と口腔機能実地指導料の<strong>同日算定が可能</strong>であることが明示された。訪問診療で口腔機能に関する実地指導も行った場合、両方を算定できる。<strong>訪問歯科の収益向上</strong>につながるポイント。
+        </p>
+      </div>
+
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:var(--blue);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">参考</span>
+          <strong style="font-size:15px;color:var(--navy);">DHの氏名記載は名字のみでOK ─ カスハラ対策（問7）</strong>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
+          患者に提供する文書への歯科衛生士の氏名記載について、<strong>カスタマーハラスメント防止の観点から名字のみで可</strong>とされた。これまで姓名両方の記載が必要とされていた旧解釈（R6その2 別添3 問12）は廃止。<strong>院内の文書テンプレートを見直す機会</strong>。
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="gigi-source reveal">
+    出典：厚生労働省保険局医療課「疑義解釈資料の送付について（その2）」（令和8年4月1日事務連絡）別添4
+  </div>
 </section>
 
 
@@ -2611,10 +3025,15 @@ body.side-menu-open { overflow:hidden; }
           <td>2026-03-11</td>
           <td>点数表の告示本文（確定値）</td>
         </tr>
-        <tr style="background:var(--gold-light);">
-          <td><a class="reference-link" href="gigi_kaisyaku_r8_0323.pdf" target="_blank" rel="noopener noreferrer" style="color:var(--blue);text-decoration:underline;">疑義解釈資料の送付について（その1）PDF</a> <span style="display:inline-block;background:var(--coral);color:#fff;font-size:10px;font-weight:700;padding:1px 8px;border-radius:10px;margin-left:4px;">NEW</span></td>
+        <tr>
+          <td><a class="reference-link" href="gigi_kaisyaku_r8_0323.pdf" target="_blank" rel="noopener noreferrer" style="color:var(--blue);text-decoration:underline;">疑義解釈資料の送付について（その1）PDF</a></td>
           <td>2026-03-23</td>
           <td>R8改定に関する疑義解釈（別添1〜5）歯科は別添3</td>
+        </tr>
+        <tr style="background:var(--gold-light);">
+          <td><a class="reference-link" href="https://www.mhlw.go.jp/content/12404000/001444640.pdf" target="_blank" rel="noopener noreferrer" style="color:var(--blue);text-decoration:underline;">疑義解釈資料の送付について（その2）PDF</a> <span style="display:inline-block;background:var(--coral);color:#fff;font-size:10px;font-weight:700;padding:1px 8px;border-radius:10px;margin-left:4px;">NEW</span></td>
+          <td>2026-04-01</td>
+          <td>R8改定に関する疑義解釈（別添1〜6）歯科は別添4（全10問）</td>
         </tr>
       </tbody>
     </table>
@@ -2754,6 +3173,365 @@ body.side-menu-open { overflow:hidden; }
             <strong>賃金改善未達リスク</strong>：ベースアップ収入額と賃上げ支出額の月次突合が必須。給与支払額とベースアップ収入額の対照表を作成し、乖離があれば即座に是正する体制を構築すること。ベースアップは定期昇給と区別して管理する。
           </div>
         </div>
+      </div>
+
+      <!-- ===== 様式早見表フローチャート ===== -->
+      <div class="modal-section">
+        <div class="modal-section-title">届出に必要な様式 早見表（無床診療所の場合）</div>
+        <div class="bu-flowchart">
+          <table class="bu-flow-table">
+            <thead>
+              <tr>
+                <th>これまでの届出</th>
+                <th></th>
+                <th>評価料(Ⅱ)の対象か</th>
+                <th></th>
+                <th>R8.6から算定する評価料</th>
+                <th></th>
+                <th>届出に必要な様式</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- R8.3月以前から算定 → (I)のみ -->
+              <tr>
+                <td rowspan="2"><span class="bu-flow-cell status">R8.3月以前から<br>ベア評価料を算定している</span></td>
+                <td rowspan="2" class="bu-flow-arrow">→</td>
+                <td><span class="bu-flow-cell type1">ベア評価料(Ⅰ)のみ<br><span class="bu-flow-note">＜大半の診療所＞</span></span></td>
+                <td class="bu-flow-arrow">→</td>
+                <td><span class="bu-flow-cell result">外来・在宅ベースアップ評価料(Ⅰ)<br>の注5</span><span class="bu-flow-badge">高い点数</span></td>
+                <td class="bu-flow-arrow">→</td>
+                <td><span class="bu-flow-cell form">様式95</span></td>
+              </tr>
+              <!-- R8.3月以前から算定 → (II)対象 -->
+              <tr>
+                <td><span class="bu-flow-cell type2">ベア評価料(Ⅱ)の対象<br><span class="bu-flow-note">＜(Ⅰ)のみでは賃上げ原資が<br>大きく不足する一部の診療所＞</span></span></td>
+                <td class="bu-flow-arrow">→</td>
+                <td><span class="bu-flow-cell result-high">外来・在宅<br>ベースアップ評価料(Ⅰ)の注5 と<br>ベースアップ評価料(Ⅱ)の注5</span><span class="bu-flow-badge">高い点数</span></td>
+                <td class="bu-flow-arrow">→</td>
+                <td><span class="bu-flow-cell form">様式95・96</span></td>
+              </tr>
+              <!-- 空行セパレータ -->
+              <tr><td colspan="7" style="border:none;padding:4px;background:transparent;"></td></tr>
+              <!-- R8.4又は5月から算定開始 -->
+              <tr>
+                <td rowspan="1"><span class="bu-flow-cell status-new">R8.4又は5月から<br>ベア評価料を算定開始</span></td>
+                <td colspan="6" style="border:none;background:transparent;"></td>
+              </tr>
+              <!-- R8.6月以降に算定開始 -->
+              <tr>
+                <td rowspan="4"><span class="bu-flow-cell status-new">R8.6月以降に算定開始<br><span class="bu-flow-note">（これまでベア評価料は<br>算定していない）</span></span></td>
+                <td rowspan="4" class="bu-flow-arrow">→</td>
+                <td colspan="5" style="border:none;background:transparent;padding:2px;"></td>
+              </tr>
+              <!-- 下記以外 → (I)のみ -->
+              <tr>
+                <td><span class="bu-flow-cell type1">ベア評価料(Ⅰ)のみ<br><span class="bu-flow-note">＜大半の診療所＞</span></span></td>
+                <td class="bu-flow-arrow">→</td>
+                <td><span class="bu-flow-cell result">外来・在宅ベースアップ評価料(Ⅰ)</span></td>
+                <td class="bu-flow-arrow">→</td>
+                <td><span class="bu-flow-cell form">様式95</span></td>
+              </tr>
+              <!-- 下記以外 → (II)対象 -->
+              <tr>
+                <td><span class="bu-flow-cell type2">ベア評価料(Ⅱ)の対象<br><span class="bu-flow-note">＜(Ⅰ)のみでは賃上げ原資が<br>大きく不足する一部の診療所＞</span></span></td>
+                <td class="bu-flow-arrow">→</td>
+                <td><span class="bu-flow-cell result">外来・在宅<br>ベースアップ評価料(Ⅰ) と<br>ベースアップ評価料(Ⅱ)</span></td>
+                <td class="bu-flow-arrow">→</td>
+                <td><span class="bu-flow-cell form">様式95・96</span></td>
+              </tr>
+              <!-- 空行 for subgroup label -->
+              <tr>
+                <td colspan="5" style="border:none;background:transparent;padding:2px;font-size:11px;color:var(--text-sub);text-align:left;">
+                  ▼ 上記のうち R6年度〜R8年度の賃上げ実績（計5.5%、事務職員は8%相当）を示せる場合
+                </td>
+              </tr>
+              <!-- 賃上げ実績あり → (I)のみ -->
+              <tr>
+                <td><span class="bu-flow-cell status-dashed">R6〜R8年度の<br>賃上げ実績を示せる<br><span class="bu-flow-note">（計5.5%、事務職員は8%相当）</span></span></td>
+                <td class="bu-flow-arrow">→</td>
+                <td><span class="bu-flow-cell type1">ベア評価料(Ⅰ)のみ<br><span class="bu-flow-note">＜大半の診療所＞</span></span></td>
+                <td class="bu-flow-arrow">→</td>
+                <td><span class="bu-flow-cell result-high">外来・在宅ベースアップ評価料(Ⅰ)<br>の注5</span><span class="bu-flow-badge">高い点数</span></td>
+                <td class="bu-flow-arrow">→</td>
+                <td><span class="bu-flow-cell form">様式95・98</span></td>
+              </tr>
+              <!-- 賃上げ実績あり → (II)対象 -->
+              <tr>
+                <td style="border:none;background:transparent;"></td>
+                <td style="border:none;background:transparent;"></td>
+                <td><span class="bu-flow-cell type2">ベア評価料(Ⅱ)の対象<br><span class="bu-flow-note">＜(Ⅰ)のみでは賃上げ原資が<br>大きく不足する一部の診療所＞</span></span></td>
+                <td class="bu-flow-arrow">→</td>
+                <td><span class="bu-flow-cell result-high">外来・在宅<br>ベースアップ評価料(Ⅰ)の注5 と<br>ベースアップ評価料(Ⅱ)の注5</span><span class="bu-flow-badge">高い点数</span></td>
+                <td class="bu-flow-arrow">→</td>
+                <td><span class="bu-flow-cell form">様式95・96・98</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-prose" style="margin-top:8px;">
+          <p style="font-size:11px; color:var(--text-sub);">出典：厚生労働省「ベースアップ評価料の届出に必要な様式 早見表＜令和8年度版＞」</p>
+        </div>
+      </div>
+
+      <!-- ===== タイムライン：R8.5月以前から算定している場合 ===== -->
+      <div class="modal-section">
+        <div class="modal-section-title">手続きスケジュール ── R8.5月以前から算定している場合</div>
+        <div class="bu-tl-alert">
+          これまでにベースアップ評価料を届け出ていても、<br>
+          令和8年6月以降も算定を続けるには、<strong>改めて、令和8年5月中に届出が必要</strong>です
+        </div>
+        <div class="bu-timeline">
+          <div class="bu-tl-grid">
+            <div class="bu-tl-col">
+              <div class="bu-tl-header urgent">令和8年5月</div>
+              <div class="bu-tl-card blue">
+                <strong>届出書の提出</strong><br>
+                5月7日（木）から6月1日（月）(必着)までに、地方厚生局（都道府県事務所）へ該当の様式を提出<br><br>
+                <strong style="color:var(--coral);">→ 令和8年6月から新ベースアップ評価料の算定開始</strong>
+              </div>
+            </div>
+            <div class="bu-tl-col">
+              <div class="bu-tl-header">令和8年8月</div>
+              <div class="bu-tl-card orange">
+                <strong>R7年度 賃金改善実績報告書</strong><br>
+                8月中に、令和7年度の実績を報告
+              </div>
+              <div class="bu-tl-card yellow">
+                <strong>R8年度 賃金改善中間報告書</strong><br>
+                8月中に、令和8年度の6月〜7月時点での賃上げ状況を報告
+              </div>
+            </div>
+            <div class="bu-tl-col">
+              <div class="bu-tl-header">令和9年5月</div>
+              <div class="bu-tl-card green">
+                <strong>R9年度 届出書</strong><br>
+                令和9年6月以降の算定継続に向けて、該当の様式を提出<br><br>
+                <span style="font-size:11px;color:var(--text-sub);">※R8年度から継続して外来・在宅ベースアップ評価料(Ⅰ) / 訪問看護ベースアップ評価料(Ⅰ)を算定する場合には届出は不要</span>
+              </div>
+            </div>
+            <div class="bu-tl-col">
+              <div class="bu-tl-header">令和9年8月</div>
+              <div class="bu-tl-card orange">
+                <strong>R8年度 賃金改善実績報告書</strong><br>
+                8月中に、令和8年度の実績を報告
+              </div>
+              <div class="bu-tl-card yellow">
+                <strong>R9年度 賃金改善中間報告書</strong><br>
+                8月中に、令和9年度の6月〜7月時点での賃上げ状況を報告
+              </div>
+            </div>
+          </div>
+          <div class="bu-tl-bar-section">
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:4px;min-width:640px;">
+              <div style="text-align:center;font-size:10px;color:var(--text-sub);">5月</div>
+              <div style="text-align:center;font-size:10px;color:var(--text-sub);">8月</div>
+              <div style="text-align:center;font-size:10px;color:var(--text-sub);">5月</div>
+              <div style="text-align:center;font-size:10px;color:var(--text-sub);">8月</div>
+            </div>
+            <div class="bu-tl-bar-row">
+              <div class="bu-tl-bar-label">R7年度の<br>算定手続き</div>
+              <div class="bu-tl-bar-track">
+                <div class="bu-tl-bar report" style="left:20%;width:12%;">R7実績報告書</div>
+              </div>
+            </div>
+            <div class="bu-tl-bar-row">
+              <div class="bu-tl-bar-label">R8年度の<br>算定手続き</div>
+              <div class="bu-tl-bar-track">
+                <div class="bu-tl-bar submit" style="left:2%;width:8%;">届出書</div>
+                <div class="bu-tl-bar period" style="left:12%;width:60%;opacity:0.6;">算定期間（6月から翌年5月）</div>
+                <div class="bu-tl-bar report-mid" style="left:20%;width:10%;font-size:9px;">中間報告</div>
+                <div class="bu-tl-bar report" style="left:74%;width:12%;">R8実績報告書</div>
+              </div>
+            </div>
+            <div class="bu-tl-bar-row">
+              <div class="bu-tl-bar-label">R9年度の<br>算定手続き</div>
+              <div class="bu-tl-bar-track">
+                <div class="bu-tl-bar submit" style="left:50%;width:8%;">届出書</div>
+                <div class="bu-tl-bar period" style="left:60%;width:38%;opacity:0.6;">算定期間（6月〜）</div>
+                <div class="bu-tl-bar report-mid" style="left:74%;width:10%;font-size:9px;">中間報告</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-prose" style="margin-top:8px;">
+          <p style="font-size:11px; color:var(--text-sub);">出典：厚生労働省「令和8年5月以前にベースアップ評価料を算定している医療機関・訪問看護ステーション向け」</p>
+        </div>
+      </div>
+
+      <!-- ===== タイムライン：R8.6月以降にはじめて算定する場合 ===== -->
+      <div class="modal-section">
+        <div class="modal-section-title">手続きスケジュール ── R8.6月以降にはじめて算定する場合</div>
+        <div class="bu-tl-alert">
+          ベースアップ評価料を令和8年6月から算定するには、<strong>令和8年5月中に届出が必要</strong>です
+        </div>
+        <div class="bu-timeline">
+          <div class="bu-tl-grid">
+            <div class="bu-tl-col">
+              <div class="bu-tl-header urgent">令和8年5月</div>
+              <div class="bu-tl-card blue">
+                <strong>届出書の提出</strong><br>
+                5月7日（木）から6月1日（月）(必着)までに、地方厚生局（都道府県事務所）へ該当の様式を提出<br><br>
+                <strong style="color:var(--coral);">→ 令和8年6月から新ベースアップ評価料の算定開始</strong>
+              </div>
+            </div>
+            <div class="bu-tl-col">
+              <div class="bu-tl-header">令和8年8月</div>
+              <div class="bu-tl-card yellow">
+                <strong>R8年度 賃金改善中間報告書</strong><br>
+                8月中に、令和8年度の6月〜7月時点での賃上げ状況を報告
+              </div>
+            </div>
+            <div class="bu-tl-col">
+              <div class="bu-tl-header">令和9年5月</div>
+              <div class="bu-tl-card green">
+                <strong>R9年度 届出書</strong><br>
+                令和9年6月以降の算定継続に向けて、該当の様式を提出<br><br>
+                <span style="font-size:11px;color:var(--text-sub);">※R8年度から継続して外来・在宅ベースアップ評価料(Ⅰ) / 訪問看護ベースアップ評価料(Ⅰ)を算定する場合には届出は不要</span>
+              </div>
+            </div>
+            <div class="bu-tl-col">
+              <div class="bu-tl-header">令和9年8月</div>
+              <div class="bu-tl-card orange">
+                <strong>R8年度 賃金改善実績報告書</strong><br>
+                8月中に、令和8年度の実績を報告
+              </div>
+              <div class="bu-tl-card yellow">
+                <strong>R9年度 賃金改善中間報告書</strong><br>
+                8月中に、令和9年度の6月〜7月時点での賃上げ状況を報告
+              </div>
+            </div>
+          </div>
+          <div class="bu-tl-bar-section">
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:4px;min-width:640px;">
+              <div style="text-align:center;font-size:10px;color:var(--text-sub);">5月</div>
+              <div style="text-align:center;font-size:10px;color:var(--text-sub);">8月</div>
+              <div style="text-align:center;font-size:10px;color:var(--text-sub);">5月</div>
+              <div style="text-align:center;font-size:10px;color:var(--text-sub);">8月</div>
+            </div>
+            <div class="bu-tl-bar-row">
+              <div class="bu-tl-bar-label">R8年度の<br>算定手続き</div>
+              <div class="bu-tl-bar-track">
+                <div class="bu-tl-bar submit" style="left:2%;width:8%;">届出書</div>
+                <div class="bu-tl-bar period" style="left:12%;width:60%;opacity:0.6;">算定期間（6月から翌年5月）</div>
+                <div class="bu-tl-bar report-mid" style="left:20%;width:10%;font-size:9px;">中間報告</div>
+                <div class="bu-tl-bar report" style="left:74%;width:12%;">R8実績報告書</div>
+              </div>
+            </div>
+            <div class="bu-tl-bar-row">
+              <div class="bu-tl-bar-label">R9年度の<br>算定手続き</div>
+              <div class="bu-tl-bar-track">
+                <div class="bu-tl-bar submit" style="left:50%;width:8%;">届出書</div>
+                <div class="bu-tl-bar period" style="left:60%;width:38%;opacity:0.6;">算定期間（6月〜）</div>
+                <div class="bu-tl-bar report-mid" style="left:74%;width:10%;font-size:9px;">中間報告</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-prose" style="margin-top:8px;">
+          <p style="font-size:11px; color:var(--text-sub);">出典：厚生労働省「令和8年6月以降にはじめてベースアップ評価料を算定する医療機関・訪問看護ステーション」</p>
+        </div>
+
+        <!-- ── 届出専用メールアドレス一覧 ── -->
+        <div class="bu-mail-section">
+          <div class="bu-mail-title">📧 届出専用メールアドレス一覧</div>
+          <ul class="bu-mail-note">
+            <li>管轄の厚生局都道府県事務所を確認の上、メールを送付してください。</li>
+            <li>ベースアップ評価料の届出様式以外のファイルは添付しないでください。</li>
+            <li>送付するファイル名の冒頭に<strong>医療機関コード</strong>を記載してください。</li>
+          </ul>
+
+          <div class="bu-mail-region">北海道厚生局</div>
+          <table class="bu-mail-table">
+            <tr><th class="code">番号</th><th>都道府県</th><th>メールアドレス</th></tr>
+            <tr><td class="code">01</td><td>北海道</td><td class="bu-mail-addr">baseup-hyoukaryou01@mhlw.go.jp</td></tr>
+          </table>
+
+          <div class="bu-mail-region">東北厚生局</div>
+          <table class="bu-mail-table">
+            <tr><th class="code">番号</th><th>都道府県</th><th>メールアドレス</th></tr>
+            <tr><td class="code">02</td><td>青森県</td><td class="bu-mail-addr">baseup-hyoukaryou02@mhlw.go.jp</td></tr>
+            <tr><td class="code">03</td><td>岩手県</td><td class="bu-mail-addr">baseup-hyoukaryou03@mhlw.go.jp</td></tr>
+            <tr><td class="code">04</td><td>宮城県</td><td class="bu-mail-addr">baseup-hyoukaryou04@mhlw.go.jp</td></tr>
+            <tr><td class="code">05</td><td>秋田県</td><td class="bu-mail-addr">baseup-hyoukaryou05@mhlw.go.jp</td></tr>
+            <tr><td class="code">06</td><td>山形県</td><td class="bu-mail-addr">baseup-hyoukaryou06@mhlw.go.jp</td></tr>
+            <tr><td class="code">07</td><td>福島県</td><td class="bu-mail-addr">baseup-hyoukaryou07@mhlw.go.jp</td></tr>
+          </table>
+
+          <div class="bu-mail-region">関東信越厚生局</div>
+          <table class="bu-mail-table">
+            <tr><th class="code">番号</th><th>都道府県</th><th>メールアドレス</th></tr>
+            <tr><td class="code">08</td><td>茨城県</td><td class="bu-mail-addr">baseup-hyoukaryou08@mhlw.go.jp</td></tr>
+            <tr><td class="code">09</td><td>栃木県</td><td class="bu-mail-addr">baseup-hyoukaryou09@mhlw.go.jp</td></tr>
+            <tr><td class="code">10</td><td>群馬県</td><td class="bu-mail-addr">baseup-hyoukaryou10@mhlw.go.jp</td></tr>
+            <tr><td class="code">11</td><td>埼玉県</td><td class="bu-mail-addr">baseup-hyoukaryou11@mhlw.go.jp</td></tr>
+            <tr><td class="code">12</td><td>千葉県</td><td class="bu-mail-addr">baseup-hyoukaryou12@mhlw.go.jp</td></tr>
+            <tr><td class="code">13</td><td>東京都</td><td class="bu-mail-addr">baseup-hyoukaryou13@mhlw.go.jp</td></tr>
+            <tr><td class="code">14</td><td>神奈川県</td><td class="bu-mail-addr">baseup-hyoukaryou14@mhlw.go.jp</td></tr>
+            <tr><td class="code">15</td><td>新潟県</td><td class="bu-mail-addr">baseup-hyoukaryou15@mhlw.go.jp</td></tr>
+            <tr><td class="code">19</td><td>山梨県</td><td class="bu-mail-addr">baseup-hyoukaryou19@mhlw.go.jp</td></tr>
+            <tr><td class="code">20</td><td>長野県</td><td class="bu-mail-addr">baseup-hyoukaryou20@mhlw.go.jp</td></tr>
+          </table>
+
+          <div class="bu-mail-region">東海北陸厚生局</div>
+          <table class="bu-mail-table">
+            <tr><th class="code">番号</th><th>都道府県</th><th>メールアドレス</th></tr>
+            <tr><td class="code">16</td><td>富山県</td><td class="bu-mail-addr">baseup-hyoukaryou16@mhlw.go.jp</td></tr>
+            <tr><td class="code">17</td><td>石川県</td><td class="bu-mail-addr">baseup-hyoukaryou17@mhlw.go.jp</td></tr>
+            <tr><td class="code">21</td><td>岐阜県</td><td class="bu-mail-addr">baseup-hyoukaryou21@mhlw.go.jp</td></tr>
+            <tr><td class="code">22</td><td>静岡県</td><td class="bu-mail-addr">baseup-hyoukaryou22@mhlw.go.jp</td></tr>
+            <tr><td class="code">23</td><td>愛知県</td><td class="bu-mail-addr">baseup-hyoukaryou23@mhlw.go.jp</td></tr>
+            <tr><td class="code">24</td><td>三重県</td><td class="bu-mail-addr">baseup-hyoukaryou24@mhlw.go.jp</td></tr>
+          </table>
+
+          <div class="bu-mail-region">近畿厚生局</div>
+          <table class="bu-mail-table">
+            <tr><th class="code">番号</th><th>都道府県</th><th>メールアドレス</th></tr>
+            <tr><td class="code">18</td><td>福井県</td><td class="bu-mail-addr">baseup-hyoukaryou18@mhlw.go.jp</td></tr>
+            <tr><td class="code">25</td><td>滋賀県</td><td class="bu-mail-addr">baseup-hyoukaryou25@mhlw.go.jp</td></tr>
+            <tr><td class="code">26</td><td>京都府</td><td class="bu-mail-addr">baseup-hyoukaryou26@mhlw.go.jp</td></tr>
+            <tr><td class="code">27</td><td>大阪府</td><td class="bu-mail-addr">baseup-hyoukaryou27@mhlw.go.jp</td></tr>
+            <tr><td class="code">28</td><td>兵庫県</td><td class="bu-mail-addr">baseup-hyoukaryou28@mhlw.go.jp</td></tr>
+            <tr><td class="code">29</td><td>奈良県</td><td class="bu-mail-addr">baseup-hyoukaryou29@mhlw.go.jp</td></tr>
+            <tr><td class="code">30</td><td>和歌山県</td><td class="bu-mail-addr">baseup-hyoukaryou30@mhlw.go.jp</td></tr>
+          </table>
+
+          <div class="bu-mail-region">中国四国厚生局</div>
+          <table class="bu-mail-table">
+            <tr><th class="code">番号</th><th>都道府県</th><th>メールアドレス</th></tr>
+            <tr><td class="code">31</td><td>鳥取県</td><td class="bu-mail-addr">baseup-hyoukaryou31@mhlw.go.jp</td></tr>
+            <tr><td class="code">32</td><td>島根県</td><td class="bu-mail-addr">baseup-hyoukaryou32@mhlw.go.jp</td></tr>
+            <tr><td class="code">33</td><td>岡山県</td><td class="bu-mail-addr">baseup-hyoukaryou33@mhlw.go.jp</td></tr>
+            <tr><td class="code">34</td><td>広島県</td><td class="bu-mail-addr">baseup-hyoukaryou34@mhlw.go.jp</td></tr>
+            <tr><td class="code">35</td><td>山口県</td><td class="bu-mail-addr">baseup-hyoukaryou35@mhlw.go.jp</td></tr>
+          </table>
+
+          <div class="bu-mail-region">四国厚生支局</div>
+          <table class="bu-mail-table">
+            <tr><th class="code">番号</th><th>都道府県</th><th>メールアドレス</th></tr>
+            <tr><td class="code">36</td><td>徳島県</td><td class="bu-mail-addr">baseup-hyoukaryou36@mhlw.go.jp</td></tr>
+            <tr><td class="code">37</td><td>香川県</td><td class="bu-mail-addr">baseup-hyoukaryou37@mhlw.go.jp</td></tr>
+            <tr><td class="code">38</td><td>愛媛県</td><td class="bu-mail-addr">baseup-hyoukaryou38@mhlw.go.jp</td></tr>
+            <tr><td class="code">39</td><td>高知県</td><td class="bu-mail-addr">baseup-hyoukaryou39@mhlw.go.jp</td></tr>
+          </table>
+
+          <div class="bu-mail-region">九州厚生局</div>
+          <table class="bu-mail-table">
+            <tr><th class="code">番号</th><th>都道府県</th><th>メールアドレス</th></tr>
+            <tr><td class="code">40</td><td>福岡県</td><td class="bu-mail-addr">baseup-hyoukaryou40@mhlw.go.jp</td></tr>
+            <tr><td class="code">41</td><td>佐賀県</td><td class="bu-mail-addr">baseup-hyoukaryou41@mhlw.go.jp</td></tr>
+            <tr><td class="code">42</td><td>長崎県</td><td class="bu-mail-addr">baseup-hyoukaryou42@mhlw.go.jp</td></tr>
+            <tr><td class="code">43</td><td>熊本県</td><td class="bu-mail-addr">baseup-hyoukaryou43@mhlw.go.jp</td></tr>
+            <tr><td class="code">44</td><td>大分県</td><td class="bu-mail-addr">baseup-hyoukaryou44@mhlw.go.jp</td></tr>
+            <tr><td class="code">45</td><td>宮崎県</td><td class="bu-mail-addr">baseup-hyoukaryou45@mhlw.go.jp</td></tr>
+            <tr><td class="code">46</td><td>鹿児島県</td><td class="bu-mail-addr">baseup-hyoukaryou46@mhlw.go.jp</td></tr>
+            <tr><td class="code">47</td><td>沖縄県</td><td class="bu-mail-addr">baseup-hyoukaryou47@mhlw.go.jp</td></tr>
+          </table>
+
+          <div class="modal-prose" style="margin-top:8px;">
+            <p style="font-size:11px; color:var(--text-sub);">出典：厚生労働省「ベースアップ評価料 届出専用メールアドレス一覧」</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -4300,7 +5078,7 @@ body.side-menu-open { overflow:hidden; }
   <div class="footer-title">令和6年度 vs 令和8年度 歯科診療報酬改定 比較レポート</div>
     <p>
     【ご注意】<br>
-    本内容は2026年3月28日時点の情報に基づきます。令和8年度改定の点数・要件は2026年3月5日告示（R8.3.5）に基づいています。疑義解釈は2026年3月23日付事務連絡に基づいています。<br>
+    本内容は2026年4月15日時点の情報に基づきます。令和8年度改定の点数・要件は2026年3月5日告示（R8.3.5）に基づいています。疑義解釈は2026年4月1日付事務連絡（その2）まで反映しています。<br>
     参照元：厚生労働省Webサイト（一次情報を優先し、一部独自の解釈を含む）
   </p>
   <p style="margin-top:16px; font-size:11px; opacity:0.7;">© 2026 MOCAL Inc. All Rights Reserved.</p>
