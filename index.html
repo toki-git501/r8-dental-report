@@ -339,6 +339,14 @@ body.modal-open {
 
 .modal-body { padding:28px 36px 36px; }
 
+/* Section 01 only: keep close button reachable on long detail modal */
+#modal-1 .modal-header {
+  position:sticky;
+  top:0;
+  z-index:3;
+  background:var(--card);
+}
+
 .modal-section { margin-bottom:24px; }
 .modal-section:last-child { margin-bottom:0; }
 .modal-section-title {
@@ -2590,7 +2598,7 @@ body.side-menu-open { overflow:hidden; }
   </div>
 
   <div class="gigi-intro reveal">
-    <strong>出典：</strong>令和8年4月1日 厚生労働省保険局医療課 事務連絡「疑義解釈資料の送付について（その2）」別添4<br>
+    <strong>出典：</strong>令和8年4月1日 厚生労働省保険局医療課 事務連絡「<a class="reference-link" href="https://www.mhlw.go.jp/content/12404000/001444640.pdf" target="_blank" rel="noopener noreferrer" style="color:var(--blue);text-decoration:underline;">疑義解釈資料の送付について（その2）</a>」別添4<br>
     令和8年6月1日施行の診療報酬改定に関する追加の公式回答（歯科関連 全10問）です。
   </div>
 
@@ -5212,10 +5220,11 @@ if (sideMenuOverlay) sideMenuOverlay.addEventListener('click', closeSideMenu);
 sideMenuLinks.forEach(link => link.addEventListener('click', closeSideMenu));
 document.querySelectorAll('#references a.reference-link').forEach(link => {
   link.addEventListener('click', (e) => {
+    const target = link.getAttribute('target');
+    if (target === '_blank') return;
     e.preventDefault();
     const href = link.getAttribute('href');
-    const next = window.open(href, '_blank', 'noopener,noreferrer');
-    if (!next) window.location.href = href;
+    window.open(href, '_blank');
   });
 });
 
