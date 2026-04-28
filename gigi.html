@@ -1859,7 +1859,7 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
         <tr class="clickable-row" onclick="openS3Detail(12)">
           <td><span class="tag tag-mid">連携</span><button class="row-btn" type="button">詳細</button></td>
           <td class="cell-label">医科歯科連携の評価</td>
-          <td>連携評価は限定的（糖尿病ハイリスク加算50点）</td>
+          <td>連携評価は限定的（歯周病ハイリスク患者加算80点）</td>
           <td class="cell-new">重症化予防連携強化加算（100点）を新設</td>
           <td>骨太方針を背景に医科歯科連携の評価が拡充</td>
           <td><span class="tag tag-answer">告示</span></td>
@@ -1999,9 +1999,9 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
           <td>医学管理</td>
           <td class="cell-label">口腔機能管理料</td>
           <td style="text-align:right;">60点</td>
-          <td style="text-align:right;">90点</td>
-          <td style="text-align:right;" class="cell-change cell-up">+30点</td>
-          <td>対象患者の範囲拡大</td>
+          <td style="text-align:right;">1: 90点／2: 50点</td>
+          <td style="text-align:right;" class="cell-change cell-up">+30/−10点</td>
+          <td>2段階に再編。対象患者の範囲拡大</td>
         </tr>
         <tr>
           <td>医学管理</td>
@@ -2046,8 +2046,8 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
         <tr>
           <td>デジタル</td>
           <td class="cell-label">内面処理加算1</td>
-          <td style="text-align:right;">45/35点<br><small style="color:var(--text-sub);">大臼歯/小臼歯</small></td>
-          <td style="text-align:right;">55/45点</td>
+          <td style="text-align:right;">45/45点<br><small style="color:var(--text-sub);">冠/インレー</small></td>
+          <td style="text-align:right;">55/55点<br><small style="color:var(--text-sub);">冠/インレー</small></td>
           <td style="text-align:right;" class="cell-change cell-up">+10点</td>
           <td>─</td>
         </tr>
@@ -2174,7 +2174,7 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
         <tr>
           <td>医学管理</td>
           <td class="cell-label">新製有床義歯管理料</td>
-          <td style="text-align:right;">190/230点<br><small style="color:var(--text-sub);">局部/総義歯</small></td>
+          <td style="text-align:right;">190/230点<br><small style="color:var(--text-sub);">2以外/困難</small></td>
           <td style="text-align:right;">140/140点<br><small style="color:var(--text-sub);">1装置につき</small></td>
           <td style="text-align:right;" class="cell-change cell-down">−50/−90点</td>
           <td>「1口腔」→「1装置」単位に変更</td>
@@ -2215,8 +2215,8 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
           <td>訪問</td>
           <td class="cell-label">訪問歯科衛生指導料（10人以上）</td>
           <td style="text-align:right;">295点</td>
-          <td style="text-align:right;">260点</td>
-          <td style="text-align:right;" class="cell-change cell-down">−35点</td>
+          <td style="text-align:right;">226点</td>
+          <td style="text-align:right;" class="cell-change cell-down">−69点</td>
           <td>─</td>
         </tr>
         <tr style="background:var(--teal-light);">
@@ -3010,7 +3010,7 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
       <div class="gigi-a">
         <div class="gigi-a-label">実務ポイント</div>
         <div class="gigi-a-text">
-          疑義解釈で可否が明示。<strong>再算定の条件をレセコン設定・院内ルールに反映</strong>し、暫間固定の要件に該当する症例で算定漏れを防ぐ。
+          ①歯周治療用装置の再製作を除き、<strong>暫間被覆冠成形品算定後に「イ」のリテーナーを算定する場合に限り再度算定可能</strong>。②固定源である欠損部の<strong>両隣在歯に動揺が生じ連結固定が必要な場合</strong>は暫間固定も算定可能。条件をレセコン設定・院内ルールに反映し、算定漏れを防ぐ。
         </div>
       </div>
     </div>
@@ -3048,10 +3048,10 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
       <div style="margin-bottom:20px;">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
           <span style="background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">重要</span>
-          <strong style="font-size:15px;color:var(--navy);">有床義歯・暫間補綴の算定実務は「要件記録」が最優先</strong>
+          <strong style="font-size:15px;color:var(--navy);">有床義歯管理料の文書簡素化と暫間補綴の再算定条件が明確化</strong>
         </div>
         <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
-          その3では、新製有床義歯管理料（問1）と暫間歯冠補綴装置（問4）の運用が具体化された。<strong>文書枚数ではなく記載内容の充足</strong>、および再算定条件の明確化がポイント。院内ではカルテテンプレートとレセコンコメントを連動させ、返戻・査定の予防線を張ることが重要。
+          その3では、新製有床義歯管理料（問1）は複数装着時でも<strong>1枚の文書で提供可</strong>と簡素化された。暫間歯冠補綴装置（問4）は、①歯周治療用装置の再製作を除き<strong>暫間被覆冠成形品算定後にリテーナーを算定する場合に限り再度算定可能</strong>、②欠損部の両隣在歯に動揺があり連結固定が必要な場合は<strong>暫間固定も算定可能</strong>と条件が明示された。
         </p>
       </div>
       <div style="margin-bottom:20px;">
@@ -3060,7 +3060,7 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
           <strong style="font-size:15px;color:var(--navy);">画像診断と歯周病継続支援治療の「算定根拠」を残す設計が鍵</strong>
         </div>
         <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
-          顎関節追加撮影・電子画像管理加算（問2-3）は、撮影目的や同時/同一部位の判断根拠を記録できるかで算定安定性が変わる。歯周病継続支援治療（問5）も、<strong>D002選択理由と永久歯歯数基準の整合</strong>を残しておくと運用がブレない。
+          顎関節追加撮影・電子画像管理加算（問2-3）は、撮影目的や同時/同一部位の判断根拠を記録できるかで算定安定性が変わる。歯周病継続支援治療（問5）も、<strong>D002選択理由と永久歯歯数基準の整合</strong>を残しておくと運用がブレない。なお、問5に伴い<strong>旧疑義解釈3件（R2その44問1、R2その1問21、R2その9問6）が廃止</strong>されており、旧ルールで運用していた場合は見直しが必要。
         </p>
       </div>
       <div>
@@ -3069,7 +3069,7 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
           <strong style="font-size:15px;color:var(--navy);">貴金属使用時の理由記載は監査対応の基本（問6）</strong>
         </div>
         <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
-          有床義歯で歯科用貴金属を使う場合は、破折リスク等の医学的理由を診療録に明記する必要がある。<strong>「なぜこの材料か」を説明できる記録</strong>を標準化すると、後日の照会対応が容易になる。
+          有床義歯で歯科用貴金属を使う場合は、破折リスク等の歯科医学的理由を診療録に明記する必要がある。<strong>「なぜこの材料か」を説明できる記録</strong>を標準化すると、後日の照会対応が容易になる。
         </p>
       </div>
     </div>
@@ -3288,7 +3288,7 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
     <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">訪問歯科診療の区分判定（1〜5）ルールを院内で統一した</div><div class="cl-sub">同一建物人数・特別の関係・訪問4/5の要件をチェックシート化</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
     <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">物価対応料（初診3点・再診1点）の自動算定設定を確認した</div><div class="cl-sub">届出不要のため設定漏れがないか、初診・再診の双方でテスト請求を実施</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
     <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">口腔機能管理料1/2と歯科疾患管理料の算定フローを更新した</div><div class="cl-sub">歯管一律90点化、口腔機能管理料再編（1:90点/2:50点）に対応</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">訪問歯科衛生指導料の新点数と140点（特別の関係）を反映した</div><div class="cl-sub">1人380点、2〜9人330点、10人以上260点の差分を算定ロジックに反映</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">訪問歯科衛生指導料の新点数と140点（特別の関係）を反映した</div><div class="cl-sub">1人380点、2〜9人330点、10人以上226点の差分を算定ロジックに反映</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
     <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">CAD/CAM冠・インレーの大臼歯要件撤廃を診療フローに反映した</div><div class="cl-sub">適応症例の見直しと、光学印象150点の算定漏れ防止を実施</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
     <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">廃止された施設基準・定例報告の運用を見直した</div><div class="cl-sub">不要となった届出・報告を停止し、現行要件に沿って院内手順を更新</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
     <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">ベースアップ関連の実績報告スケジュールを年間計画に組み込んだ</div><div class="cl-sub">様式98・8月報告・必要書類保管の担当者と締切を明確化</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
