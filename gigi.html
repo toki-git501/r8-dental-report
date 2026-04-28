@@ -5599,6 +5599,8 @@ document.addEventListener('click', (e) => {
 
   const categories = Array.from(document.querySelectorAll("#gigi .gigi-category"));
   const items = Array.from(document.querySelectorAll("#gigi .gigi-item"));
+  const partHeaders = Array.from(document.querySelectorAll("#gigi .section-header h2.section-title"))
+    .filter((h)=>/疑義解釈（その\d/.test(h.textContent || ""));
   let activeFilter = "all";
 
   function norm(v){ return (v || "").toLowerCase(); }
@@ -5638,6 +5640,32 @@ document.addEventListener('click', (e) => {
       }
       const anyVisible = catItems.some((item)=>item.style.display !== "none");
       cat.style.display = anyVisible ? "" : "none";
+    });
+
+    // Hide subsection headers/intros when that subsection has no visible categories.
+    partHeaders.forEach((h, idx)=>{
+      const headerWrap = h.closest(".section-header");
+      if (!headerWrap) return;
+
+      const intro = headerWrap.nextElementSibling && headerWrap.nextElementSibling.classList.contains("gigi-intro")
+        ? headerWrap.nextElementSibling
+        : null;
+
+      const start = intro ? intro.nextElementSibling : headerWrap.nextElementSibling;
+      const nextHeader = partHeaders[idx + 1] ? partHeaders[idx + 1].closest(".section-header") : null;
+
+      let cur = start;
+      let hasVisibleCategory = false;
+      while (cur && cur !== nextHeader){
+        if (cur.classList && cur.classList.contains("gigi-category") && cur.style.display !== "none"){
+          hasVisibleCategory = true;
+          break;
+        }
+        cur = cur.nextElementSibling;
+      }
+
+      headerWrap.style.display = hasVisibleCategory ? "" : "none";
+      if (intro) intro.style.display = hasVisibleCategory ? "" : "none";
     });
 
     if (meta) meta.textContent = '表示件数: ' + shown + ' / ' + items.length;
