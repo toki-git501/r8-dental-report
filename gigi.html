@@ -1432,6 +1432,45 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
 @media (max-width:480px){
   .gigi-filter-row { grid-template-columns:repeat(2,minmax(0,1fr)); }
 }
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 1200;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--navy);
+  border-radius: 999px;
+  min-width: 108px;
+  height: 42px;
+  padding: 0 14px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.back-to-top:hover { border-color: var(--navy-light); }
+@media (max-width:768px){
+  .back-to-top {
+    right: 12px;
+    bottom: 12px;
+    min-width: 96px;
+    height: 40px;
+    font-size: 11px;
+  }
+}
 </style>
 </head>
 <body class="gigi-page">
@@ -5402,6 +5441,8 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
   <p style="margin-top:16px; font-size:11px; opacity:0.7;">© 2026 MOCAL Inc. All Rights Reserved.</p>
 </footer>
 
+<button type="button" id="backToTopBtn" class="back-to-top" aria-label="ページ先頭へ戻る">先頭へ戻る</button>
+
 <!-- ===== SCRIPTS ===== -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script>
@@ -5492,6 +5533,7 @@ const sideMenuPanel = document.getElementById('sideMenuPanel');
 const sideMenuOverlay = document.getElementById('sideMenuOverlay');
 const sideMenuCloseBtn = document.getElementById('sideMenuClose');
 const tocSection = document.getElementById('toc');
+const backToTopBtn = document.getElementById('backToTopBtn');
 
 function openSideMenu() {
   if (!sideMenuPanel || !sideMenuOverlay) return;
@@ -5567,6 +5609,16 @@ window.addEventListener('scroll', () => {
   tocSection.classList.toggle('toc-scrolled', window.scrollY > 300);
 });
 window.dispatchEvent(new Event('scroll'));
+
+window.addEventListener('scroll', () => {
+  if (!backToTopBtn) return;
+  backToTopBtn.classList.toggle('visible', window.scrollY > 420);
+}, { passive: true });
+if (backToTopBtn) {
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
 
 // ===== Analytics events =====
 function sendGaEvent(eventName, params = {}) {
