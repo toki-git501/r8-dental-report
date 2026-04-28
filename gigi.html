@@ -5597,6 +5597,7 @@ document.addEventListener('click', (e) => {
   const filterRow = document.getElementById("gigiFilterRow");
   if (!input || !filterRow) return;
 
+  const categories = Array.from(document.querySelectorAll("#gigi .gigi-category"));
   const items = Array.from(document.querySelectorAll("#gigi .gigi-item"));
   let activeFilter = "all";
 
@@ -5604,15 +5605,41 @@ document.addEventListener('click', (e) => {
 
   function applyFilter(){
     const q = norm(input.value.trim());
+    const tag = norm(activeFilter);
     let shown = 0;
+
+    // Reset state before applying new filter.
+    items.forEach((el)=>el.classList.remove("search-hit", "open"));
+
     items.forEach((el)=>{
       const text = norm(el.textContent);
       const hitQuery = !q || text.includes(q);
-      const hitTag = activeFilter === "all" || text.includes(norm(activeFilter));
+      const hitTag = activeFilter === "all" || text.includes(tag);
       const show = hitQuery && hitTag;
       el.style.display = show ? "" : "none";
-      if (show) shown += 1;
+      if (show){
+        shown += 1;
+        if (q){
+          // Auto-open matched entries so users can see hit contents immediately.
+          el.classList.add("search-hit", "open");
+        }
+      }
     });
+
+    // Hide empty categories; keep categories without Q&A items if their own text matches.
+    categories.forEach((cat)=>{
+      const catItems = Array.from(cat.querySelectorAll(".gigi-item"));
+      if (catItems.length === 0){
+        const text = norm(cat.textContent);
+        const hitQuery = !q || text.includes(q);
+        const hitTag = activeFilter === "all" || text.includes(tag);
+        cat.style.display = hitQuery && hitTag ? "" : "none";
+        return;
+      }
+      const anyVisible = catItems.some((item)=>item.style.display !== "none");
+      cat.style.display = anyVisible ? "" : "none";
+    });
+
     if (meta) meta.textContent = '表示件数: ' + shown + ' / ' + items.length;
   }
 
