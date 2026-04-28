@@ -2405,15 +2405,18 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
 
   <div class="gigi-search-wrap reveal">
     <input id="gigiSearchInput" class="gigi-search-input" type="text" placeholder="疑義解釈を検索（例: 義歯 / ベースアップ / 画像診断 / 問8）">
+    <div id="gigiSearchHint" style="margin-top:8px;font-size:12px;color:var(--text-sub);">
+      キーワードを入力すると該当Q&Aが即時表示されます。下のボタンで「その1〜その4」や重要度で絞り込みできます。
+    </div>
     <div class="gigi-filter-row" id="gigiFilterRow">
       <button type="button" class="gigi-filter-btn active" data-filter="all">すべて</button>
       <button type="button" class="gigi-filter-btn" data-filter="重要">重要</button>
       <button type="button" class="gigi-filter-btn" data-filter="注目">注目</button>
       <button type="button" class="gigi-filter-btn" data-filter="参考">参考</button>
-      <button type="button" class="gigi-filter-btn" data-filter="問1">問1</button>
-      <button type="button" class="gigi-filter-btn" data-filter="問2">問2</button>
-      <button type="button" class="gigi-filter-btn" data-filter="問3">問3</button>
-      <button type="button" class="gigi-filter-btn" data-filter="問4">問4</button>
+      <button type="button" class="gigi-filter-btn" data-filter="その1">その1</button>
+      <button type="button" class="gigi-filter-btn" data-filter="その2">その2</button>
+      <button type="button" class="gigi-filter-btn" data-filter="その3">その3</button>
+      <button type="button" class="gigi-filter-btn" data-filter="その4">その4</button>
     </div>
     <div class="gigi-search-meta" id="gigiSearchMeta">表示件数: -</div>
   </div>
@@ -5611,14 +5614,43 @@ document.addEventListener('click', (e) => {
   const categories = Array.from(document.querySelectorAll("#gigi .gigi-category"));
   const items = Array.from(document.querySelectorAll("#gigi .gigi-item"));
   const partHeaders = Array.from(document.querySelectorAll("#gigi .section-header h2.section-title"))
-    .filter((h)=>/疑義解釈（その\d/.test(h.textContent || ""));
+    .filter((h)=>/疑義解釈（その\d+）──/.test(h.textContent || ""));
   let activeFilter = "all";
 
   function norm(v){ return (v || "").toLowerCase(); }
+  function parsePartIndex(filterText){
+    const match = String(filterText || "").match(/その(\d+)/);
+    return match ? match[1] : "";
+  }
+
+  // Mark each subsection's nodes so "その1〜その4" filtering is deterministic.
+  partHeaders.forEach((h, idx)=>{
+    const headerWrap = h.closest(".section-header");
+    if (!headerWrap) return;
+    const title = String(h.textContent || "");
+    const part = parsePartIndex(title);
+    if (!part) return;
+
+    const intro = headerWrap.nextElementSibling && headerWrap.nextElementSibling.classList.contains("gigi-intro")
+      ? headerWrap.nextElementSibling
+      : null;
+
+    const start = intro ? intro.nextElementSibling : headerWrap.nextElementSibling;
+    const nextHeader = partHeaders[idx + 1] ? partHeaders[idx + 1].closest(".section-header") : null;
+    let cur = start;
+    while (cur && cur !== nextHeader){
+      if (cur.classList && cur.classList.contains("gigi-category")) {
+        cur.dataset.gigiPart = part;
+        cur.querySelectorAll(".gigi-item").forEach((item)=>{ item.dataset.gigiPart = part; });
+      }
+      cur = cur.nextElementSibling;
+    }
+  });
 
   function applyFilter(){
     const q = norm(input.value.trim());
     const tag = norm(activeFilter);
+    const selectedPart = parsePartIndex(activeFilter);
     let shown = 0;
 
     // Reset state before applying new filter.
@@ -5627,8 +5659,9 @@ document.addEventListener('click', (e) => {
     items.forEach((el)=>{
       const text = norm(el.textContent);
       const hitQuery = !q || text.includes(q);
-      const hitTag = activeFilter === "all" || text.includes(tag);
-      const show = hitQuery && hitTag;
+      const partMatch = !selectedPart || (el.dataset.gigiPart === selectedPart);
+      const hitTag = activeFilter === "all" || selectedPart || text.includes(tag);
+      const show = hitQuery && hitTag && partMatch;
       el.style.display = show ? "" : "none";
       if (show){
         shown += 1;
@@ -5642,15 +5675,16 @@ document.addEventListener('click', (e) => {
     // Hide empty categories; keep categories without Q&A items if their own text matches.
     categories.forEach((cat)=>{
       const catItems = Array.from(cat.querySelectorAll(".gigi-item"));
+      const partMatch = !selectedPart || (cat.dataset.gigiPart === selectedPart);
       if (catItems.length === 0){
         const text = norm(cat.textContent);
         const hitQuery = !q || text.includes(q);
-        const hitTag = activeFilter === "all" || text.includes(tag);
-        cat.style.display = hitQuery && hitTag ? "" : "none";
+        const hitTag = activeFilter === "all" || selectedPart || text.includes(tag);
+        cat.style.display = hitQuery && hitTag && partMatch ? "" : "none";
         return;
       }
       const anyVisible = catItems.some((item)=>item.style.display !== "none");
-      cat.style.display = anyVisible ? "" : "none";
+      cat.style.display = anyVisible && partMatch ? "" : "none";
     });
 
     // Hide subsection headers/intros when that subsection has no visible categories.
