@@ -1406,9 +1406,32 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
 .gigi-search-wrap { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:16px; margin:18px 0 8px; }
 .gigi-search-input { width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:10px; font-size:14px; }
 .gigi-search-meta { font-size:12px; color:var(--text-sub); margin-top:8px; }
-.gigi-filter-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
-.gigi-filter-btn { border:1px solid var(--border); background:#fff; color:var(--text); font-size:12px; font-weight:600; border-radius:999px; padding:5px 10px; cursor:pointer; }
+.gigi-filter-row {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:8px;
+  margin-top:10px;
+}
+.gigi-filter-btn {
+  border:1px solid var(--border);
+  background:#fff;
+  color:var(--text);
+  font-size:12px;
+  font-weight:600;
+  border-radius:999px;
+  padding:7px 10px;
+  cursor:pointer;
+  min-height:34px;
+  text-align:center;
+}
 .gigi-filter-btn.active { background:var(--navy); color:#fff; border-color:var(--navy); }
+.gigi-filter-btn:hover { border-color:var(--navy-light); }
+@media (max-width:768px){
+  .gigi-filter-row { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
+@media (max-width:480px){
+  .gigi-filter-row { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
 </style>
 </head>
 <body class="gigi-page">
