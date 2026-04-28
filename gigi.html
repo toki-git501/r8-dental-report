@@ -1391,9 +1391,27 @@ body.side-menu-open { overflow:hidden; }
   .bu-mail-table th, .bu-mail-table td { padding:5px 6px; }
   .bu-mail-addr { font-size:11px; }
 }
+
+/* ===== GIGI PAGE LAYOUT ===== */
+body.gigi-page #summary,
+body.gigi-page #premise,
+body.gigi-page #compare,
+body.gigi-page #points,
+body.gigi-page #forecast,
+body.gigi-page #checklist { display:none !important; }
+body.gigi-page .toc-section,
+body.gigi-page .side-menu-panel,
+body.gigi-page .side-menu-overlay { display:none !important; }
+body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-size:16px; margin-left:8px; color:var(--teal); }
+.gigi-search-wrap { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:16px; margin:18px 0 8px; }
+.gigi-search-input { width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:10px; font-size:14px; }
+.gigi-search-meta { font-size:12px; color:var(--text-sub); margin-top:8px; }
+.gigi-filter-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+.gigi-filter-btn { border:1px solid var(--border); background:#fff; color:var(--text); font-size:12px; font-weight:600; border-radius:999px; padding:5px 10px; cursor:pointer; }
+.gigi-filter-btn.active { background:var(--navy); color:#fff; border-color:var(--navy); }
 </style>
 </head>
-<body>
+<body class="gigi-page">
 
 <!-- ===== NAV ===== -->
 <nav class="nav" id="mainNav">
@@ -1462,7 +1480,7 @@ body.side-menu-open { overflow:hidden; }
       <a href="#premise" class="toc-item"><span class="toc-num">02</span><span class="toc-text">前提条件の比較</span></a>
       <a href="#compare" class="toc-item"><span class="toc-num">03</span><span class="toc-text">これまでの改定経緯</span></a>
       <a href="#points" class="toc-item"><span class="toc-num">04</span><span class="toc-text">主要点数の新旧比較</span></a>
-      <a href="gigi.html" class="toc-item"><span class="toc-num">05</span><span class="toc-text">疑義解釈（その1〜4）</span></a>
+      <a href="#gigi" class="toc-item"><span class="toc-num">05</span><span class="toc-text">疑義解釈（その1〜4）</span></a>
       <a href="#forecast" class="toc-item"><span class="toc-num">06</span><span class="toc-text">歯科業界の未来予測</span></a>
       <a href="#checklist" class="toc-item"><span class="toc-num">07</span><span class="toc-text">実施チェックリスト</span></a>
       <a href="#references" class="toc-item"><span class="toc-num">08</span><span class="toc-text">参照ソース一覧</span></a>
@@ -1481,7 +1499,7 @@ body.side-menu-open { overflow:hidden; }
     <li><a href="#premise" class="side-menu-link"><span class="num">02</span><span>前提条件の比較</span></a></li>
     <li><a href="#compare" class="side-menu-link"><span class="num">03</span><span>これまでの改定経緯</span></a></li>
     <li><a href="#points" class="side-menu-link"><span class="num">04</span><span>主要点数の新旧比較</span></a></li>
-    <li><a href="gigi.html" class="side-menu-link"><span class="num">05</span><span>疑義解釈（その1〜4）</span></a></li>
+    <li><a href="#gigi" class="side-menu-link"><span class="num">05</span><span>疑義解釈（その1〜4）</span></a></li>
     <li><a href="#forecast" class="side-menu-link"><span class="num">06</span><span>歯科業界の未来予測</span></a></li>
     <li><a href="#checklist" class="side-menu-link"><span class="num">07</span><span>実施チェックリスト</span></a></li>
     <li><a href="#references" class="side-menu-link"><span class="num">08</span><span>参照ソース一覧</span></a></li>
@@ -2369,29 +2387,731 @@ body.side-menu-open { overflow:hidden; }
 
 <hr class="divider">
 
-<!-- ===== SECTION 05: 疑義解釈（別ページ導線）===== -->
+<!-- ===== SECTION 05: 疑義解釈 ===== -->
 <section class="section" id="gigi">
   <div class="section-header reveal">
     <div class="section-num">SECTION 05</div>
-    <h2 class="section-title">疑義解釈（その1〜その4）</h2>
+    <h2 class="section-title">疑義解釈（その1〜その4）── 歯科診療報酬点数表関係</h2>
     <p class="section-desc">
-      疑義解釈は内容量が多いため、読みやすさを優先して専用ページへ分離しました。
+      厚生労働省保険局医療課 事務連絡「疑義解釈資料の送付について」の歯科関連Q&Aを掲載しています。
+    </p>
+    <p style="margin-top:10px;"><a class="btn btn-secondary" href="index.html">← トップページへ戻る</a></p>
+  </div>
+
+  <div class="gigi-intro reveal">
+    <strong>出典：</strong>令和8年3月23日 厚生労働省保険局医療課 事務連絡「疑義解釈資料の送付について（その1）」別添3<br>
+    令和8年6月1日施行の診療報酬改定に関して、現場から寄せられた疑問に対する公式回答（全8問）です。
+  </div>
+
+  <div class="gigi-search-wrap reveal">
+    <input id="gigiSearchInput" class="gigi-search-input" type="text" placeholder="疑義解釈を検索（例: 義歯 / ベースアップ / 画像診断 / 問8）">
+    <div class="gigi-filter-row" id="gigiFilterRow">
+      <button type="button" class="gigi-filter-btn active" data-filter="all">すべて</button>
+      <button type="button" class="gigi-filter-btn" data-filter="重要">重要</button>
+      <button type="button" class="gigi-filter-btn" data-filter="注目">注目</button>
+      <button type="button" class="gigi-filter-btn" data-filter="参考">参考</button>
+      <button type="button" class="gigi-filter-btn" data-filter="問1">問1</button>
+      <button type="button" class="gigi-filter-btn" data-filter="問2">問2</button>
+      <button type="button" class="gigi-filter-btn" data-filter="問3">問3</button>
+      <button type="button" class="gigi-filter-btn" data-filter="問4">問4</button>
+    </div>
+    <div class="gigi-search-meta" id="gigiSearchMeta">表示件数: -</div>
+  </div>
+
+  <!-- 初診料 -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">初診料</div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問1</span>
+        <span class="gigi-q-text">「A000」初診料の注1の施設基準に規定する、新興感染症に対する対策の研修について、「（抗菌薬の適正使用を含む。）」が追加されたが、どのような内容の研修が該当するのか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          抗菌薬の適正使用に関する研修の内容は、「<strong>抗微生物薬適正使用の手引き 第四版 歯科編</strong>」（厚生労働省健康・生活衛生局感染症対策部感染症対策課・医政局歯科保健課）を参考にすること。<br><br>
+          なお、令和8年5月31日までに受講する研修については、当該内容が含まれていなくてもよいが、<strong>令和8年6月1日以降に受講する研修には、本内容が含まれている必要がある</strong>。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 電子的歯科診療情報連携体制整備加算 -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">電子的歯科診療情報連携体制整備加算</div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問2</span>
+        <span class="gigi-q-text">令和8年5月31日において現に医療DX推進体制整備加算及び診療録管理体制加算の施設基準を届け出ている保険医療機関が、同年6月1日以降に電子的歯科診療情報連携体制整備加算及び電子的診療情報連携体制整備加算を算定する場合は、改めて届出を行う必要があるか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          <strong>改めて届出を行う必要がある。</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 重症度、医療・看護必要度 -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">重症度、医療・看護必要度</div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問3</span>
+        <span class="gigi-q-text">重症度、医療・看護必要度IIを用いた評価を行うことが困難であることに正当な理由がある場合に「主に歯科の入院患者を受け入れる病棟」が追加されたが、具体的にはどのような病棟か。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          評価を行う入院患者のうち、<strong>歯科の患者の割合が8割以上の病棟</strong>が該当する。<br><br>
+          なお、「主に歯科の入院患者を受け入れる病棟の重症度、医療・看護必要度の取扱いについて」（令和7年8月7日付け事務連絡）を参照すること。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 特別管理加算 -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">特別管理加算</div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問4</span>
+        <span class="gigi-q-text">「B000-4」歯科疾患管理料の注12に規定する特別管理加算における、「障害者歯科治療」とは、具体的にはどのようなものか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          <strong>障害又は難病を有する患者に対する治療</strong>が該当する。<br><br>
+          なお、障害を有する患者に対する治療については、公益社団法人日本障害者歯科学会の「日本障害者歯科学会研修カリキュラム」を参考とすること。
+        </div>
+      </div>
+    </div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問5</span>
+        <span class="gigi-q-text">特別管理加算の施設基準における都道府県等との連携とは、都道府県等からの委託を受けた保険医療機関が、障害者に対する歯科診療の提供や事業を実施する場合も、これに含まれるか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          <strong>含まれる。</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 口腔機能実地指導料 -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">口腔機能実地指導料</div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問6</span>
+        <span class="gigi-q-text">「B001-2-2」口腔機能実地指導料の施設基準に規定する研修について、「歯科医師又は歯科衛生士を主体とする団体又は学会等が主催する」とあるが、具体的にどのような団体又は学会か。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          例えば、<strong>歯科医師会や歯科衛生士会等の定期的に学術研修を実施している団体や日本老年歯科医学会、日本小児歯科学会等の関係学会</strong>が考えられる。
+        </div>
+      </div>
+    </div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問7</span>
+        <span class="gigi-q-text">「B001-2-2」口腔機能実地指導料の施設基準に規定する「口腔機能発達不全症及び口腔機能低下症の概要、検査法、訓練法及び実地指導方法等（入院患者や在宅・施設療養患者への対応を含むものであること。）に係る研修」は、オンラインによる受講は可能か。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          <strong>原則、対面とする。</strong>ただし、やむを得ずオンライン会議システム等を活用して研修を実施する場合は、以下の条件を満たす形式で実施すること。
+          <ul>
+            <li>出席状況の確認、研修時間の確保、受講者からの質問への対応、研修内容の理解度の確認等が行えること</li>
+            <li>オンライン会議システムを活用する場合、受講者は原則としてカメラをオンにし、主催者が出席状況を確認できるようにする</li>
+            <li>受講者からの質問等について、チャットシステムや音声発信を用いることや、必要に応じ質問・回答について研修会のWebページに掲載する</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問8</span>
+        <span class="gigi-q-text">「B001-2-2」口腔機能実地指導料の施設基準について特掲診療料施設基準通知別添1の第13の4の2の（1）において、「令和9年5月31日までの間、1の（1）に該当するものとみなす。」とされているが、「口腔機能発達不全症及び口腔機能低下症の概要、検査法、訓練法及び実地指導方法等に係る研修」に関する届出について、どのように考えればよいか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          <strong>令和9年5月診療分まで</strong>に関する施設基準の届出に限っては、「口腔機能実地指導料の施設基準に係る届出書添付書類」（様式17の4）に受講歴を記載する代わりに、口腔機能発達不全症及び口腔機能低下症の実地指導に係る研修を<strong>令和9年5月までに受講予定である旨を記載</strong>すればよい。<br><br>
+          ただし、令和9年6月診療分以降も引き続き算定する場合は、当該研修の受講歴を記載した上で、再度、施設基準に係る届出を行う必要がある。<br><br>
+          なお、受講の申込みをしていたが受講が認められなかった場合や受講を中断する場合には、遅延なく届出を辞退すること。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 解説ポイント -->
+  <div class="gigi-category reveal" style="margin-top:40px;">
+    <div class="gigi-category-title" style="border-left-color:var(--teal);">解説ポイント ── 歯科医院が押さえるべき実務への影響</div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-top:12px;">
+
+      <div style="margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">重要</span>
+          <strong style="font-size:15px;color:var(--navy);">初診料の研修要件が実質強化（問1）</strong>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
+          6月1日以降に受講する新興感染症対策の研修には「抗菌薬の適正使用」の内容が<strong>必須</strong>となる。5月末までの駆け込み受講であれば旧要件でOKだが、<strong>6月以降は「抗微生物薬適正使用の手引き 第四版 歯科編」の内容を含む研修</strong>でなければ施設基準を満たさない。研修の開催案内を確認し、内容にAMR（薬剤耐性）対策が含まれているか事前に確認すること。
+        </p>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">重要</span>
+          <strong style="font-size:15px;color:var(--navy);">電子的歯科診療情報連携体制整備加算は届出し直し（問2）</strong>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
+          現在「医療DX推進体制整備加算」を届け出ている医院も、6月1日以降に新加算を算定するには<strong>改めて届出が必要</strong>。自動移行ではない点に注意。届出漏れ＝算定不可となるため、<strong>5月中に届出書類を準備し、6月1日までに提出を完了</strong>させること。
+        </p>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:var(--gold);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">注目</span>
+          <strong style="font-size:15px;color:var(--navy);">特別管理加算の対象が明確化（問4・5）</strong>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
+          歯科疾患管理料の「特別管理加算」における障害者歯科治療の範囲が明確になった。<strong>障害又は難病を有する患者への治療が該当</strong>し、日本障害者歯科学会の研修カリキュラムが参考基準。都道府県等からの委託事業も連携要件に含まれるため、自治体の障害者歯科事業に参加している医院は<strong>算定要件を満たしやすくなった</strong>。
+        </p>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:var(--gold);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">注目</span>
+          <strong style="font-size:15px;color:var(--navy);">口腔機能実地指導料の研修は原則対面（問6〜8）</strong>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
+          口腔機能実地指導料の施設基準に必要な研修は<strong>原則対面</strong>。オンラインは「やむを得ない場合」に限定され、カメラON・質疑応答の確保等の厳格な条件が付く。<br>
+          一方、<strong>令和9年5月までの経過措置</strong>があり、届出時点で未受講でも「受講予定」の旨を記載すれば届出可能。ただしR9年6月以降も算定継続する場合は、受講歴を記載した再届出が必要。<strong>早めの研修受講スケジュール確保</strong>が実務上のポイント。
+        </p>
+      </div>
+
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:var(--blue);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">参考</span>
+          <strong style="font-size:15px;color:var(--navy);">重症度、医療・看護必要度IIの歯科特例（問3）</strong>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
+          歯科入院患者が8割以上を占める病棟は、重症度、医療・看護必要度IIの評価が困難な場合の正当な理由として認められた。<strong>有床の歯科診療を行う病院</strong>に関連する内容。一般歯科医院は直接の影響は限定的だが、病院歯科との連携時に把握しておくとよい。
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="gigi-source reveal">
+    出典：厚生労働省保険局医療課「疑義解釈資料の送付について（その1）」（令和8年3月23日事務連絡）別添3
+  </div>
+
+  <!-- ===== 疑義解釈（その2）===== -->
+  <hr style="border:none;border-top:2px dashed var(--border);margin:40px 0;">
+
+  <div class="section-header reveal" style="padding-top:0;">
+    <h2 class="section-title" style="font-size:22px;">疑義解釈（その2）── 歯科診療報酬点数表関係</h2>
+    <p class="section-desc">
+      令和8年4月1日付 事務連絡「疑義解釈資料の送付について（その2）」別添4（歯科診療報酬点数表関係）全10問。<br>
+      <span style="font-size:12px;color:var(--text-sub);">※令和8年4月9日付 一部訂正は医科（問104）のみ。歯科部分の訂正はありません。</span>
     </p>
   </div>
 
-  <div class="card reveal" style="padding:24px; border:1px solid var(--border);">
-    <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:10px;">
-      <span style="display:inline-block;background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">更新</span>
-      <strong style="font-size:16px;color:var(--navy);">疑義解釈 専用ページ（検索対応）</strong>
+  <div class="gigi-intro reveal">
+    <strong>出典：</strong>令和8年4月1日 厚生労働省保険局医療課 事務連絡「<a class="reference-link" href="gigi_kaisyaku_r8_0401_sono2.pdf" target="_blank" rel="noopener noreferrer" style="color:var(--blue);text-decoration:underline;">疑義解釈資料の送付について（その2）</a>」別添4<br>
+    令和8年6月1日施行の診療報酬改定に関する追加の公式回答（歯科関連 全10問）です。
+  </div>
+
+  <!-- 地域歯科医療加算 -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">地域歯科医療加算</div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問1</span>
+        <span class="gigi-q-text">「A000」初診料の「注9」及び「A002」再診料の「注7」に規定する地域歯科医療加算について、算定留意事項通知において「ハ その他イ又はロに準ずるものである。」とされているが、どのようなものか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          例えば、次に掲げるものをいう。<br>
+          ・<strong>都道府県等からの委託等により行う巡回診療</strong>であるもの。<br>
+          ・都道府県等が実施する歯科保健医療活動に<strong>歯科巡回診療車が活用されている</strong>もの。
+        </div>
+      </div>
     </div>
-    <p style="font-size:14px;color:var(--text);line-height:1.85;margin:0 0 14px 0;">
-      その1〜その4のQ&Aと解説ポイントを専用ページに集約しました。キーワード検索と絞り込みで、必要な項目へすぐ移動できます。
+  </div>
+
+  <!-- 情報通信機器を用いた歯科診療 -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">情報通信機器を用いた歯科診療</div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問2</span>
+        <span class="gigi-q-text">「A000」初診料の「注16」における「特に情報通信機器を用いた歯科診療を行うことが必要と認められるもの」について、「災害が発生した地域であって、別に診療報酬上の措置が講じられている地域に該当する場合」が追加されたが、「災害発生時における保険診療関係等の取扱いについて」が適用された場合は該当するのか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          <strong>該当しない。</strong>「災害が発生した地域であって、別に診療報酬上の措置が講じられている地域に該当する場合」は、当該通知のなお書に記載する<strong>個別の通知が発出された場合</strong>に該当する。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 歯科疾患管理料 -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">歯科疾患管理料 <span style="display:inline-block;background:var(--coral);color:#fff;font-size:10px;font-weight:700;padding:1px 8px;border-radius:10px;margin-left:4px;">重要</span></div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問3</span>
+        <span class="gigi-q-text">「B000-4」歯科疾患管理料について、令和8年度診療報酬改定において、有床義歯に係る治療のみを行う患者に対しても算定可能とされたが、傷病名がMTや義歯不適合（義歯フテキ）等の有床義歯に係る病名のみの場合も算定可能か。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          <strong>算定可能。</strong><br><br>
+          なお、これに伴い「疑義解釈資料の送付について（その7）」（平成21年1月28日事務連絡）別添の問2は廃止する。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 歯周病患者画像活用指導料 -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">歯周病患者画像活用指導料</div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問4</span>
+        <span class="gigi-q-text">「B001-3」歯周病患者画像活用指導料について、「注1」及び「注2」に「区分番号D002に掲げる歯周病検査を実施する場合において」とあるが、歯周病検査の実施日以降に行う必要があるのか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          <strong>そのとおり。</strong><br><br>
+          なお、これに伴い、「疑義解釈資料の送付について（その5）」（平成30年7月10日事務連絡）別添2の問8は廃止する。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 口腔機能実地指導料（その2） -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">口腔機能実地指導料</div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問5</span>
+        <span class="gigi-q-text">「B001-2-2」口腔機能実地指導料の施設基準に規定する「口腔機能発達不全症及び口腔機能低下症の概要、検査法、訓練法及び実地指導方法等に係る研修」は、口腔機能発達不全症及び口腔機能低下症で異なる研修をそれぞれ受講した場合も該当するか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          <strong>該当する。</strong><br><br>
+          なお、届出に当たっては、「特掲診療料の施設基準等及びその届出に関する手続きの取扱いについて」（令和8年3月5日保医発 0305 第8号）別添2の<strong>様式17の4に受講したそれぞれの研修を記載</strong>すること。
+        </div>
+      </div>
+    </div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問6</span>
+        <span class="gigi-q-text">「C001」訪問歯科衛生指導料を算定した日に、「B001-2-2」口腔機能実地指導料を算定できるか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          口腔機能実地指導料に係る指導を実施した場合は、<strong>算定可能。</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 訪問歯科衛生指導料 -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">訪問歯科衛生指導料</div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問7</span>
+        <span class="gigi-q-text">算定留意事項通知の「B001-2」歯科衛生実地指導料の留意事項通知（3）、「B001-2-2」口腔機能実地指導料の留意事項通知（2）及び「C001」訪問歯科衛生指導料の留意事項通知（9）において、患者に提供する文書に当該指導を行った歯科衛生士の氏名を記載することとされているが、必ず姓名双方の記載が必要なのか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          <strong>カスタマーハラスメント防止等の観点から、名字のみの記載とすることは可能。</strong><br><br>
+          なお、これに伴い、「疑義解釈資料の送付について（その2）」（令和6年4月12日事務連絡）別添3の問12は廃止する。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 画像診断 -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">画像診断 <span style="display:inline-block;background:var(--coral);color:#fff;font-size:10px;font-weight:700;padding:1px 8px;border-radius:10px;margin-left:4px;">重要</span></div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問8</span>
+        <span class="gigi-q-text">画像診断の「通則2」及び「通則3」の規定により、所定点数の100分の50に相当する点数を算定する場合について、同日に撮影した2枚目の診断料と撮影料の取扱い如何（5パターン）。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          それぞれ以下のとおりである。<br><br>
+          <strong>① 根尖性歯周炎の診断→同日に偏心撮影</strong>：診断料及び撮影料は<strong>所定点数の100分の50</strong>により算定する。<br><br>
+          <strong>②〜⑤ 根尖性歯周炎→歯科用3次元エックス線断層撮影 ／ 根尖性歯周炎→根管充填後の確認撮影 ／ 歯周病→パノラマ後にう蝕確定診断のためデンタル ／ 両側大臼歯の抜歯→パノラマ後に抜歯窩確認のためパノラマ</strong>：いずれも<strong>所定点数</strong>により算定する。<br><br>
+          なお、③の場合において、同一歯に対して根管治療中に、歯科用根管リーマーによる試適のための歯科エックス線撮影を実施する場合や、根管充填材の試適のための歯科エックス線撮影を、根管充填と同日に行う場合も所定点数により算定する。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 歯科口腔リハビリテーション料1 -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">歯科口腔リハビリテーション料1</div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問9</span>
+        <span class="gigi-q-text">病名がMTのみの患者に対して、「B013」新製有床義歯管理料を算定した月と同月に、口腔機能の回復又は維持を目的とした新製有床義歯の調整又は機能的指導を行った場合は「H001-2」歯科口腔リハビリテーション料1の「1 有床義歯の場合」は算定可能か。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          <strong>算定可能。</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 病理診断 -->
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">病理診断</div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問10</span>
+        <span class="gigi-q-text">「別の原因で病変が独立して生じており、組織学的形態が異なる場合は、2回を限度として算定する。」としているが、上下若しくは左右の同一の組織に病変が生じている場合はそれぞれ算定可能か。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">回答</div>
+        <div class="gigi-a-text">
+          それぞれ病理診断が必要な場合は、<strong>2回を限度として算定可能。</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 解説ポイント（その2） -->
+  <div class="gigi-category reveal" style="margin-top:40px;">
+    <div class="gigi-category-title" style="border-left-color:var(--teal);">解説ポイント ── その2で押さえるべき実務への影響</div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-top:12px;">
+
+      <div style="margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">重要</span>
+          <strong style="font-size:15px;color:var(--navy);">歯科疾患管理料がMT・義歯フテキのみでも算定可能に（問3）</strong>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
+          R8改定で有床義歯に係る治療のみの患者も歯管の算定対象に追加されたが、今回の疑義解釈で<strong>傷病名がMTや義歯不適合のみでも算定可能</strong>と明確化された。これまで義歯の管理のみで歯管を算定できなかったケースが解消される。<strong>義歯患者全体の算定漏れを見直す</strong>好機。一律90点のため、初診月は従来比+10点の増収にもなる。
+        </p>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">重要</span>
+          <strong style="font-size:15px;color:var(--navy);">画像診断の同日2枚目の算定ルールが5パターンで明確化（問8）</strong>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
+          同日に2枚以上撮影した場合の「100分の50」ルールの適用範囲が具体例で示された。<strong>同一疾患の同一種類の撮影のみが100分の50</strong>となり、異なる目的・異なる撮影法の場合は所定点数で算定可能。根管治療中のリーマー試適撮影なども所定点数で算定できることが明記された。<strong>レセプトの減点リスクが軽減</strong>される重要な明確化。
+        </p>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:var(--gold);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">注目</span>
+          <strong style="font-size:15px;color:var(--navy);">口腔機能実地指導料の研修は別々の受講でもOK（問5）</strong>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
+          口腔機能発達不全症と口腔機能低下症の研修を<strong>別々に受講した場合も施設基準を満たす</strong>ことが明確化。1回の研修で両方を網羅する必要はない。様式17の4にそれぞれの研修を記載して届出すればよい。研修スケジュールの選択肢が広がる。
+        </p>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:var(--gold);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">注目</span>
+          <strong style="font-size:15px;color:var(--navy);">訪問歯科衛生指導料の日に口腔機能実地指導料も算定可能（問6）</strong>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
+          訪問歯科衛生指導料と口腔機能実地指導料の<strong>同日算定が可能</strong>であることが明示された。訪問診療で口腔機能に関する実地指導も行った場合、両方を算定できる。<strong>訪問歯科の収益向上</strong>につながるポイント。
+        </p>
+      </div>
+
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:var(--blue);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">参考</span>
+          <strong style="font-size:15px;color:var(--navy);">DHの氏名記載は名字のみでOK ─ カスハラ対策（問7）</strong>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
+          患者に提供する文書への歯科衛生士の氏名記載について、<strong>カスタマーハラスメント防止の観点から名字のみで可</strong>とされた。これまで姓名両方の記載が必要とされていた旧解釈（R6その2 別添3 問12）は廃止。<strong>院内の文書テンプレートを見直す機会</strong>。
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="gigi-source reveal">
+    出典：厚生労働省保険局医療課「疑義解釈資料の送付について（その2）」（令和8年4月1日事務連絡）別添4
+  </div>
+
+  <!-- ===== 疑義解釈（その3）===== -->
+  <hr style="border:none;border-top:2px dashed var(--border);margin:40px 0;">
+
+  <div class="section-header reveal" style="padding-top:0;">
+    <h2 class="section-title" style="font-size:22px;">疑義解釈（その3）── 歯科診療報酬点数表関係</h2>
+    <p class="section-desc">
+      令和8年4月20日付 事務連絡「疑義解釈資料の送付について（その3）」別添3（歯科診療報酬点数表関係）の実務ポイント。
     </p>
-    <a class="btn btn-primary" href="gigi.html" style="display:inline-flex;align-items:center;gap:8px;">
-      疑義解釈ページを開く →
-    </a>
+  </div>
+
+  <div class="gigi-intro reveal">
+    <strong>出典：</strong>令和8年4月20日 厚生労働省保険局医療課 事務連絡「<a class="reference-link" href="gigi_kaisyaku_r8_0420_sono3.pdf" target="_blank" rel="noopener noreferrer" style="color:var(--blue);text-decoration:underline;">疑義解釈資料の送付について（その3）</a>」別添3<br>
+    新製有床義歯管理料、画像診断、暫間歯冠補綴装置、歯周病継続支援治療、有床義歯に関する取扱いが明確化されました。
+  </div>
+
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">その3 実務ポイント（折りたたみ）</div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問1</span>
+        <span class="gigi-q-text">新製有床義歯管理料は、同日複数義歯装着時に文書を装置ごとに分ける必要があるか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">実務ポイント</div>
+        <div class="gigi-a-text">
+          <strong>1枚の文書で可</strong>。複数義歯分の管理情報（取扱方法等）が網羅されていれば差し支えない。装置別の別紙必須運用は不要。
+        </div>
+      </div>
+    </div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問2-3</span>
+        <span class="gigi-q-text">顎関節の追加撮影と電子画像管理加算は、同日算定でどこまで認められるか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">実務ポイント</div>
+        <div class="gigi-a-text">
+          顎関節の2枚目撮影でも条件を満たせば<strong>診断料・撮影料は所定点数で算定可能</strong>。電子画像管理加算も「同一部位」「同時」に該当しなければ算定可能。撮影目的と部位の記録をカルテに明記すること。
+        </div>
+      </div>
+    </div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問4</span>
+        <span class="gigi-q-text">暫間歯冠補綴装置の再算定・暫間固定はどの条件で算定できるか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">実務ポイント</div>
+        <div class="gigi-a-text">
+          疑義解釈で可否が明示。<strong>再算定の条件をレセコン設定・院内ルールに反映</strong>し、暫間固定の要件に該当する症例で算定漏れを防ぐ。
+        </div>
+      </div>
+    </div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問5</span>
+        <span class="gigi-q-text">歯周病継続支援治療の歯周病検査はどう選べばよいか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">実務ポイント</div>
+        <div class="gigi-a-text">
+          「D002」のいずれかで可。年齢・病態に応じて選択し、<strong>乳歯混在症例でも算定は永久歯歯数基準</strong>で判断する。
+        </div>
+      </div>
+    </div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問6</span>
+        <span class="gigi-q-text">有床義歯で貴金属を使う場合の記載要件は何か。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">実務ポイント</div>
+        <div class="gigi-a-text">
+          破折リスク等の<strong>歯科医学的理由を診療録に記載</strong>する必要がある。監査対応として記載テンプレート化が有効。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gigi-category reveal" style="margin-top:28px;">
+    <div class="gigi-category-title" style="border-left-color:var(--teal);">解説ポイント ── その3</div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-top:12px;">
+      <div style="margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">重要</span>
+          <strong style="font-size:15px;color:var(--navy);">有床義歯・暫間補綴の算定実務は「要件記録」が最優先</strong>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
+          その3では、新製有床義歯管理料（問1）と暫間歯冠補綴装置（問4）の運用が具体化された。<strong>文書枚数ではなく記載内容の充足</strong>、および再算定条件の明確化がポイント。院内ではカルテテンプレートとレセコンコメントを連動させ、返戻・査定の予防線を張ることが重要。
+        </p>
+      </div>
+      <div style="margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:var(--gold);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">注目</span>
+          <strong style="font-size:15px;color:var(--navy);">画像診断と歯周病継続支援治療の「算定根拠」を残す設計が鍵</strong>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
+          顎関節追加撮影・電子画像管理加算（問2-3）は、撮影目的や同時/同一部位の判断根拠を記録できるかで算定安定性が変わる。歯周病継続支援治療（問5）も、<strong>D002選択理由と永久歯歯数基準の整合</strong>を残しておくと運用がブレない。
+        </p>
+      </div>
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:var(--blue);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">参考</span>
+          <strong style="font-size:15px;color:var(--navy);">貴金属使用時の理由記載は監査対応の基本（問6）</strong>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
+          有床義歯で歯科用貴金属を使う場合は、破折リスク等の医学的理由を診療録に明記する必要がある。<strong>「なぜこの材料か」を説明できる記録</strong>を標準化すると、後日の照会対応が容易になる。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="gigi-source reveal">
+    出典：厚生労働省保険局医療課「疑義解釈資料の送付について（その3）」（令和8年4月20日事務連絡）別添3
+  </div>
+
+  <!-- ===== 疑義解釈（その4）===== -->
+  <hr style="border:none;border-top:2px dashed var(--border);margin:40px 0;">
+
+  <div class="section-header reveal" style="padding-top:0;">
+    <h2 class="section-title" style="font-size:22px;">疑義解釈（その4）── 歯科外来・技工所ベースアップ関連</h2>
+    <p class="section-desc">
+      令和8年4月21日付 事務連絡「疑義解釈資料の送付について（その4）」別添2（看護職員処遇改善評価料及びベースアップ評価料関係）から、歯科実務に直結する論点を整理。
+    </p>
+  </div>
+
+  <div class="gigi-intro reveal">
+    <strong>出典：</strong>令和8年4月21日 厚生労働省保険局医療課 事務連絡「<a class="reference-link" href="gigi_kaisyaku_r8_0421_sono4.pdf" target="_blank" rel="noopener noreferrer" style="color:var(--blue);text-decoration:underline;">疑義解釈資料の送付について（その4）</a>」別添2<br>
+    ベースアップ評価料の対象範囲と、歯科技工所ベースアップ支援料の算定・支払実務が具体化されました。
+  </div>
+
+  <div class="gigi-category reveal">
+    <div class="gigi-category-title">その4 実務ポイント（折りたたみ）</div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問1</span>
+        <span class="gigi-q-text">ベースアップ評価料の対象外職員はどこまでか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">実務ポイント</div>
+        <div class="gigi-a-text">
+          歯科外来・在宅ベースアップ評価料でも、<strong>開設者・管理者・法人代表者・役員は対象外</strong>。対象者マスタと実績報告対象を一致させること。
+        </div>
+      </div>
+    </div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問2</span>
+        <span class="gigi-q-text">派遣職員の賃金改善に伴う消費税増加分はどう扱うか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">実務ポイント</div>
+        <div class="gigi-a-text">
+          消費税増加分は<strong>実績報告では計上可</strong>。ただし、評価料（Ⅱ）の区分計算に使う月額賃金総額には含めない。集計ロジックを分離する。
+        </div>
+      </div>
+    </div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問3</span>
+        <span class="gigi-q-text">歯科技工所ベースアップ支援料は未装着でも算定できるか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">実務ポイント</div>
+        <div class="gigi-a-text">
+          患者未来院・治療中止・死亡等で装着できない場合でも、製作等が完了していれば<strong>未来院請求時に算定可</strong>。
+        </div>
+      </div>
+    </div>
+    <div class="gigi-item">
+      <div class="gigi-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="gigi-q-label">問4-5</span>
+        <span class="gigi-q-text">技工所への支払いと証憑管理はどう運用すべきか。</span>
+        <span class="gigi-q-toggle">▼</span>
+      </div>
+      <div class="gigi-a">
+        <div class="gigi-a-label">実務ポイント</div>
+        <div class="gigi-a-text">
+          支援料は製作技工費へ<strong>まとめて支払い可能</strong>で、消費税増額分への充当も可。請求書等で支援料相当が判別できる形を残し、保存すること。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gigi-category reveal" style="margin-top:28px;">
+    <div class="gigi-category-title" style="border-left-color:var(--teal);">解説ポイント ── その4</div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-top:12px;">
+      <div style="margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:var(--coral);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">重要</span>
+          <strong style="font-size:15px;color:var(--navy);">ベースアップ評価料は対象者定義の誤りが最も大きなリスク</strong>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
+          その4では、開設者・管理者・法人役員が対象外である点（問1）が再確認された。<strong>対象者マスタと賃金改善実績報告の突合</strong>を月次で回すことが、後の修正負荷を最小化する。
+        </p>
+      </div>
+      <div style="margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:var(--gold);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">注目</span>
+          <strong style="font-size:15px;color:var(--navy);">派遣職員の消費税は「区分計算」と「実績報告」で扱いが異なる</strong>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
+          問2の整理により、消費税増加分は実績報告で計上可だが区分計算には不算入。<strong>同じ金額でも用途別に計上先が異なる</strong>ため、シート設計を分けて管理することが実務上必須。
+        </p>
+      </div>
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="background:var(--blue);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;">参考</span>
+          <strong style="font-size:15px;color:var(--navy);">歯科技工所ベースアップ支援料は請求証憑の作り込みが重要</strong>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.85;margin-left:4px;">
+          未装着時算定可（問3）、まとめ払い可・消費税充当可（問4-5）だが、<strong>支援料相当が判別できる請求書保管</strong>が前提。技工所との請求書フォーマットを事前に統一しておくと監査対応が安定する。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="gigi-source reveal">
+    出典：厚生労働省保険局医療課「疑義解釈資料の送付について（その4）」（令和8年4月21日事務連絡）別添2
   </div>
 </section>
+
 
 <hr class="divider">
 
@@ -4870,5 +5590,44 @@ document.addEventListener('click', (e) => {
 });
 </script>
 
+<script>
+(function(){
+  const input = document.getElementById("gigiSearchInput");
+  const meta = document.getElementById("gigiSearchMeta");
+  const filterRow = document.getElementById("gigiFilterRow");
+  if (!input || !filterRow) return;
+
+  const items = Array.from(document.querySelectorAll("#gigi .gigi-item"));
+  let activeFilter = "all";
+
+  function norm(v){ return (v || "").toLowerCase(); }
+
+  function applyFilter(){
+    const q = norm(input.value.trim());
+    let shown = 0;
+    items.forEach((el)=>{
+      const text = norm(el.textContent);
+      const hitQuery = !q || text.includes(q);
+      const hitTag = activeFilter === "all" || text.includes(norm(activeFilter));
+      const show = hitQuery && hitTag;
+      el.style.display = show ? "" : "none";
+      if (show) shown += 1;
+    });
+    if (meta) meta.textContent = '表示件数: ' + shown + ' / ' + items.length;
+  }
+
+  input.addEventListener("input", applyFilter);
+  filterRow.addEventListener("click", (e)=>{
+    const btn = e.target.closest(".gigi-filter-btn");
+    if (!btn) return;
+    activeFilter = btn.dataset.filter || "all";
+    filterRow.querySelectorAll(".gigi-filter-btn").forEach((b)=>b.classList.remove("active"));
+    btn.classList.add("active");
+    applyFilter();
+  });
+
+  applyFilter();
+})();
+</script>
 </body>
 </html>
