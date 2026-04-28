@@ -5610,15 +5610,17 @@ window.addEventListener('scroll', () => {
 });
 window.dispatchEvent(new Event('scroll'));
 
-window.addEventListener('scroll', () => {
+function updateBackToTopVisibility() {
   if (!backToTopBtn) return;
-  backToTopBtn.classList.toggle('visible', window.scrollY > 420);
-}, { passive: true });
+  backToTopBtn.classList.toggle('visible', window.scrollY > 120);
+}
+window.addEventListener('scroll', updateBackToTopVisibility, { passive: true });
 if (backToTopBtn) {
   backToTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
+updateBackToTopVisibility();
 
 // ===== Analytics events =====
 function sendGaEvent(eventName, params = {}) {
