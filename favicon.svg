@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="R8 Dental">
+  <rect width="64" height="64" fill="#1a2744"/>
+  <ellipse cx="30" cy="22" rx="18" ry="14" fill="#ffffff"/>
+  <polygon points="19,28 27,28 25,55 18,55" fill="#ffffff"/>
+  <polygon points="33,28 41,28 46,55 39,55" fill="#ffffff"/>
+  <rect x="27" y="27" width="8" height="22" fill="#ffffff"/>
+  <rect x="37" y="2" width="25" height="25" rx="5" fill="#e05a3a"/>
+  <text x="49.5" y="19" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">R8</text>
+</svg>
