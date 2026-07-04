@@ -723,6 +723,28 @@ body.modal-open {
   margin-bottom:12px;
 }
 .forecast-scenarios { font-size:13px; line-height:1.7; }
+
+/* ===== SECTION 06-08 折りたたみ ===== */
+.fold-chev { font-size:11px; color:var(--text-sub); transition:transform .25s; flex-shrink:0; }
+.forecast-head { display:flex; align-items:center; gap:10px; cursor:pointer; user-select:none; }
+.forecast-head .forecast-icon { font-size:22px; margin-bottom:0; }
+.forecast-head .forecast-title { margin-bottom:0; flex:1; }
+.forecast-card .forecast-scenarios { display:none; margin-top:12px; }
+.forecast-card.open .forecast-scenarios { display:block; }
+.forecast-card.open .fold-chev { transform:rotate(180deg); }
+.cl-group-head { display:flex; align-items:center; gap:8px; cursor:pointer; user-select:none; font-weight:700; font-size:14px; color:var(--navy); background:var(--card); border:1px solid var(--border); border-radius:10px; padding:12px 16px; margin:16px 0 10px; }
+.cl-group-head.cl-group-static { cursor:default; }
+.cl-group-head .fold-chev { margin-left:auto; }
+.cl-group .cl-group-body { display:none; }
+.cl-group.open .cl-group-body { display:block; }
+.cl-group.open .cl-group-head .fold-chev { transform:rotate(180deg); }
+.cl-progress { display:inline-block; background:var(--teal-light); color:var(--navy); font-weight:700; font-size:13px; padding:4px 12px; border-radius:14px; margin-left:8px; white-space:nowrap; }
+.refs-toggle { display:flex; align-items:center; gap:8px; cursor:pointer; user-select:none; font-weight:700; font-size:14px; color:var(--navy); background:var(--card); border:1px solid var(--border); border-radius:10px; padding:12px 16px; }
+.refs-toggle .fold-chev { margin-left:auto; }
+.refs-fold .refs-body { display:none; margin-top:12px; }
+.refs-fold.open .refs-body { display:block; }
+.refs-fold.open .refs-toggle .fold-chev { transform:rotate(180deg); }
+
 .fs-row { padding:6px 0; border-bottom:1px solid var(--border); }
 .fs-row:last-child { border:none; }
 .fs-label {
@@ -3907,14 +3929,17 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
     <div class="section-num">SECTION 06</div>
     <h2 class="section-title">歯科業界の未来予測 2026年〜2030年</h2>
     <p class="section-desc">
-      経済財政運営と改革の基本方針2025（令和7年6月13日 閣議決定）の政策方針をベースに、7つの観点それぞれを「メインシナリオ」「追い風シナリオ」「逆風シナリオ」の3段階で予測。
+      経済財政運営と改革の基本方針2025（令和7年6月13日 閣議決定）の政策方針をベースに、7つの観点それぞれを「メインシナリオ」「追い風シナリオ」「逆風シナリオ」の3段階で予測。<strong>各観点のタイトルをクリックすると詳細が開きます。</strong>
     </p>
   </div>
 
   <div class="forecast-grid">
     <div class="card forecast-card reveal">
-      <div class="forecast-icon">👥</div>
-      <div class="forecast-title">需給バランス</div>
+      <div class="forecast-head" onclick="toggleFold(this)" role="button" tabindex="0" aria-expanded="false">
+        <span class="forecast-icon">👥</span>
+        <span class="forecast-title">需給バランス</span>
+        <span class="fold-chev">▼</span>
+      </div>
       <div class="forecast-scenarios">
         <div class="fs-row fs-base"><div class="fs-label">メイン</div>85歳以上人口増＋国民皆歯科健診の段階実施で歯科需要は底堅い。医院数は年1%程度の純減が継続し、1医院あたりの患者数は微増</div>
         <div class="fs-row fs-up"><div class="fs-label">追い風</div>生涯を通じた歯科健診の法制化が実現し、職域健診への歯科導入で新患が年5〜10%増加</div>
@@ -3922,8 +3947,11 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
       </div>
     </div>
     <div class="card forecast-card reveal">
-      <div class="forecast-icon">🩺</div>
-      <div class="forecast-title">人材確保・処遇改善</div>
+      <div class="forecast-head" onclick="toggleFold(this)" role="button" tabindex="0" aria-expanded="false">
+        <span class="forecast-icon">🩺</span>
+        <span class="forecast-title">人材確保・処遇改善</span>
+        <span class="fold-chev">▼</span>
+      </div>
       <div class="forecast-scenarios">
         <div class="fs-row fs-base"><div class="fs-label">メイン</div>骨太方針の「コストカット型からの転換」により公定価格引き上げが継続。ベースアップ評価料の拡充で歯科衛生士・技工士の賃上げが定着</div>
         <div class="fs-row fs-up"><div class="fs-label">追い風</div>実質賃金年1%上昇の政府目標が達成され、他産業との格差が縮小。離職率が大幅低下</div>
@@ -3931,8 +3959,11 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
       </div>
     </div>
     <div class="card forecast-card reveal">
-      <div class="forecast-icon">🤖</div>
-      <div class="forecast-title">医療DX・ICT</div>
+      <div class="forecast-head" onclick="toggleFold(this)" role="button" tabindex="0" aria-expanded="false">
+        <span class="forecast-icon">🤖</span>
+        <span class="forecast-title">医療DX・ICT</span>
+        <span class="fold-chev">▼</span>
+      </div>
       <div class="forecast-scenarios">
         <div class="fs-row fs-base"><div class="fs-label">メイン</div>マイナ保険証の本格運用、電子カルテ情報共有サービスの普及が加速。口腔内スキャナー普及率50%超。標準型電子カルテの導入が開始</div>
         <div class="fs-row fs-up"><div class="fs-label">追い風</div>AI画像診断の保険収載（2028年前後）、AIレセプトチェック普及で事務負担が半減。生産性が飛躍的に向上</div>
@@ -3940,8 +3971,11 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
       </div>
     </div>
     <div class="card forecast-card reveal">
-      <div class="forecast-icon">🏥</div>
-      <div class="forecast-title">医科歯科連携・多職種連携</div>
+      <div class="forecast-head" onclick="toggleFold(this)" role="button" tabindex="0" aria-expanded="false">
+        <span class="forecast-icon">🏥</span>
+        <span class="forecast-title">医科歯科連携・多職種連携</span>
+        <span class="fold-chev">▼</span>
+      </div>
       <div class="forecast-scenarios">
         <div class="fs-row fs-base"><div class="fs-label">メイン</div>骨太方針で「医歯薬連携などの多職種連携」が明記。糖尿病・歯周病の連携管理が診療報酬で本格評価され、連携実績がかかりつけ機能の要件化</div>
         <div class="fs-row fs-up"><div class="fs-label">追い風</div>全国医療情報プラットフォーム上での医科歯科データ共有が実現。歯科が地域包括ケアの中核ポジションを確立</div>
@@ -3949,8 +3983,11 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
       </div>
     </div>
     <div class="card forecast-card reveal">
-      <div class="forecast-icon">🏠</div>
-      <div class="forecast-title">訪問歯科・在宅医療</div>
+      <div class="forecast-head" onclick="toggleFold(this)" role="button" tabindex="0" aria-expanded="false">
+        <span class="forecast-icon">🏠</span>
+        <span class="forecast-title">訪問歯科・在宅医療</span>
+        <span class="fold-chev">▼</span>
+      </div>
       <div class="forecast-scenarios">
         <div class="fs-row fs-base"><div class="fs-label">メイン</div>2040年に向け85歳以上人口がピークを迎える過程で需要は年5%以上成長。新地域医療構想のもと在宅歯科の位置付けが強化</div>
         <div class="fs-row fs-up"><div class="fs-label">追い風</div>在宅歯科医療情報連携指導料等の新設加算が奏功し、1件あたり単価と件数が大幅増</div>
@@ -3958,8 +3995,11 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
       </div>
     </div>
     <div class="card forecast-card reveal">
-      <div class="forecast-icon">💰</div>
-      <div class="forecast-title">コスト構造・材料費</div>
+      <div class="forecast-head" onclick="toggleFold(this)" role="button" tabindex="0" aria-expanded="false">
+        <span class="forecast-icon">💰</span>
+        <span class="forecast-title">コスト構造・材料費</span>
+        <span class="fold-chev">▼</span>
+      </div>
       <div class="forecast-scenarios">
       <div class="fs-row fs-base"><div class="fs-label">メイン</div>骨太方針の「物価上昇に合わせた公的制度の点検・見直し」により物価対応料の段階引き上げが継続。コバルトクロム・レジン系への移行が進む見込み</div>
       <div class="fs-row fs-up"><div class="fs-label">追い風</div>金パラ離脱が進みコスト安定化。デジタル技工の普及で材料・外注費が最適化</div>
@@ -3967,8 +4007,11 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
       </div>
     </div>
     <div class="card forecast-card reveal">
-      <div class="forecast-icon">🦷</div>
-      <div class="forecast-title">予防・口腔健康管理</div>
+      <div class="forecast-head" onclick="toggleFold(this)" role="button" tabindex="0" aria-expanded="false">
+        <span class="forecast-icon">🦷</span>
+        <span class="forecast-title">予防・口腔健康管理</span>
+        <span class="fold-chev">▼</span>
+      </div>
       <div class="forecast-scenarios">
         <div class="fs-row fs-base"><div class="fs-label">メイン</div>「オーラルフレイル対策・疾病の重症化予防」が国策化。口腔機能管理を中心とした予防型歯科が標準モデルに移行</div>
         <div class="fs-row fs-up"><div class="fs-label">追い風</div>国民皆歯科健診の法制化＋ヘルスケア産業80兆円目標（2050年）の追い風で、予防歯科市場が飛躍的に拡大</div>
@@ -3987,28 +4030,48 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
     <div class="section-num">SECTION 07</div>
     <h2 class="section-title">実施チェックリスト</h2>
     <p class="section-desc">
-      改定ポイントに絞った実務チェックリストです。クリックでチェックを付けられます。
+      改定ポイントに絞った実務チェックリストです。クリックでチェックを付けられます（チェック状態はこのブラウザに保存されます）。<span class="cl-progress" id="cl-progress">0/24 完了</span>
     </p>
   </div>
 
-<div class="checklist-grid">
-    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">ベースアップ評価料（Ⅰ）の届出区分を再確認し、必要な届出を完了した</div><div class="cl-sub">継続賃上げ実施施設と新規実施施設で点数が異なるため、区分誤りを防止</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">ベースアップ評価料（Ⅱ）の区分見直しと毎年6月時点の届出確認フローを整備した</div><div class="cl-sub">R8・R9で点数構造が変わるため、（Ⅰ）と併せて区分再計算・届出漏れ防止の運用を明確化</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">SPT・P重防から歯周病継続支援治療への移行を完了した</div><div class="cl-sub">P重防廃止に伴う病名・算定コード・カルテ記載の更新を実施</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">訪問歯科診療の区分判定（1〜5）ルールを院内で統一した</div><div class="cl-sub">同一建物人数・特別の関係・訪問4/5の要件をチェックシート化</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">物価対応料（初診3点・再診1点）の自動算定設定を確認した</div><div class="cl-sub">届出不要のため設定漏れがないか、初診・再診の双方でテスト請求を実施</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">口腔機能管理料1/2と歯科疾患管理料の算定フローを更新した</div><div class="cl-sub">歯管一律90点化、口腔機能管理料再編（1:90点/2:50点）に対応</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
-    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">訪問歯科衛生指導料の新点数と140点（特別の関係）を反映した</div><div class="cl-sub">1人380点、2〜9人330点、10人以上226点の差分を算定ロジックに反映</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">CAD/CAM冠・インレーの大臼歯要件撤廃を診療フローに反映した</div><div class="cl-sub">適応症例の見直しと、光学印象150点の算定漏れ防止を実施</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">廃止された施設基準・定例報告の運用を見直した</div><div class="cl-sub">不要となった届出・報告を停止し、現行要件に沿って院内手順を更新</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">ベースアップ関連の実績報告スケジュールを年間計画に組み込んだ</div><div class="cl-sub">様式98・8月報告・必要書類保管の担当者と締切を明確化</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">施行初月のレセプト全件レビュー体制を運用開始した</div><div class="cl-sub">新旧コード混在、廃止項目誤算定、新設項目算定漏れを重点点検</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">歯科技工所BU支援料の請求書フォーマットを技工所と統一した</div><div class="cl-sub">支援料相当額が判別できる請求書の保管が算定要件（疑義解釈その4・問4-5）</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">BU評価料の対象者マスタから開設者・管理者・役員の除外を確認した</div><div class="cl-sub">対象外職員の誤算入は実績報告の修正負荷大。月次突合で防止（疑義解釈その4・問1）</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">旧疑義解釈の廃止に伴う院内運用を見直した</div><div class="cl-sub">歯周病継続支援治療の検査選択等、R2時代の旧ルール（その44問1等3件廃止）を更新（疑義解釈その3・問5）</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">BU評価料の初診・再診それぞれでの算定漏れがないかレセプトチェック体制を整備した</div><div class="cl-sub">同一月に初診・再診を算定した場合、各々にBU評価料（Ⅰ）（Ⅱ）を加算可能（疑義解釈その5・問1-2）</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">か強診の常勤歯科医師全員が所定の研修を受講済みか確認した</div><div class="cl-sub">常勤の全歯科医師（管理者含む）の研修受講が施設基準要件（疑義解釈その5・問6）</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
-    <div class="cl-item"><div class="cl-check" onclick="this.classList.toggle('checked')"></div><div class="cl-text"><div class="cl-label">歯科技工士連携加算のビデオ通話による立ち会い対応体制を検討した</div><div class="cl-sub">対面に加えリアルタイム映像（ビデオ通話等）での立ち会いも算定可（疑義解釈その5・問7）</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
+  <div class="cl-group-head cl-group-static">🔴 高優先度 ── まず確認（6項目）</div>
+  <div class="checklist-grid">
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">ベースアップ評価料（Ⅰ）の届出区分を再確認し、必要な届出を完了した</div><div class="cl-sub">継続賃上げ実施施設と新規実施施設で点数が異なるため、区分誤りを防止</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">ベースアップ評価料（Ⅱ）の区分見直しと毎年6月時点の届出確認フローを整備した</div><div class="cl-sub">R8・R9で点数構造が変わるため、（Ⅰ）と併せて区分再計算・届出漏れ防止の運用を明確化</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">SPT・P重防から歯周病継続支援治療への移行を完了した</div><div class="cl-sub">P重防廃止に伴う病名・算定コード・カルテ記載の更新を実施</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">訪問歯科診療の区分判定（1〜5）ルールを院内で統一した</div><div class="cl-sub">同一建物人数・特別の関係・訪問4/5の要件をチェックシート化</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">物価対応料（初診3点・再診1点）の自動算定設定を確認した</div><div class="cl-sub">届出不要のため設定漏れがないか、初診・再診の双方でテスト請求を実施</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">口腔機能管理料1/2と歯科疾患管理料の算定フローを更新した</div><div class="cl-sub">歯管一律90点化、口腔機能管理料再編（1:90点/2:50点）に対応</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
+  </div>
+
+  <div class="cl-group">
+    <div class="cl-group-head" onclick="toggleFold(this)" role="button" tabindex="0" aria-expanded="false">🟠 中優先度 ── 運用の整備（16項目）<span class="fold-chev">▼</span></div>
+    <div class="cl-group-body"><div class="checklist-grid">
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">訪問歯科衛生指導料の新点数と140点（特別の関係）を反映した</div><div class="cl-sub">1人380点、2〜9人330点、10人以上226点の差分を算定ロジックに反映</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">CAD/CAM冠・インレーの大臼歯要件撤廃を診療フローに反映した</div><div class="cl-sub">適応症例の見直しと、光学印象150点の算定漏れ防止を実施</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">CAD/CAMブリッジ（3,000点）の算定準備を行い、留意事項通知を確認した</div><div class="cl-sub">R8.6.1〜保険収載（告示ベース）。適応範囲：④5⑥・⑤6⑦の中間欠損、生活歯可。算定留意事項の詳細通知を厚労省HPで確認した上で算定開始すること</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">廃止された施設基準・定例報告の運用を見直した</div><div class="cl-sub">不要となった届出・報告を停止し、現行要件に沿って院内手順を更新</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">ベースアップ関連の実績報告スケジュールを年間計画に組み込んだ</div><div class="cl-sub">様式98・8月報告・必要書類保管の担当者と締切を明確化</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">施行初月のレセプト全件レビュー体制を運用開始した</div><div class="cl-sub">新旧コード混在、廃止項目誤算定、新設項目算定漏れを重点点検</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">歯科技工所BU支援料の請求書フォーマットを技工所と統一した</div><div class="cl-sub">支援料相当額が判別できる請求書の保管が算定要件（疑義解釈その4・問4-5）</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">BU評価料の対象者マスタから開設者・管理者・役員の除外を確認した</div><div class="cl-sub">対象外職員の誤算入は実績報告の修正負荷大。月次突合で防止（疑義解釈その4・問1）</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">旧疑義解釈の廃止に伴う院内運用を見直した</div><div class="cl-sub">歯周病継続支援治療の検査選択等、R2時代の旧ルール（その44問1等3件廃止）を更新（疑義解釈その3・問5）</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">BU評価料の初診・再診それぞれでの算定漏れがないかレセプトチェック体制を整備した</div><div class="cl-sub">同一月に初診・再診を算定した場合、各々にBU評価料（Ⅰ）（Ⅱ）を加算可能（疑義解釈その5・問1-2）</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">か強診の常勤歯科医師全員が所定の研修を受講済みか確認した</div><div class="cl-sub">常勤の全歯科医師（管理者含む）の研修受講が施設基準要件（疑義解釈その5・問6）</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">複数院運営でもBU評価料の届出・実績報告は各保険医療機関ごとに提出する運用へ統一した</div><div class="cl-sub">法人本部での一括提出は不可。所管の地方厚生（支）局ごとに提出（疑義解釈その7・別添2問2）</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">BU評価料の算定期間と賃金改善期間が一致しているか確認した</div><div class="cl-sub">原則一致が必要。4月開始の経過対応以外はズレ不可（疑義解釈その7・別添2問4）</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">歯科技工所BU支援料の算定単位（補綴物1件ごと）を確認した</div><div class="cl-sub">補綴物の製作委託1件ごとに算定。鉤の製作のみの委託でも算定可（疑義解釈その9・別添2問2-3）</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">口腔機能実地指導料の研修主催団体を確認した</div><div class="cl-sub">日本歯科医学会の分科会または日本歯科医師会が主催する研修が対象（疑義解釈その9・別添5問2）</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">3次元プリント有床義歯・歯科矯正セファログラムの算定要件を確認した</div><div class="cl-sub">3Dプリント義歯の定義・セファログラムの撮影要件が明確化（疑義解釈その9・別添5問3-4）</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    </div></div>
+  </div>
+
+  <div class="cl-group">
+    <div class="cl-group-head" onclick="toggleFold(this)" role="button" tabindex="0" aria-expanded="false">⚪ 低優先度 ── 必要に応じて（2項目）<span class="fold-chev">▼</span></div>
+    <div class="cl-group-body"><div class="checklist-grid">
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">歯科技工士連携加算のビデオ通話による立ち会い対応体制を検討した</div><div class="cl-sub">対面に加えリアルタイム映像（ビデオ通話等）での立ち会いも算定可（疑義解釈その5・問7）</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">遡及指定の保険医療機関における初再診料の算定方法を確認した</div><div class="cl-sub">遡及指定日前の受診は再診料（外来診療料）を算定。歯科も同様の取扱い（疑義解釈その8・別添2問1）</div></div><div class="cl-priority"><span class="tag tag-low">低</span></div></div>
+    </div></div>
   </div>
 </section>
 
@@ -4023,7 +4086,10 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
     <h2 class="section-title">参照ソース一覧</h2>
   </div>
 
-  <div class="table-wrap reveal">
+  <div class="refs-fold reveal">
+    <div class="refs-toggle" onclick="toggleFold(this)" role="button" tabindex="0" aria-expanded="false">📚 参照ソース一覧を表示（全23件・厚労省公式ほか）<span class="fold-chev">▼</span></div>
+    <div class="refs-body">
+  <div class="table-wrap">
     <table class="comp-table" style="min-width:600px;">
       <thead>
         <tr>
@@ -4145,6 +4211,8 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
         </tr>
       </tbody>
     </table>
+  </div>
+    </div>
   </div>
 </section>
 
@@ -6594,6 +6662,53 @@ document.addEventListener('click', (e) => {
 
   applyFilter();
 })();
+</script>
+<script>
+// === チェックリスト localStorage 永続化（ラベルキー方式） ===
+function updateCLProgress() {
+  const badge = document.getElementById('cl-progress');
+  if (!badge) return;
+  const all = document.querySelectorAll('#checklist .cl-check');
+  const done = document.querySelectorAll('#checklist .cl-check.checked');
+  badge.textContent = done.length + '/' + all.length + ' 完了';
+}
+function clKey(el) {
+  const label = el.closest('.cl-item')?.querySelector('.cl-label');
+  return label ? label.textContent.trim() : '';
+}
+function toggleCL(el) {
+  el.classList.toggle('checked');
+  const states = {};
+  document.querySelectorAll('.cl-check').forEach(e => {
+    const k = clKey(e);
+    if (k) states[k] = e.classList.contains('checked') ? 1 : 0;
+  });
+  try { localStorage.setItem('r8_cl_v2', JSON.stringify(states)); } catch(e) {}
+  updateCLProgress();
+}
+(function restoreChecklist() {
+  try {
+    const s = JSON.parse(localStorage.getItem('r8_cl_v2') || '{}');
+    document.querySelectorAll('.cl-check').forEach(el => { if (s[clKey(el)]) el.classList.add('checked'); });
+  } catch(e) {}
+  updateCLProgress();
+})();
+
+// === セクション06-08 折りたたみ ===
+function toggleFold(head) {
+  const box = head.closest('.forecast-card, .cl-group, .refs-fold');
+  if (!box) return;
+  const open = box.classList.toggle('open');
+  head.setAttribute('aria-expanded', open ? 'true' : 'false');
+  if (open && box.classList.contains('refs-fold') && typeof updateTableScrollHints === 'function') {
+    updateTableScrollHints();
+  }
+}
+document.querySelectorAll('.forecast-head, .cl-group-head:not(.cl-group-static), .refs-toggle').forEach(el => {
+  el.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFold(el); }
+  });
+});
 </script>
 </body>
 </html>
