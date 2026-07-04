@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- このファイルは build_gigi.py により自動生成されます。直接編集せず、ソースHTMLと gigi_parts/ を編集して再生成してください。 -->
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -1175,6 +1176,36 @@ body.side-menu-open { overflow:hidden; }
   text-align: right;
 }
 
+/* === BACK TO TOP === */
+.back-to-top {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 1200;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--navy);
+  border-radius: 999px;
+  min-width: 108px;
+  height: 42px;
+  padding: 0 14px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.back-to-top:hover { border-color: var(--navy-light); }
+
 /* === RESPONSIVE === */
 @media (max-width:768px) {
   .nav-links { display:none; }
@@ -1223,6 +1254,13 @@ body.side-menu-open { overflow:hidden; }
     white-space:normal;
     word-break:break-word;
     padding:8px 8px;
+  }
+  .back-to-top {
+    right: 12px;
+    bottom: 12px;
+    min-width: 96px;
+    height: 40px;
+    font-size: 11px;
   }
 }
 @media (max-width:1024px) {
@@ -1419,6 +1457,42 @@ body.side-menu-open { overflow:hidden; }
   .bu-mail-addr { font-size:11px; }
 }
 
+/* === FIX: prefers-reduced-motion === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity:1 !important; transform:none !important; }
+  .fade-up { opacity:1 !important; animation:none !important; }
+  .scroll-hint { animation:none !important; }
+}
+
+/* === FIX: small font on mobile === */
+@media (max-width:480px) {
+  .nav-logo .badge { font-size:11px; }
+  .hero-stat .label { font-size:12px; }
+  .hero-stat .note { font-size:12px; }
+  .cl-text .cl-sub { font-size:13px; }
+  .risk-content { font-size:13px; }
+  .tl-desc { font-size:13px; }
+}
+
+/* === FIX: table scroll shadow hint === */
+.table-wrap {
+  position:relative;
+}
+.table-wrap.can-scroll-right::after {
+  content:'';
+  position:absolute;
+  right:0; top:0; bottom:0;
+  width:32px;
+  background:linear-gradient(to right, transparent, rgba(0,0,0,0.07));
+  pointer-events:none;
+  border-radius:0 var(--radius) var(--radius) 0;
+}
+
 /* ===== GIGI PAGE LAYOUT ===== */
 body.gigi-page #summary,
 body.gigi-page #premise,
@@ -1458,45 +1532,6 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
 }
 @media (max-width:480px){
   .gigi-filter-row { grid-template-columns:repeat(2,minmax(0,1fr)); }
-}
-
-/* ===== BACK TO TOP ===== */
-.back-to-top {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  z-index: 1200;
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.96);
-  color: var(--navy);
-  border-radius: 999px;
-  min-width: 108px;
-  height: 42px;
-  padding: 0 14px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-  box-shadow: var(--shadow-md);
-  opacity: 0;
-  transform: translateY(12px);
-  pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
-}
-.back-to-top.visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-.back-to-top:hover { border-color: var(--navy-light); }
-@media (max-width:768px){
-  .back-to-top {
-    right: 12px;
-    bottom: 12px;
-    min-width: 96px;
-    height: 40px;
-    font-size: 11px;
-  }
 }
 </style>
 </head>
@@ -2037,6 +2072,22 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
           <td style="text-align:right;" class="cell-change">+10/−10点</td>
           <td>初診月の減算規定削除・一律化</td>
         </tr>
+        <tr style="background:var(--teal-light);">
+          <td><span class="tag tag-low" style="background:var(--teal-light);color:var(--teal);">新設</span></td>
+          <td class="cell-label">CAD/CAMブリッジ（技術料）</td>
+          <td style="text-align:right;">─</td>
+          <td style="text-align:right;">3,000点</td>
+          <td style="text-align:right;" class="cell-new">新設</td>
+          <td>R8.6.1〜保険収載</td>
+        </tr>
+        <tr style="background:var(--teal-light);">
+          <td><span class="tag tag-low" style="background:var(--teal-light);color:var(--teal);">新設</span></td>
+          <td class="cell-label">CAD/CAMブリッジ（材料料）</td>
+          <td style="text-align:right;">─</td>
+          <td style="text-align:right;">1,170点</td>
+          <td style="text-align:right;" class="cell-new">新設</td>
+          <td>ファイバー補強レジン</td>
+        </tr>
         <tr>
           <td>デジタル</td>
           <td class="cell-label">光学印象（1歯）</td>
@@ -2332,7 +2383,7 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
           <td style="text-align:right;">100点</td>
           <td style="text-align:right;">─</td>
           <td style="text-align:right;" class="cell-abolished">廃止</td>
-          <td>在支診加算1（100点）・2（50点）に再編</td>
+          <td>歯援診加算1（100点）・2（50点）に再編</td>
         </tr>
       </tbody>
     </table>
@@ -2356,7 +2407,7 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
         <li><strong>咀嚼能力検査</strong> ─ 施設基準廃止</li>
         <li><strong>咬合圧検査</strong> ─ 施設基準廃止</li>
         <li><strong>光学印象歯科技工士連携加算</strong> ─ 加算自体が廃止</li>
-        <li><strong>在宅歯科医療推進加算</strong> ─ 廃止（在支診加算1・2に再編）</li>
+        <li><strong>在宅歯科医療推進加算</strong> ─ 廃止（歯援診加算1・2に再編）</li>
         <li><strong>歯周病重症化予防治療</strong> ─ 廃止（歯周病継続支援治療に統合）</li>
       </ul>
       <span style="font-size:13px; color:var(--text-sub);">また、以下の定例報告が廃止: 選定療養及び歯科衛生実地指導等の実施状況報告書、情報通信機器を用いた診療に係る報告書、初診料の注1の施設基準に係る報告書（毎年8月の定例報告が不要に）。</span>
@@ -2436,12 +2487,12 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
               <td>R8で施設基準廃止（届出不要に）</td>
             </tr>
             <tr>
-              <td>在支診2</td>
+              <td>歯援診2</td>
               <td style="text-align:right;"><strong>10.2%</strong></td>
               <td>R8で加算50点に半減</td>
             </tr>
             <tr>
-              <td>在支診1</td>
+              <td>歯援診1</td>
               <td style="text-align:right;"><strong>3.5%</strong></td>
               <td>R8で4ルートに再編</td>
             </tr>
@@ -4351,6 +4402,21 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
             <strong>賃金改善未達リスク</strong>：ベースアップ収入額と賃上げ支出額の月次突合が必須。給与支払額とベースアップ収入額の対照表を作成し、乖離があれば即座に是正する体制を構築すること。ベースアップは定期昇給と区別して管理する。
           </div>
         </div>
+        <div class="modal-impact-box" style="margin-top:10px;">
+          <div class="modal-impact-icon">⚠️</div>
+          <div class="modal-impact-text">
+            <span class="modal-risk-tag high">高</span>
+            <strong>複数院運営での届出漏れリスク</strong>：法人本部で書類を一括作成しても、<strong>届出・実績報告は各保険医療機関ごとに所管の地方厚生（支）局長へ提出</strong>する必要がある（疑義解釈その7・別添2問2）。一括提出や代表院への集約は不可。グループ院は各院の担当者が個別に手続きを完結させる運用を整備すること。<br>
+            また、<strong>算定期間と賃金改善期間は原則として一致</strong>させる必要がある（疑義解釈その7・別添2問4）。算定開始月から翌年5月末までの各月で賃金改善が実施されているかを確認し、ズレが生じた場合は速やかに是正すること。
+          </div>
+        </div>
+        <div class="modal-impact-box" style="margin-top:10px;">
+          <div class="modal-impact-icon">ℹ️</div>
+          <div class="modal-impact-text">
+            <span class="modal-risk-tag mid">中</span>
+            <strong>入院基本料等の減算時でもBU評価料は算定可能</strong>：入院基本料等について、看護配置等の基準を満たさないことにより所定点数の100分の10に相当する点数を減算する場合であっても、<strong>ベースアップ評価料は算定できる</strong>（疑義解釈その9・別添2問1）。
+          </div>
+        </div>
       </div>
 
       <!-- ===== 様式早見表フローチャート ===== -->
@@ -4997,7 +5063,7 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
       <span class="modal-rank rank-mid">06 ─ 在宅強化</span>
       <button class="modal-close" onclick="closeDetail()">✕</button>
       <h3>在宅歯科医療の提供体制強化</h3>
-      <div class="modal-subtitle">在宅歯科医療推進加算の廃止・再編、在支診基準見直し、地域歯科医療加算の新設</div>
+      <div class="modal-subtitle">在宅歯科医療推進加算の廃止・再編、歯援診基準見直し、地域歯科医療加算の新設</div>
     </div>
     <div class="modal-body">
       <div class="modal-section">
@@ -5014,19 +5080,19 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
             </thead>
             <tbody>
               <tr>
-                <td>在宅療養支援歯科診療所加算1<br><small>在支診1の届出医院</small></td>
+                <td>在宅療養支援歯科診療所加算1<br><small>歯援診1の届出医院</small></td>
                 <td>100点</td>
                 <td><strong>100点</strong></td>
                 <td>±0</td>
               </tr>
               <tr>
-                <td>在宅療養支援歯科診療所加算2<br><small>在支診2の届出医院</small></td>
+                <td>在宅療養支援歯科診療所加算2<br><small>歯援診2の届出医院</small></td>
                 <td>100点</td>
                 <td><strong>50点</strong></td>
                 <td class="cell-change cell-down">−50点</td>
               </tr>
               <tr>
-                <td>在宅療養支援歯科病院加算<br><small>在支病の届出病院</small></td>
+                <td>在宅療養支援歯科病院加算<br><small>歯援病の届出病院</small></td>
                 <td>100点</td>
                 <td><strong>100点</strong></td>
                 <td>±0</td>
@@ -5037,7 +5103,7 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
         <div class="modal-impact-box" style="margin-top:12px;">
           <div class="modal-impact-icon">⚠️</div>
           <div class="modal-impact-text">
-            <strong>在支診2は実質減額：</strong>在宅歯科医療推進加算（100点・一律）が廃止され、区分別加算へ再編。<strong>在支診2は100点→50点</strong>に半減するため、上位区分（加算1）への届出可否が収益に直結。
+            <strong>歯援診2は実質減額：</strong>在宅歯科医療推進加算（100点・一律）が廃止され、区分別加算へ再編。<strong>歯援診2は100点→50点</strong>に半減するため、上位区分（加算1）への届出可否が収益に直結。
           </div>
         </div>
 
@@ -5068,13 +5134,13 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
       <div class="modal-section">
         <div class="modal-section-title">主な変更点</div>
         <div class="modal-prose">
-          <p>在宅療養支援歯科診療所の施設基準が細分化され、在支診1の訪問診療実績要件が「年間18回以上」から<strong>4つの選択ルート</strong>に再編。臨床研修施設で研修歯科医に訪問診療教育を実施している場合は、訪問実績を問わず在支診1を取得できる新ルートが追加。</p>
+          <p>在宅療養支援歯科診療所の施設基準が細分化され、歯援診1の訪問診療実績要件が「年間18回以上」から<strong>4つの選択ルート</strong>に再編。臨床研修施設で研修歯科医に訪問診療教育を実施している場合は、訪問実績を問わず歯援診1を取得できる新ルートが追加。</p>
           <p>新設の地域歯科医療加算は、歯科医療の確保が困難な地域で都道府県等と連携し、歯科巡回診療車による診療を実施した場合に算定可能。診療録・レセプト摘要欄への記載が必要。</p>
         </div>
       </div>
 
       <div class="modal-section">
-        <div class="modal-section-title">在支診1の新・施設基準（実績要件）</div>
+        <div class="modal-section-title">歯援診1の新・施設基準（実績要件）</div>
         <div class="modal-prose">
           <p><strong>以下のいずれか1つに該当（4ルート）</strong></p>
           <ul class="modal-checklist">
@@ -5129,15 +5195,15 @@ body.gigi-page .hero-title::after { content:"（疑義解釈専用）"; font-siz
             </tbody>
           </table>
         </div>
-        <p style="font-size:12px; color:var(--text-sub); margin-top:6px;">訪問診療4・5は新設区分のため、対応する加算点数も新たに設定。在支診届出医院は算定フローに組み込むこと。</p>
+        <p style="font-size:12px; color:var(--text-sub); margin-top:6px;">訪問診療4・5は新設区分のため、対応する加算点数も新たに設定。歯援診届出医院は算定フローに組み込むこと。</p>
       </div>
 
       <div class="modal-section">
         <div class="modal-section-title">アクションチェックリスト</div>
         <ul class="modal-checklist">
-          <li>在支診1の新要件4ルート（イ〜ニ）のいずれに該当するか直近実績で判定</li>
-          <li>在支診2の場合、加算半減を踏まえた収益シミュレーションを実施</li>
-          <li>研修歯科医への訪問診療教育体制を整備し、在支診1取得を検討</li>
+          <li>歯援診1の新要件4ルート（イ〜ニ）のいずれに該当するか直近実績で判定</li>
+          <li>歯援診2の場合、加算半減を踏まえた収益シミュレーションを実施</li>
+          <li>研修歯科医への訪問診療教育体制を整備し、歯援診1取得を検討</li>
           <li>教育体制・実績要件の整備（訪問実績の月次管理、研修記録フォーマット作成）</li>
           <li>地域歯科医療加算の活用を検討する場合、巡回診療計画と収益試算を準備</li>
           <li>外来環の新基準（医療安全・感染対策）への移行手続きを確認</li>
@@ -6330,6 +6396,10 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+// Skip reveal animation for reduced-motion preference
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+}
 
 // Detail modal (Top 10)
 let lockedScrollY = 0;
@@ -6351,6 +6421,8 @@ function openDetail(n) {
   if (modal) {
     modal.classList.add('active');
     lockBodyScroll();
+    const btn = modal.querySelector('.modal-close');
+    if (btn) btn.focus();
   }
 }
 // Detail modal (Section 03)
@@ -6359,6 +6431,8 @@ function openS3Detail(n) {
   if (modal) {
     modal.classList.add('active');
     lockBodyScroll();
+    const btn = modal.querySelector('.modal-close');
+    if (btn) btn.focus();
   }
 }
 function closeDetail() {
@@ -6472,12 +6546,12 @@ function updateBackToTopVisibility() {
   backToTopBtn.classList.toggle('visible', window.scrollY > 120);
 }
 window.addEventListener('scroll', updateBackToTopVisibility, { passive: true });
+updateBackToTopVisibility();
 if (backToTopBtn) {
   backToTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
-updateBackToTopVisibility();
 
 // ===== Analytics events =====
 function sendGaEvent(eventName, params = {}) {
@@ -6536,6 +6610,62 @@ document.addEventListener('click', (e) => {
     });
   }
 });
+
+// === FIX 3: チェックリスト localStorage 永続化（ラベルキー方式） ===
+function updateCLProgress() {
+  const badge = document.getElementById('cl-progress');
+  if (!badge) return;
+  const all = document.querySelectorAll('#checklist .cl-check');
+  const done = document.querySelectorAll('#checklist .cl-check.checked');
+  badge.textContent = done.length + '/' + all.length + ' 完了';
+}
+function clKey(el) {
+  const label = el.closest('.cl-item')?.querySelector('.cl-label');
+  return label ? label.textContent.trim() : '';
+}
+function toggleCL(el) {
+  el.classList.toggle('checked');
+  const states = {};
+  document.querySelectorAll('.cl-check').forEach(e => {
+    const k = clKey(e);
+    if (k) states[k] = e.classList.contains('checked') ? 1 : 0;
+  });
+  try { localStorage.setItem('r8_cl_v2', JSON.stringify(states)); } catch(e) {}
+  updateCLProgress();
+}
+(function restoreChecklist() {
+  try {
+    const s = JSON.parse(localStorage.getItem('r8_cl_v2') || '{}');
+    document.querySelectorAll('.cl-check').forEach(el => { if (s[clKey(el)]) el.classList.add('checked'); });
+  } catch(e) {}
+  updateCLProgress();
+})();
+
+// === セクション06-08 折りたたみ ===
+function toggleFold(head) {
+  const box = head.closest('.forecast-card, .cl-group, .refs-fold');
+  if (!box) return;
+  const open = box.classList.toggle('open');
+  head.setAttribute('aria-expanded', open ? 'true' : 'false');
+  if (open && box.classList.contains('refs-fold') && typeof updateTableScrollHints === 'function') {
+    updateTableScrollHints();
+  }
+}
+document.querySelectorAll('.forecast-head, .cl-group-head:not(.cl-group-static), .refs-toggle').forEach(el => {
+  el.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFold(el); }
+  });
+});
+
+// === FIX 6: テーブルスクロールヒント ===
+function updateTableScrollHints() {
+  document.querySelectorAll('.table-wrap').forEach(el => {
+    el.classList.toggle('can-scroll-right', el.scrollWidth > el.clientWidth + 1 && el.scrollLeft < el.scrollWidth - el.clientWidth - 1);
+  });
+}
+document.querySelectorAll('.table-wrap').forEach(el => el.addEventListener('scroll', updateTableScrollHints));
+window.addEventListener('resize', updateTableScrollHints);
+updateTableScrollHints();
 </script>
 
 <script>
@@ -6662,53 +6792,6 @@ document.addEventListener('click', (e) => {
 
   applyFilter();
 })();
-</script>
-<script>
-// === チェックリスト localStorage 永続化（ラベルキー方式） ===
-function updateCLProgress() {
-  const badge = document.getElementById('cl-progress');
-  if (!badge) return;
-  const all = document.querySelectorAll('#checklist .cl-check');
-  const done = document.querySelectorAll('#checklist .cl-check.checked');
-  badge.textContent = done.length + '/' + all.length + ' 完了';
-}
-function clKey(el) {
-  const label = el.closest('.cl-item')?.querySelector('.cl-label');
-  return label ? label.textContent.trim() : '';
-}
-function toggleCL(el) {
-  el.classList.toggle('checked');
-  const states = {};
-  document.querySelectorAll('.cl-check').forEach(e => {
-    const k = clKey(e);
-    if (k) states[k] = e.classList.contains('checked') ? 1 : 0;
-  });
-  try { localStorage.setItem('r8_cl_v2', JSON.stringify(states)); } catch(e) {}
-  updateCLProgress();
-}
-(function restoreChecklist() {
-  try {
-    const s = JSON.parse(localStorage.getItem('r8_cl_v2') || '{}');
-    document.querySelectorAll('.cl-check').forEach(el => { if (s[clKey(el)]) el.classList.add('checked'); });
-  } catch(e) {}
-  updateCLProgress();
-})();
-
-// === セクション06-08 折りたたみ ===
-function toggleFold(head) {
-  const box = head.closest('.forecast-card, .cl-group, .refs-fold');
-  if (!box) return;
-  const open = box.classList.toggle('open');
-  head.setAttribute('aria-expanded', open ? 'true' : 'false');
-  if (open && box.classList.contains('refs-fold') && typeof updateTableScrollHints === 'function') {
-    updateTableScrollHints();
-  }
-}
-document.querySelectorAll('.forecast-head, .cl-group-head:not(.cl-group-static), .refs-toggle').forEach(el => {
-  el.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFold(el); }
-  });
-});
 </script>
 </body>
 </html>
