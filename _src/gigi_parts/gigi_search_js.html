@@ -1,0 +1,125 @@
+<script>
+(function(){
+  const input = document.getElementById("gigiSearchInput");
+  const meta = document.getElementById("gigiSearchMeta");
+  const filterRow = document.getElementById("gigiFilterRow");
+  if (!input || !filterRow) return;
+
+  const categories = Array.from(document.querySelectorAll("#gigi .gigi-category"));
+  const items = Array.from(document.querySelectorAll("#gigi .gigi-item"));
+  const partHeaders = Array.from(document.querySelectorAll("#gigi .section-header h2.section-title"))
+    .filter((h)=>/疑義解釈（その\d+）──/.test(h.textContent || ""));
+  let activeFilter = "all";
+
+  function norm(v){ return (v || "").toLowerCase(); }
+  function parsePartIndex(filterText){
+    const match = String(filterText || "").match(/その(\d+)/);
+    return match ? match[1] : "";
+  }
+
+  // Mark each subsection's nodes so "その1〜その4" filtering is deterministic.
+  partHeaders.forEach((h, idx)=>{
+    const headerWrap = h.closest(".section-header");
+    if (!headerWrap) return;
+    const title = String(h.textContent || "");
+    const part = parsePartIndex(title);
+    if (!part) return;
+
+    const intro = headerWrap.nextElementSibling && headerWrap.nextElementSibling.classList.contains("gigi-intro")
+      ? headerWrap.nextElementSibling
+      : null;
+
+    const start = intro ? intro.nextElementSibling : headerWrap.nextElementSibling;
+    const nextHeader = partHeaders[idx + 1] ? partHeaders[idx + 1].closest(".section-header") : null;
+    let cur = start;
+    while (cur && cur !== nextHeader){
+      if (cur.classList && cur.classList.contains("gigi-category")) {
+        cur.dataset.gigiPart = part;
+        cur.querySelectorAll(".gigi-item").forEach((item)=>{ item.dataset.gigiPart = part; });
+      }
+      cur = cur.nextElementSibling;
+    }
+  });
+
+  function applyFilter(){
+    const q = norm(input.value.trim());
+    const tag = norm(activeFilter);
+    const selectedPart = parsePartIndex(activeFilter);
+    let shown = 0;
+
+    // Reset state before applying new filter.
+    items.forEach((el)=>el.classList.remove("search-hit", "open"));
+
+    items.forEach((el)=>{
+      const text = norm(el.textContent);
+      const hitQuery = !q || text.includes(q);
+      const partMatch = !selectedPart || (el.dataset.gigiPart === selectedPart);
+      const hitTag = activeFilter === "all" || selectedPart || text.includes(tag);
+      const show = hitQuery && hitTag && partMatch;
+      el.style.display = show ? "" : "none";
+      if (show){
+        shown += 1;
+        if (q){
+          // Auto-open matched entries so users can see hit contents immediately.
+          el.classList.add("search-hit", "open");
+        }
+      }
+    });
+
+    // Hide empty categories; keep categories without Q&A items if their own text matches.
+    categories.forEach((cat)=>{
+      const catItems = Array.from(cat.querySelectorAll(".gigi-item"));
+      const partMatch = !selectedPart || (cat.dataset.gigiPart === selectedPart);
+      if (catItems.length === 0){
+        const text = norm(cat.textContent);
+        const hitQuery = !q || text.includes(q);
+        const hitTag = activeFilter === "all" || selectedPart || text.includes(tag);
+        cat.style.display = hitQuery && hitTag && partMatch ? "" : "none";
+        return;
+      }
+      const anyVisible = catItems.some((item)=>item.style.display !== "none");
+      cat.style.display = anyVisible && partMatch ? "" : "none";
+    });
+
+    // Hide subsection headers/intros when that subsection has no visible categories.
+    partHeaders.forEach((h, idx)=>{
+      const headerWrap = h.closest(".section-header");
+      if (!headerWrap) return;
+
+      const intro = headerWrap.nextElementSibling && headerWrap.nextElementSibling.classList.contains("gigi-intro")
+        ? headerWrap.nextElementSibling
+        : null;
+
+      const start = intro ? intro.nextElementSibling : headerWrap.nextElementSibling;
+      const nextHeader = partHeaders[idx + 1] ? partHeaders[idx + 1].closest(".section-header") : null;
+
+      let cur = start;
+      let hasVisibleCategory = false;
+      while (cur && cur !== nextHeader){
+        if (cur.classList && cur.classList.contains("gigi-category") && cur.style.display !== "none"){
+          hasVisibleCategory = true;
+          break;
+        }
+        cur = cur.nextElementSibling;
+      }
+
+      headerWrap.style.display = hasVisibleCategory ? "" : "none";
+      if (intro) intro.style.display = hasVisibleCategory ? "" : "none";
+    });
+
+    if (meta) meta.textContent = '表示件数: ' + shown + ' / ' + items.length;
+  }
+
+  input.addEventListener("input", applyFilter);
+  filterRow.addEventListener("click", (e)=>{
+    const btn = e.target.closest(".gigi-filter-btn");
+    if (!btn) return;
+    activeFilter = btn.dataset.filter || "all";
+    filterRow.querySelectorAll(".gigi-filter-btn").forEach((b)=>b.classList.remove("active"));
+    btn.classList.add("active");
+    applyFilter();
+  });
+
+  applyFilter();
+})();
+</script>
