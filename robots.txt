@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /dl/
 
 Sitemap: https://toki-git501.github.io/r8-dental-report/sitemap.xml
