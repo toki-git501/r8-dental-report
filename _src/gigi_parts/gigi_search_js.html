@@ -59,6 +59,10 @@
       el.style.display = show ? "" : "none";
       if (show){
         shown += 1;
+        // Scroll-reveal starts at opacity:0 and only becomes visible on
+        // intersection. Filtered results can sit far below the fold, so force
+        // them visible here or they stay invisible despite display:"".
+        el.classList.add("visible");
         if (q){
           // Auto-open matched entries so users can see hit contents immediately.
           el.classList.add("search-hit", "open");
@@ -74,11 +78,15 @@
         const text = norm(cat.textContent);
         const hitQuery = !q || text.includes(q);
         const hitTag = activeFilter === "all" || selectedPart || text.includes(tag);
-        cat.style.display = hitQuery && hitTag && partMatch ? "" : "none";
+        const showCat = hitQuery && hitTag && partMatch;
+        cat.style.display = showCat ? "" : "none";
+        if (showCat) cat.classList.add("visible");
         return;
       }
       const anyVisible = catItems.some((item)=>item.style.display !== "none");
-      cat.style.display = anyVisible && partMatch ? "" : "none";
+      const showCat = anyVisible && partMatch;
+      cat.style.display = showCat ? "" : "none";
+      if (showCat) cat.classList.add("visible");
     });
 
     // Hide subsection headers/intros when that subsection has no visible categories.

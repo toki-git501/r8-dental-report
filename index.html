@@ -2136,34 +2136,34 @@ body.side-menu-open { overflow:hidden; }
         <tr>
           <td>訪問</td>
           <td class="cell-label">歯科訪問診療2</td>
-          <td style="text-align:right;">361点</td>
-          <td style="text-align:right;">410点</td>
-          <td style="text-align:right;" class="cell-change cell-up">+49点</td>
-          <td>区分細分化</td>
+          <td style="text-align:right;">361点<br><small style="color:var(--text-sub);">2〜9人</small></td>
+          <td style="text-align:right;">410点<br><small style="color:var(--text-sub);">2〜3人</small></td>
+          <td style="text-align:right;">区分再編</td>
+          <td>対象人数の区切りが変更（旧2〜9人→新2〜3人）。単純比較不可</td>
         </tr>
         <tr>
           <td>訪問</td>
           <td class="cell-label">歯科訪問診療3</td>
-          <td style="text-align:right;">185点</td>
-          <td style="text-align:right;">310点</td>
-          <td style="text-align:right;" class="cell-change cell-up">+125点</td>
-          <td>区分細分化</td>
+          <td style="text-align:right;">361点<br><small style="color:var(--text-sub);">旧2（2〜9人）</small></td>
+          <td style="text-align:right;">310点<br><small style="color:var(--text-sub);">4〜9人</small></td>
+          <td style="text-align:right;">区分再編</td>
+          <td>旧3（10人以上185点）ではなく旧2の後半を引き継ぐ区分</td>
         </tr>
         <tr style="background:var(--teal-light);">
           <td><span class="tag tag-low" style="background:var(--teal-light);color:var(--teal);">新設</span></td>
           <td class="cell-label">歯科訪問診療4</td>
-          <td style="text-align:right;">─</td>
-          <td style="text-align:right;">160点</td>
-          <td style="text-align:right;" class="cell-new">新設</td>
-          <td>旧3の細分化（同一建物10人以上等）</td>
+          <td style="text-align:right;">185点<br><small style="color:var(--text-sub);">旧3（10人以上）</small></td>
+          <td style="text-align:right;">160点<br><small style="color:var(--text-sub);">10〜19人</small></td>
+          <td style="text-align:right;" class="cell-change cell-down">実質 −25点</td>
+          <td>旧3（10人以上）を細分化。施設基準の届出が必要（未届は100分の50）</td>
         </tr>
         <tr style="background:var(--teal-light);">
           <td><span class="tag tag-low" style="background:var(--teal-light);color:var(--teal);">新設</span></td>
           <td class="cell-label">歯科訪問診療5</td>
-          <td style="text-align:right;">─</td>
-          <td style="text-align:right;">95点</td>
-          <td style="text-align:right;" class="cell-new">新設</td>
-          <td>同上</td>
+          <td style="text-align:right;">185点<br><small style="color:var(--text-sub);">旧3（10人以上）</small></td>
+          <td style="text-align:right;">95点<br><small style="color:var(--text-sub);">20人以上</small></td>
+          <td style="text-align:right;" class="cell-change cell-down">実質 −90点</td>
+          <td>同上。大規模施設への集中訪問は減収方向</td>
         </tr>
         <tr>
           <td>技工連携</td>
@@ -2273,8 +2273,8 @@ body.side-menu-open { overflow:hidden; }
           <td>訪問</td>
           <td class="cell-label">訪問歯科衛生指導料（10人以上）</td>
           <td style="text-align:right;">295点</td>
-          <td style="text-align:right;">226点</td>
-          <td style="text-align:right;" class="cell-change cell-down">−69点</td>
+          <td style="text-align:right;">260点</td>
+          <td style="text-align:right;" class="cell-change cell-down">−35点</td>
           <td>─</td>
         </tr>
         <tr style="background:var(--teal-light);">
@@ -2308,22 +2308,6 @@ body.side-menu-open { overflow:hidden; }
           <td style="text-align:right;">500点</td>
           <td style="text-align:right;" class="cell-new">新設</td>
           <td>医科からの依頼による歯科訪問診療</td>
-        </tr>
-        <tr style="background:var(--teal-light);">
-          <td><span class="tag tag-low" style="background:var(--teal-light);color:var(--teal);">新設</span></td>
-          <td class="cell-label">口腔管理連携加算</td>
-          <td style="text-align:right;">─</td>
-          <td style="text-align:right;">600点</td>
-          <td style="text-align:right;" class="cell-new">新設</td>
-          <td>口腔管理の医科歯科連携</td>
-        </tr>
-        <tr style="background:var(--teal-light);">
-          <td><span class="tag tag-low" style="background:var(--teal-light);color:var(--teal);">新設</span></td>
-          <td class="cell-label">歯科医療機関連携強化加算</td>
-          <td style="text-align:right;">─</td>
-          <td style="text-align:right;">60点</td>
-          <td style="text-align:right;" class="cell-new">新設</td>
-          <td>歯科医療機関間の連携評価</td>
         </tr>
         <tr style="background:var(--teal-light);">
           <td><span class="tag tag-low" style="background:var(--teal-light);color:var(--teal);">新設</span></td>
@@ -2651,11 +2635,6 @@ body.side-menu-open { overflow:hidden; }
     </p>
   </div>
 
-  <div style="border:2px solid #2563eb; background:#eff6ff; border-radius:12px; padding:14px 18px; margin:0 0 18px; font-size:14px; line-height:1.6;">
-    📥 <strong>このチェックリストの印刷用PDF版（A4・2ページ／全項目の解説付き）を無料配布中。</strong>院内会議での配布・担当割り振りにご活用ください。
-    <a href="https://forms.gle/dEzS2L6wPw6zi24aA" target="_blank" rel="noopener" style="color:#2563eb; font-weight:700;">メール登録してPDFをダウンロード →</a>
-  </div>
-
   <div class="cl-group-head cl-group-static">🔴 高優先度 ── まず確認（6項目）</div>
   <div class="checklist-grid">
     <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">ベースアップ評価料（Ⅰ）の届出区分を再確認し、必要な届出を完了した</div><div class="cl-sub">継続賃上げ実施施設と新規実施施設で点数が異なるため、区分誤りを防止</div></div><div class="cl-priority"><span class="tag tag-high">高</span></div></div>
@@ -2669,7 +2648,7 @@ body.side-menu-open { overflow:hidden; }
   <div class="cl-group">
     <div class="cl-group-head" onclick="toggleFold(this)" role="button" tabindex="0" aria-expanded="false">🟠 中優先度 ── 運用の整備（16項目）<span class="fold-chev">▼</span></div>
     <div class="cl-group-body"><div class="checklist-grid">
-    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">訪問歯科衛生指導料の新点数と140点（特別の関係）を反映した</div><div class="cl-sub">1人380点、2〜9人330点、10人以上226点の差分を算定ロジックに反映</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
+    <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">訪問歯科衛生指導料の新点数と140点（特別の関係）を反映した</div><div class="cl-sub">1人380点、2〜9人330点、10人以上260点の差分を算定ロジックに反映</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
     <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">CAD/CAM冠・インレーの大臼歯要件撤廃を診療フローに反映した</div><div class="cl-sub">適応症例の見直しと、光学印象150点の算定漏れ防止を実施</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
     <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">CAD/CAMブリッジ（3,000点）の算定準備を行い、留意事項通知を確認した</div><div class="cl-sub">R8.6.1〜保険収載（告示ベース）。適応範囲：④5⑥・⑤6⑦の中間欠損、生活歯可。算定留意事項の詳細通知を厚労省HPで確認した上で算定開始すること</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
     <div class="cl-item"><div class="cl-check" onclick="toggleCL(this)"></div><div class="cl-text"><div class="cl-label">廃止された施設基準・定例報告の運用を見直した</div><div class="cl-sub">不要となった届出・報告を停止し、現行要件に沿って院内手順を更新</div></div><div class="cl-priority"><span class="tag tag-mid">中</span></div></div>
@@ -4083,19 +4062,19 @@ body.side-menu-open { overflow:hidden; }
       <div class="modal-section">
         <div class="modal-section-title">参照基準としての位置付け</div>
         <div class="modal-prose">
-          <p>点数表の複数の加算で「小児口腔機能管理料の<strong>注3</strong>に規定する施設基準（＝口管強）」が参照され、質の高い口腔管理の公的な証明として位置付けられている。R8改定では口腔機能管理料が1（90点）と2（50点）に再編されるなど、体系全体が「管理する歯科」への転換を促す構造に移行。</p>
+          <p>点数表の複数の加算で「小児口腔機能管理料の<strong>注5</strong>に規定する施設基準（＝口管強）」が参照され、質の高い口腔管理の公的な証明として位置付けられている。R8改定では口腔機能管理料が1（90点）と2（50点）に再編されるなど、体系全体が「管理する歯科」への転換を促す構造に移行。</p>
         </div>
         <div class="modal-impact-box">
           <div class="modal-impact-icon">⚠</div>
           <div class="modal-impact-text">
-            <strong>旧資料の誤記修正：</strong>口管強の根拠規定は「注5」ではなく「<strong>注3</strong>」。注5は情報通信機器を用いた管理に関する規定であり、別内容。
+            <strong>根拠規定の確認：</strong>口管強（口腔管理体制強化加算 50点）の根拠規定は、小児口腔機能管理料（B000-4-2）の「<strong>注5</strong>」。注3は「口腔機能の評価項目において2項目に該当する者」に関する規定、情報通信機器を用いた管理は注7であり、いずれも別内容。
           </div>
         </div>
       </div>
       <div class="modal-section">
         <div class="modal-section-title">算定要件</div>
         <ul class="modal-checklist">
-          <li>口管強関連加算の算定は、口管強（小児口腔機能管理料 注3）施設基準の届出・維持が前提</li>
+          <li>口管強関連加算の算定は、口管強（小児口腔機能管理料 注5）施設基準の届出・維持が前提</li>
           <li>口腔機能管理料1・小児口腔機能管理料・根面う蝕管理料等は、対象患者・管理計画・指導記録を診療録で確認できることが必要</li>
           <li>SPT統合後の歯周病継続支援治療や重症化予防連携強化加算は、紹介起点・情報提供など項目別要件を満たした場合に算定</li>
           <li>届出後も、口腔機能管理の実績要件を月次でモニタリングし未達を防止する</li>
@@ -4686,14 +4665,14 @@ body.side-menu-open { overflow:hidden; }
           <table class="modal-table" style="width:100%;font-size:13px;border-collapse:collapse;margin:8px 0;">
             <thead><tr style="background:#f0f9ff;"><th style="padding:6px 8px;border:1px solid #e2e8f0;text-align:left;">区分</th><th style="padding:6px 8px;border:1px solid #e2e8f0;text-align:left;">対象</th><th style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;">R6点数</th><th style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;">R8点数</th><th style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;">増減</th></tr></thead>
             <tbody>
-              <tr><td style="padding:6px 8px;border:1px solid #e2e8f0;font-weight:700;">訪問診療1</td><td style="padding:6px 8px;border:1px solid #e2e8f0;">単一建物1人</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;">1,100点</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;">1,100点</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;">±0</td></tr>
-              <tr><td style="padding:6px 8px;border:1px solid #e2e8f0;font-weight:700;">訪問診療2</td><td style="padding:6px 8px;border:1px solid #e2e8f0;">同一建物2〜9人</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;">361点</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;">410点</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;color:#059669;">+49</td></tr>
-              <tr><td style="padding:6px 8px;border:1px solid #e2e8f0;font-weight:700;">訪問診療3</td><td style="padding:6px 8px;border:1px solid #e2e8f0;">同一建物10人以上</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;">185点</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;">310点</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;color:#059669;font-weight:700;">+125</td></tr>
-              <tr style="background:#f0fdf4;"><td style="padding:6px 8px;border:1px solid #e2e8f0;font-weight:700;">訪問診療4</td><td style="padding:6px 8px;border:1px solid #e2e8f0;">多人数（施設基準あり）</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;">─</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;color:#059669;">160点</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;color:#059669;">NEW</td></tr>
-              <tr style="background:#f0fdf4;"><td style="padding:6px 8px;border:1px solid #e2e8f0;font-weight:700;">訪問診療5</td><td style="padding:6px 8px;border:1px solid #e2e8f0;">最多人数（施設基準あり）</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;">─</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;color:#059669;">95点</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;color:#059669;">NEW</td></tr>
+              <tr><td style="padding:6px 8px;border:1px solid #e2e8f0;font-weight:700;">訪問診療1</td><td style="padding:6px 8px;border:1px solid #e2e8f0;">1人</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;">1,100点<br><span style="font-size:11px;color:#64748b;">（1人）</span></td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;">1,100点</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;">±0</td></tr>
+              <tr><td style="padding:6px 8px;border:1px solid #e2e8f0;font-weight:700;">訪問診療2</td><td style="padding:6px 8px;border:1px solid #e2e8f0;">2人以上3人以下</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;">361点<br><span style="font-size:11px;color:#64748b;">（2〜9人）</span></td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;">410点</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;color:#64748b;">区分再編</td></tr>
+              <tr><td style="padding:6px 8px;border:1px solid #e2e8f0;font-weight:700;">訪問診療3</td><td style="padding:6px 8px;border:1px solid #e2e8f0;">4人以上9人以下</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;">361点<br><span style="font-size:11px;color:#64748b;">（2〜9人）</span></td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;">310点</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;color:#64748b;">区分再編</td></tr>
+              <tr style="background:#f0fdf4;"><td style="padding:6px 8px;border:1px solid #e2e8f0;font-weight:700;">訪問診療4</td><td style="padding:6px 8px;border:1px solid #e2e8f0;">10人以上19人以下<br><span style="font-size:11px;color:#64748b;">（施設基準あり）</span></td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;">185点<br><span style="font-size:11px;color:#64748b;">（10人以上）</span></td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;color:#059669;">160点</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;color:#b91c1c;">NEW／実質 −25点</td></tr>
+              <tr style="background:#f0fdf4;"><td style="padding:6px 8px;border:1px solid #e2e8f0;font-weight:700;">訪問診療5</td><td style="padding:6px 8px;border:1px solid #e2e8f0;">20人以上<br><span style="font-size:11px;color:#64748b;">（施設基準あり）</span></td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;">185点<br><span style="font-size:11px;color:#64748b;">（10人以上）</span></td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;color:#059669;">95点</td><td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:right;color:#b91c1c;">NEW／実質 −90点</td></tr>
             </tbody>
           </table>
-          <p style="font-size:12px;color:#64748b;">※訪問診療4・5は新設の施設基準を満たす場合に算定。在宅支援歯科診療所での訪問診療1には加算を新設。</p>
+          <p style="font-size:12px;color:#64748b;">※「対象」は<strong>同一日に同一建物内で歯科訪問診療を行った患者数</strong>（C000 注2〜注5）。R6は3区分（1人／2〜9人／10人以上）だったものがR8で5区分に再編されたため、<strong>同じ区分番号どうしの単純比較はできない</strong>（R6点数欄のカッコ内は当時の対象人数）。訪問診療4・5は新設の施設基準を満たす場合に算定し、届出がない場合は所定点数の100分の50。在宅支援歯科診療所での訪問診療1には加算を新設。</p>
         </div>
       </div>
       <div class="modal-section">
@@ -4725,7 +4704,7 @@ body.side-menu-open { overflow:hidden; }
         <div class="modal-section-title">解説ポイント</div>
         <div class="modal-prose">
           <p><strong>訪問先構成の棚卸しが急務：</strong>自院の訪問先が「1人訪問中心」か「施設・多人数中心」かで収益影響が正反対になる。訪問先の同一建物居住者人数のデータを精査すべき。</p>
-          <p><strong>訪問3の+125点は大型増点：</strong>同一建物10人以上の区分に相当する訪問3は67.6%もの増点。施設訪問を行っている医院にとっては大きなプラス材料。</p>
+          <p><strong>少人数訪問が有利、大規模施設は減点：</strong>R8では対象人数の区切りが細かくなり、2〜3人＝410点／4〜9人＝310点と少人数帯が手厚くなった一方、<strong>10人以上は185点→160点（訪問4）、20人以上は95点（訪問5）と減点</strong>。大規模施設への集中訪問を主力にしている医院は減収方向になるため、訪問先構成の見直しが必要。</p>
           <p><strong>入院患者の口腔管理：</strong>連携を行っている歯科標榜のない病院等からの依頼により、入院患者に歯科訪問診療を実施した場合の加算（医科歯科連携訪問加算500点）を新設。</p>
           <p><strong>在宅歯科DX情報活用加算：</strong>加算1（9点）・加算2（8点）を新設。訪問歯科における情報連携のDX化を評価。</p>
         </div>
@@ -4848,8 +4827,7 @@ body.side-menu-open { overflow:hidden; }
         <div class="modal-section-title">周術期及び回復期等の口腔機能管理の推進</div>
         <div class="modal-prose">
           <p>周術期及び回復期等における計画的な歯科の修正を行った場合の評価を新設。入院患者の口腔管理における医科歯科連携の推進として、連携を行っている歯科標榜のない病院等からの依頼による歯科訪問診療を実施した場合の加算を新設。</p>
-          <p><strong>口腔管理連携加算（新設600点）：</strong>在宅歯科医療と医科との連携を評価。</p>
-          <p><strong>歯科医療機関連携強化加算（新設60点）：</strong>歯科医療機関間の連携を強化する評価。</p>
+          <p><strong>医科連携訪問加算（新設500点）：</strong>連携している歯科標榜のない病院等からの依頼により、入院患者に歯科訪問診療を実施した場合に歯科訪問診療料へ加算。</p>
         </div>
       </div>
       <div class="modal-section">
