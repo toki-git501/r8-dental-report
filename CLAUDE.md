@@ -94,6 +94,13 @@ curl -s https://toki-git501.github.io/r8-dental-report/ | grep -c "検証した�
 ## 5. 記録
 `更新記録.md` の末尾に日付・修正内容・**根拠（区分番号と告示/通知の別）**・保留事項を追記。
 
+## 6. ChatGPTによるクロスチェック（2026-08-23〜運用開始）
+デプロイ前後どちらでもよいが、内容を大きく変更した場合は公開URL（`https://toki-git501.github.io/r8-dental-report/`）をChatGPT（GPT-5.6 Sol）に渡し、告示・通知内容との整合性・表現の精度をチェックさせる。
+- ブラウザ操作（chatgpt.com、モデル選択で「GPT-5.6 Sol」を確認）でも、`codex` CLI（インストール済み・ChatGPTアカウント認証の可能性あり、要確認）でも可
+- 依頼文には必ず「今この瞬間の最新版を再取得してから読んでください」と明記する（古いキャッシュを前提に回答されるのを防ぐため）
+- **ChatGPTの指摘は鵜呑みにしない**。「回答は必ずしも正しいとは限らない」を前提に、`_reference/` の一次資料PDF・厚労省公式サイト（WebFetch等）で1件ずつ裏取りしてから反映する
+- 実績: 2026-08-23、この手順で疑義解釈その6の日付誤り（5/21→正式には5/22）と、回復期等口腔機能管理計画策定料/管理料をR8新設と誤記していた点（実際はR6ですでに存在）を発見・是正した
+
 ## トラブル対応
 - Pagesデプロイ失敗時: `gh api -X POST repos/toki-git501/r8-dental-report/pages/builds` で即再ビルド
 - git が "You have not agreed to the Xcode license" → 上記 §0 の DEVELOPER_DIR
