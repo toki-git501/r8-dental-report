@@ -88,7 +88,7 @@ def main():
       <li><a href="index.html#compare">これまでの改定経緯</a></li>
       <li><a href="index.html#points">主要点数の新旧比較</a></li>
       <li><a href="index.html#gigi">疑義解釈</a></li>
-      <li><a href="index.html#forecast">歯科業界の未来予測</a></li>
+      <li><a href="index.html#forecast">歯科業界の今後の見通し</a></li>
       <li><a href="index.html#checklist">実施チェックリスト</a></li>
       <li><a href="index.html#references">参照ソース一覧</a></li>
     ''',
