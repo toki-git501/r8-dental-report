@@ -47,7 +47,7 @@ export DEVELOPER_DIR=/Library/Developer/CommandLineTools
 恒久化するなら `~/.zshrc` に上記1行を追記（未実施）。
 
 ## 1. 点数の検証手順（数値を触る前に必ず実施）
-根拠PDF: `_reference/`（旧: Vault `85_Scripts/092_開発/令和8年度診療報酬改定サイト/参考資料/`）
+根拠PDF: `_reference/`（旧: Vault `50_Scripts/505_開発/令和8年度診療報酬改定サイト/参考資料/`）
 
 ```bash
 cd ~/Projects/r8-dental-report
